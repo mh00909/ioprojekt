@@ -2,6 +2,8 @@ package com.ioproject.reservetheweather.service;
 import com.ioproject.reservetheweather.entity.User;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +11,8 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -19,10 +22,11 @@ public class UserService {
     }
 
     public void addNewUser(User user) {
-        Optional<User> userOptional = userRepository.findUserByMail(user.getMail());
+       /* Optional<User> userOptional = userRepository.findUserByMail(user.getMail());
         if(userOptional.isPresent()){
             throw new IllegalStateException("Podany e-mail jest zajęty.");
-        }
+        } */
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 

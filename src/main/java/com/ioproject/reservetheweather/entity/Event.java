@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name="events")
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     String datePattern = "yyyy-MM-dd hh:mm:ss";
@@ -23,6 +23,9 @@ public class Event {
     private String description;
     private int maxUsers;
     private int signedUsers;
+
+    int minTemperature;
+    int maxTemperature;
     public Event(){signedUsers=0;description="";}
     public Event(String name, String dateString, int duration, int maxUsers){
         this.name=name;
@@ -36,6 +39,24 @@ public class Event {
         this.maxUsers=maxUsers;
         description="";
     }
+
+    public Event(String name, String dateString, int duration, int maxUsers,
+                 int minTemperature, int maxTemperature){
+        this.name=name;
+        try{
+            date=startingTime.parse(dateString);
+        }catch(ParseException e){
+            System.out.println("Nieprawidłowy format daty. Format: dd-M-yyyy hh:mm:ss");
+        }
+        this.duration = duration;
+        this.signedUsers=0;
+        this.maxUsers=maxUsers;
+        description="";
+
+        this.minTemperature=minTemperature;
+        this.maxTemperature = maxTemperature;
+    }
+
     public void setId(Long id) {this.id = id;}
     public Long getId() {return id;}
 

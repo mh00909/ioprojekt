@@ -1,4 +1,5 @@
 package com.ioproject.reservetheweather.api;
+import com.ioproject.reservetheweather.entity.Event;
 import com.ioproject.reservetheweather.entity.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
@@ -39,18 +40,31 @@ public class UserController {
 
     @PostMapping("/user/save")
     public ResponseEntity<Object> saveUser(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        userService.addNewUser(user);
+     /*   user.setPassword(passwordEncoder.encode(user.getPassword()));
         User result = userRepository.save(user);
         if (result.getId() > 0) {
-            return ResponseEntity.ok("User was saved.");
+            return ResponseEntity.ok("Użytkownik zarejestrowany.");
         }
-        return ResponseEntity.status(404).body("Error. User not saved.");
+        return ResponseEntity.status(404).body("Error. User not saved."); */
+
+        return ResponseEntity.ok("Użytkownik zarejestrowany.");
+
     }
 
     @GetMapping("/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
     }
+
+    @PostMapping("/events/add")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Object> addEvent(@RequestBody Event event){
+        eventService.addEvent(event);
+        return ResponseEntity.ok("Zajęcia dodane.");
+    }
+
 
     @GetMapping("/users/all")
     @PreAuthorize("hasAuthority('ADMIN')")
