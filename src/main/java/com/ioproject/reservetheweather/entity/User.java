@@ -1,17 +1,7 @@
 package com.ioproject.reservetheweather.entity;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.UuidGenerator;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.*;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
-
-
+import java.util.List;
 @Data
 @Entity
 @Table(name = "users")
@@ -27,11 +17,14 @@ public class User {
     private long phoneNumber;
     @Column(nullable = false, length = 64)
     private String password;
+    @Column
     private String roles;
 
-    public User() {
-    }
+    @ManyToMany
+    private List<Event> myEvents;
 
+
+    public User() {}
     public User(Long id, String name, String mail, String password, long phoneNumber) {
         this.id = id;
         this.name = name;

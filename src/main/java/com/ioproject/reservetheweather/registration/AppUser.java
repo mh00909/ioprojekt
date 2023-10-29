@@ -1,4 +1,4 @@
-package com.ioproject.reservetheweather.config;
+package com.ioproject.reservetheweather.registration;
 
 import com.ioproject.reservetheweather.entity.User;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,7 +1,11 @@
 package com.ioproject.reservetheweather.service;
+import com.ioproject.reservetheweather.entity.Event;
 import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -9,21 +13,26 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
+    private final EventRepository eventRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, EventRepository eventRepository) {
         this.userRepository = userRepository;
+        this.eventRepository = eventRepository;
     }
 
    public List<User> getUsers(){
         return userRepository.findAll();
     }
 
-    public void addNewUser(User user) {
-        Optional<User> userOptional = userRepository.findUserByMail(user.getMail());
-        if(userOptional.isPresent()){
-            throw new IllegalStateException("Podany e-mail jest zajęty.");
+    public boolean addNewUser(User user) {
+        Optional<User> exists = userRepository.findUserByMail(user.getMail());
+        if(exists.isPresent()){
+            return false;
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        return true;
     }
 
     public void deleteUser(Long userID) {
@@ -56,6 +65,17 @@ public class UserService {
 
     public void signUp(Long eventID) {
 
+    }
+
+    public List<Event> showMyEvents(Optional<User> user) {
+        return user.get().getMyEvents();
+    }
+
+    public void joinEvent(Long eventid, User user){
+        Optional<Event> event = eventRepository.findById(eventid);
+        if(event.isPresent()){
+
+        }
     }
 }
 
