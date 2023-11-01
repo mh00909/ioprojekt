@@ -52,6 +52,14 @@ public class UserController {
         return ResponseEntity.ok(eventRepository.findAll());
     }
 
+    @GetMapping("/api/events/description")
+    public void showEventDescription(@RequestParam Long eventid){
+        Optional<Event> event = eventRepository.findById(eventid);
+        if(event.isPresent()){
+            eventService.showDescription(event.get());
+        }
+    }
+
     @PostMapping("/api/events/signup")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void signUpForEvent(@RequestParam Long eventid){

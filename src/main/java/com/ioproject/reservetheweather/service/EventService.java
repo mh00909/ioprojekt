@@ -47,4 +47,11 @@ public class EventService {
             event.get().getUsers().add(user);
         }
     }
+
+    public void showDescription(Event event){
+        System.out.println(event.getDescription());
+        System.out.println("Najlepsza temperatura do odbycia zajęć: od "
+                + event.getMinTemperature() + "do "+ event.getMaxTemperature());
+        System.out.println("Liczba miejsc: "+ event.getMaxUsers() + ", liczba zapisanych uczestników: "+event.getSignedUsers());
+    }
 }
