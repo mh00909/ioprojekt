@@ -16,17 +16,25 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column
     private String name;
     String datePattern = "yyyy-MM-dd hh:mm:ss";
     private SimpleDateFormat startingTime = new SimpleDateFormat(datePattern);
+    @Column
     private Date date;
+    @Column
     private int duration;
+    @Column
     private String description;
+    @Column
     private int maxUsers;
+    @Column
     private int signedUsers;
     @ManyToMany
     List<User> users;
+    @Column
     int minTemperature;
+    @Column
     int maxTemperature;
 
     boolean badWeather = false;
