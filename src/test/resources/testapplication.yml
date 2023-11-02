@@ -5,9 +5,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/reservetheweather
-    username: projekt
-    password: weather
+    url: jdbc:h2://mem:db;ND_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+    driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop

@@ -14,17 +14,20 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
-    @Autowired
+
     private PasswordEncoder passwordEncoder;
-    public UserService(UserRepository userRepository, EventRepository eventRepository) {
+    public UserService(UserRepository userRepository, EventRepository eventRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.eventRepository = eventRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
    public List<User> getUsers(){
         return userRepository.findAll();
     }
 
+
+    @Transactional
     public boolean addNewUser(User user) {
         Optional<User> exists = userRepository.findUserByMail(user.getMail());
         if(exists.isPresent()){
