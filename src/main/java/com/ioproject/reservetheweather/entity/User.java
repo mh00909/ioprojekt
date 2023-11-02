@@ -25,12 +25,13 @@ public class User {
 
 
     public User() {}
-    public User(Long id, String name, String mail, String password, long phoneNumber) {
+    public User(Long id, String name, String mail, String password, long phoneNumber, String roles) {
         this.id = id;
         this.name = name;
         this.mail = mail;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.roles = roles;
     }
 
     public User(String name, String mail, String password, long phoneNumber) {

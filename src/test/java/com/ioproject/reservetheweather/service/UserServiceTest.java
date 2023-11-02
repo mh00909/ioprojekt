@@ -31,13 +31,13 @@ class UserServiceTest {
     @InjectMocks private UserService underTest;
 
     @Test
-    void getUsers() {
+    void getUsersTest() {
         underTest.getUsers();
         Mockito.verify(userRepository).findAll();
     }
 
     @Test
-    void addNewUser() {
+    void addNewUserTest() {
         String email = "user1@gmail.com";
         User user = new User("Jacek", email, "password", 123456789);
 
