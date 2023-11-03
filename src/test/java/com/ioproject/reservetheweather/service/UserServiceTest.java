@@ -4,25 +4,13 @@ import com.ioproject.reservetheweather.entity.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
-
 
 @ExtendWith(MockitoExtension.class)
 @Transactional
@@ -67,28 +55,4 @@ class UserServiceTest {
     }
 
 
-
-    @Test
-    void deleteUser() {
-    }
-
-    @Test
-    void updateUser() {
-    }
-
-    @Test
-    void deleteSelf() {
-    }
-
-    @Test
-    void signUp() {
-    }
-
-    @Test
-    void showMyEvents() {
-    }
-
-    @Test
-    void joinEvent() {
-    }
 }

@@ -1,6 +1,5 @@
 package com.ioproject.reservetheweather.registration;
 
-//import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.AppUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

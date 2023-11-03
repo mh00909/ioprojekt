@@ -1,116 +1,75 @@
 package com.ioproject.reservetheweather.api;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ioproject.reservetheweather.TestConfig;
 import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.registration.SecurityConfig;
+import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
+import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.ResultActions;
+
+import static org.mockito.BDDMockito.given;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestConfig.class)
+@WebMvcTest(controllers = UserController.class)
+@AutoConfigureMockMvc(addFilters = false)
+@ExtendWith(MockitoExtension.class)
 class UserControllerTest {
+    @Autowired private MockMvc mockMvc;
+    @MockBean private UserService userService;
+    @MockBean private  UserRepository userRepository;
 
-    @Autowired
-    private UserController userController;
+    @Autowired private ObjectMapper objectMapper;
 
-    @Autowired
-    private MockMvc mockMvc;
+    @MockBean private EventService eventService;
+    @MockBean private EventRepository eventRepository;
+    @MockBean private SecurityConfig securityConfig;
 
-    @MockBean
-    private UserService userService;
-
-    @MockBean
-    private  UserRepository userRepository;
-    @Before
-    public void setup(){
-        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+    private User user;
+    private User admin;
+    @BeforeEach
+    public void init(){
+        user = User.builder().name("Jacek Nowak").mail("user123@gmail.com").password("abc").phoneNumber(123456789L).roles("USER").build();
+        admin = User.builder().name("Eliza Pancakes").mail("eliza@gmail.com").password("abc").phoneNumber(213131L).roles("ADMIN").build();
     }
-
     @Test
-    void hello() {
+    public void saveUserTest() throws Exception {
+
+        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(true);
+
+        ResultActions response = mockMvc.perform(post("/api/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(user)));
+
+        response.andExpect(status().isOk()).andExpect(content().string("Użytkownik zarejestrowany."));
 
     }
-
     @Test
-    void testSaveUser_SuccessfulRegistration() throws Exception {
-        User user = new User(15L,"Adam Wojeciechowski",
-                "u@wp.pl", "123", 12345, "USER");
+    public void saveAdminTest() throws Exception {
+        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(true);
+        ResultActions response = mockMvc.perform(post("/api/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(admin)));
+        response.andExpect(status().isOk()).andExpect(content().string("Użytkownik zarejestrowany."));
 
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-       Mockito.when(userRepository.save(user)).thenReturn(user);
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/register")
-                .content(objectMapper.writeValueAsString(user))
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("Użytkownik zarejestrowany."));
     }
 
-    @Test
-    void getAllEvents() {
-    }
 
-    @Test
-    void showEventDescription() {
-    }
-
-    @Test
-    void signUpForEvent() {
-    }
-
-    @Test
-    void addEvent() {
-    }
-
-    @Test
-    void getAllUsers() {
-    }
-
-    @Test
-    void getMyDetails() {
-    }
-
-    @Test
-    void showMyEvents() {
-    }
-
-    @Test
-    void checkWeather() {
-    }
-
-    @Test
-    void resignEvent() {
-    }
-
-    @Test
-    void discountEvent() {
-    }
-
-    @Test
-    void getLoggedIn() {
-    }
-    private String asJsonString(final Object obj) {
-        try {
-            final ObjectMapper mapper = new ObjectMapper();
-            return mapper.writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 }
