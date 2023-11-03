@@ -1,16 +1,23 @@
 package com.ioproject.reservetheweather.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="events")
 public class Event {
     @Id
@@ -18,10 +25,9 @@ public class Event {
     private Long id;
     @Column
     private String name;
-    String datePattern = "yyyy-MM-dd hh:mm:ss";
-    private SimpleDateFormat startingTime = new SimpleDateFormat(datePattern);
+
     @Column
-    private Date date;
+    private LocalDateTime time;
     @Column
     private int duration;
     @Column
@@ -38,14 +44,31 @@ public class Event {
     int maxTemperature;
 
     boolean badWeather = false;
-    public Event(){signedUsers=0;description="";}
+
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void setMinTemperature(int minTemperature) {
+        this.minTemperature = minTemperature;
+    }
+
+    public void setMaxTemperature(int maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
+    public void setBadWeather(boolean badWeather) {
+        this.badWeather = badWeather;
+    }
+
     public Event(String name, String dateString, int duration, int maxUsers){
         this.name=name;
-        try{
-            date=startingTime.parse(dateString);
-        }catch(ParseException e){
-            System.out.println("Nieprawidłowy format daty. Format: dd-M-yyyy hh:mm:ss");
-        }
+        time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.duration = duration;
         this.signedUsers=0;
         this.maxUsers=maxUsers;
@@ -55,11 +78,7 @@ public class Event {
     public Event(String name, String dateString, int duration, int maxUsers,
                  int minTemperature, int maxTemperature){
         this.name=name;
-        try{
-            date=startingTime.parse(dateString);
-        }catch(ParseException e){
-            System.out.println("Nieprawidłowy format daty. Format: dd-M-yyyy hh:mm:ss");
-        }
+        time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.duration = duration;
         this.signedUsers=0;
         this.maxUsers=maxUsers;
@@ -85,17 +104,28 @@ public class Event {
     public void setDescription(String description) {this.description = description;}
     public void setMaxUsers(int maxUsers) {this.maxUsers = maxUsers;}
     public void setSignedUsers(int signedUsers) {this.signedUsers = signedUsers;}
-    public Date getDate() {
-        return date;
+    public LocalDateTime getTime() {
+        return time;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public int getMinTemperature() {
+        return minTemperature;
+    }
+
+    public int getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public boolean isBadWeather() {
+        return badWeather;
+    }
 
     public void setDate(String dateString){
-        try{
-            date=startingTime.parse(dateString);
-        }catch(ParseException e){
-            System.out.println("Nieprawidłowy format daty. Format: dd-M-yyyy hh:mm:ss");
-        }
+        time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 }
 

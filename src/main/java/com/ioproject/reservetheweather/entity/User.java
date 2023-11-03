@@ -1,21 +1,28 @@
 package com.ioproject.reservetheweather.entity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 @Data
+@Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", nullable = false, length = 45)
+    @Column(name = "name")
     private String name;
-    @Column(name = "email", nullable = false, length = 45)
+    @Column(name = "email")
     private String mail;
-    @Column(name = "phone number", length = 15)
+    @Column(name = "phone number")
     private long phoneNumber;
-    @Column(nullable = false, length = 64)
+    @Column()
     private String password;
     @Column
     private String roles;
@@ -24,7 +31,6 @@ public class User {
     private List<Event> myEvents;
 
 
-    public User() {}
     public User(Long id, String name, String mail, String password, long phoneNumber, String roles) {
         this.id = id;
         this.name = name;

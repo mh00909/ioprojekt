@@ -10,8 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -39,8 +42,7 @@ class UserServiceTest {
     @Test
     void addNewUserTest() {
         String email = "user1@gmail.com";
-        User user = new User("Jacek", email, "password", 123456789);
-
+        User user = User.builder().name("Jacek").mail(email).password("abc").phoneNumber(213131L).build();
         underTest.addNewUser(user);
 
         ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
@@ -63,6 +65,8 @@ class UserServiceTest {
 
         assertFalse(inserted);
     }
+
+
 
     @Test
     void deleteUser() {
