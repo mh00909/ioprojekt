@@ -1,10 +1,15 @@
 package com.ioproject.reservetheweather.api;
-import com.ioproject.reservetheweather.entity.Event;
-import com.ioproject.reservetheweather.entity.User;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ioproject.reservetheweather.model.Event;
+import com.ioproject.reservetheweather.model.User;
+import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
+import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
@@ -26,10 +31,12 @@ public class UserController {
     private EventRepository eventRepository;
     private final UserService userService;
     private final EventService eventService;
+    private final WeatherService weatherService;
 
     @Autowired
-    public UserController(UserService userService, EventService eventService) {
+    public UserController(UserService userService, EventService eventService, WeatherService weatherService) {
         this.userService = userService;
+        this.weatherService = weatherService;
         this.eventService = eventService;
     }
 
@@ -108,7 +115,14 @@ public class UserController {
     }
 
     @GetMapping("/api/checkweather")
-    public void checkWeather(){
+    public ResponseEntity<WeatherData> checkWeather(){
+
+        ObjectMapper mapper = new ObjectMapper();
+
+
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        WeatherData weatherData = weatherService.checkWeather();
+        return ResponseEntity.ok(weatherData);
 
     }
 
@@ -127,8 +141,8 @@ public class UserController {
 
     @PostMapping("/api/user/myevents/reschedule")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void rescheduleEvent(){
-
+    public void rescheduleEvent(@RequestParam String date1){
+        eventService.reschedule(date1);
     }
 
     public UserDetails getLoggedIn() {

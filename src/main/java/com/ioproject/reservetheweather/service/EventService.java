@@ -1,8 +1,8 @@
 package com.ioproject.reservetheweather.service;
 
-import com.ioproject.reservetheweather.entity.Event;
+import com.ioproject.reservetheweather.model.Event;
 //import com.ioproject.reservetheweather.repository.EventRepository;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +53,16 @@ public class EventService {
         System.out.println("Najlepsza temperatura do odbycia zajęć: od "
                 + event.getMinTemperature() + "do "+ event.getMaxTemperature());
         System.out.println("Liczba miejsc: "+ event.getMaxUsers() + ", liczba zapisanych uczestników: "+event.getSignedUsers());
+    }
+
+    public void reschedule(String date1) {
+
+    }
+
+    public String badWeatherInfrom(User user, Event event){
+        String message = "Na datę "+ event.getTime() + " przewidywana jest zła pogoda.\n" +
+                "W związku z tym możesz poprosić o otrzymanie zniżki na zajęcia. " +
+                "Możesz także zrezygnować z udziału lub zapisać się na zajęcia w innym terminie.";
+        return message;
     }
 }
