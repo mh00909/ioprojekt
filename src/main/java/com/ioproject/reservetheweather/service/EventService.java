@@ -54,4 +54,15 @@ public class EventService {
                 + event.getMinTemperature() + "do "+ event.getMaxTemperature());
         System.out.println("Liczba miejsc: "+ event.getMaxUsers() + ", liczba zapisanych uczestników: "+event.getSignedUsers());
     }
+
+    public void reschedule(String date1) {
+
+    }
+
+    public String badWeatherInfrom(User user, Event event){
+        String message = "Na datę "+ event.getTime() + " przewidywana jest zła pogoda.\n" +
+                "W związku z tym możesz poprosić o otrzymanie zniżki na zajęcia. " +
+                "Możesz także zrezygnować z udziału lub zapisać się na zajęcia w innym terminie.";
+        return message;
+    }
 }

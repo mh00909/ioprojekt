@@ -127,8 +127,8 @@ public class UserController {
 
     @PostMapping("/api/user/myevents/reschedule")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void rescheduleEvent(){
-
+    public void rescheduleEvent(@RequestParam String date1){
+        eventService.reschedule(date1);
     }
 
     public UserDetails getLoggedIn() {
