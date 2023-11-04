@@ -1,7 +1,7 @@
 package com.ioproject.reservetheweather.service;
 
-import com.ioproject.reservetheweather.registration.AppUser;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.AppUser;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

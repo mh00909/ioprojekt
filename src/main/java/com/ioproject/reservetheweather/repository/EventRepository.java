@@ -1,6 +1,6 @@
 package com.ioproject.reservetheweather.repository;
 
-import com.ioproject.reservetheweather.entity.Event;
+import com.ioproject.reservetheweather.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

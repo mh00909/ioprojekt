@@ -1,4 +1,4 @@
-package com.ioproject.reservetheweather.entity;
+package com.ioproject.reservetheweather.model;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;

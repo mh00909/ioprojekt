@@ -1,4 +1,4 @@
-package com.ioproject.reservetheweather.entity;
+package com.ioproject.reservetheweather.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 
@@ -126,6 +123,9 @@ public class Event {
 
     public void setDate(String dateString){
         time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+    public void removeUser(User user){
+        users.remove(user);
     }
 }
 

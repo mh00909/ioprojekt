@@ -1,7 +1,6 @@
 package com.ioproject.reservetheweather.repository;
 
-import com.ioproject.reservetheweather.entity.User;
-import jakarta.persistence.Table;
+import com.ioproject.reservetheweather.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

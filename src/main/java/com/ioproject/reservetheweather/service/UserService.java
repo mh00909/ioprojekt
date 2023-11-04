@@ -1,10 +1,9 @@
 package com.ioproject.reservetheweather.service;
-import com.ioproject.reservetheweather.entity.Event;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.Event;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -38,21 +37,20 @@ public class UserService {
         return true;
     }
 
-    public void deleteUser(Long userID) {
+    public boolean deleteUser(Long userID) {
     boolean exists = userRepository.existsById(userID);
     if(!exists){
         throw new IllegalStateException("Użytkownik nie istnieje!");
     }
         userRepository.deleteById(userID);
+        return true;
     }
 
     @Transactional
-    public void updateUser(Long userID, String name, String email) {
+    public void updateUserMail(Long userID, String email) {
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
-        if(name!=null && name.length()>0 ){
-            user.setName(name);
-        }
+
         if(email!=null && email.length()>0){
             Optional<User> userOptional = userRepository.findUserByMail(email);
             if(userOptional.isPresent()){
@@ -62,22 +60,33 @@ public class UserService {
         }
     }
 
-    public void deleteSelf() {
-
+    public void updateUserName(Long userID, String name){
+        User user = userRepository.findById(userID)
+                .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
+        if(name!=null && name.length()>0 ){
+            user.setName(name);
+        }
     }
 
-    public void signUp(Long eventID) {
 
-    }
 
-    public List<Event> showMyEvents(Optional<User> user) {
-        return user.get().getMyEvents();
+    public List<Event> showMyEvents(Long userID) {
+        User user = userRepository.findById(userID)
+                .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
+        return user.getMyEvents();
     }
 
     public void joinEvent(Long eventid, User user){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
+            user.joinEvent(event.get());
+        }
+    }
 
+    public void resign(Long eventID, Optional<User> user){
+        Optional<Event> event = eventRepository.findById(eventID);
+        if(event.isPresent()){
+            user.get().resign(event.get());
         }
     }
 }

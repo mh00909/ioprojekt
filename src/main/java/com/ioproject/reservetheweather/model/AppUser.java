@@ -1,6 +1,6 @@
-package com.ioproject.reservetheweather.registration;
+package com.ioproject.reservetheweather.model;
 
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +13,10 @@ public class AppUser implements UserDetails {
     private String email;
     private String password;
     private List<GrantedAuthority> roles;
+    private boolean accountExpired = false;
+    private boolean accountLocked = false;
+    private boolean credentialsExpired = false;
+    private boolean accountDisabled = false;
     public AppUser(User user){
         this.email = user.getMail();
         this.password = user.getPassword();
@@ -38,22 +42,22 @@ public class AppUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return !accountExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !accountLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return !credentialsExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return !accountDisabled;
     }
 
 }

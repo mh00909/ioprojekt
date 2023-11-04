@@ -1,7 +1,7 @@
 package com.ioproject.reservetheweather.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ioproject.reservetheweather.entity.User;
-import com.ioproject.reservetheweather.registration.SecurityConfig;
+import com.ioproject.reservetheweather.model.User;
+import com.ioproject.reservetheweather.config.SecurityConfig;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.EventService;

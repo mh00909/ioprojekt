@@ -1,6 +1,6 @@
 package com.ioproject.reservetheweather.service;
 
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;

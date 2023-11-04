@@ -1,4 +1,4 @@
-package com.ioproject.reservetheweather.entity;
+package com.ioproject.reservetheweather.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +29,7 @@ public class User {
 
     @ManyToMany
     private List<Event> myEvents;
+
 
 
     public User(Long id, String name, String mail, String password, long phoneNumber, String roles) {
@@ -102,6 +103,20 @@ public class User {
 
     public String getRoles() {
         return roles;
+    }
+
+    public void joinEvent(Event event){
+        myEvents.add(event);
+    }
+    public boolean resign(Event event){
+        if(myEvents.contains(event)){
+            myEvents.remove(event);
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 }
 

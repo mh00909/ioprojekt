@@ -1,20 +1,17 @@
 package com.ioproject.reservetheweather.api;
-import com.ioproject.reservetheweather.entity.Event;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
+import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,10 +23,12 @@ public class UserController {
     private EventRepository eventRepository;
     private final UserService userService;
     private final EventService eventService;
+    private final WeatherService weatherService;
 
     @Autowired
-    public UserController(UserService userService, EventService eventService) {
+    public UserController(UserService userService, EventService eventService, WeatherService weatherService) {
         this.userService = userService;
+        this.weatherService = weatherService;
         this.eventService = eventService;
     }
 
@@ -55,35 +54,17 @@ public class UserController {
         return ResponseEntity.ok("Udało się zalogować.");
     }
 
-    @GetMapping("/api/events/all")
-    public ResponseEntity<Object> getAllEvents() {
-        return ResponseEntity.ok(eventRepository.findAll());
-    }
-
-    @GetMapping("/api/events/description")
-    public void showEventDescription(@RequestParam Long eventid){
-        Optional<Event> event = eventRepository.findById(eventid);
-        if(event.isPresent()){
-            eventService.showDescription(event.get());
-        }
-    }
-
-    @PostMapping("/api/events/signup")
+    @GetMapping("/api/events/myevents")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void signUpForEvent(@RequestParam Long eventid){
+    public void showMyEvents(){
         Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
         if(user.isPresent()) {
-            eventService.addPerson(eventid, user.get());
-            userService.joinEvent(eventid, user.get());
+            userService.showMyEvents(user.get().getId());
         }
     }
 
-    @PostMapping("/api/events/add")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Object> addEvent(@RequestBody Event event){
-        eventService.addEvent(event);
-        return ResponseEntity.ok("Zajęcia dodane.");
-    }
+
+
 
     @GetMapping("/api/users/all")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -97,38 +78,20 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findUserByMail(getLoggedIn().getUsername()));
     }
 
-    @GetMapping("/api/users/myevents")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public List<Event> showMyEvents(){
-        Optional<User> u1 = userRepository.findUserByMail(getLoggedIn().getUsername());
-        if(u1.isPresent()){
-            return userService.showMyEvents(u1);
-        }
-        return null;
+    @GetMapping("/api/user/update/name")
+    public void updateName(@RequestParam String newName){
+        userService.updateUserName(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newName);
     }
-
-    @GetMapping("/api/checkweather")
-    public void checkWeather(){
-
-    }
-
-    @PostMapping("api/user/myevents/cancell")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void resignEvent(@RequestParam Long id){
-        eventService.resign(id);
-    }
-
-    @PostMapping("api/user/myevents/discount")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void discountEvent(@RequestParam Long id){
-        eventService.discount(id);
+    @GetMapping("/api/user/update/email")
+    public void updateMail(@RequestParam String newMail){
+        userService.updateUserMail(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newMail);
     }
 
 
-    @PostMapping("/api/user/myevents/reschedule")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void rescheduleEvent(){
-
+    @GetMapping("/api/kontakt")
+    public String kontakt(){
+        String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
+        return daneKontaktowe;
     }
 
     public UserDetails getLoggedIn() {

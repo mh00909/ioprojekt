@@ -1,7 +1,7 @@
 package com.ioproject.reservetheweather.repository;
 
 
-import com.ioproject.reservetheweather.entity.Event;
+import com.ioproject.reservetheweather.model.Event;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;

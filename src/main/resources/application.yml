@@ -17,3 +17,6 @@ spring:
         format_sql: true
     show-sql: true
 
+openweathermap:
+  api:
+    key: 79629070da576f068ac6d9c43c9b46b1

@@ -1,8 +1,9 @@
 package com.ioproject.reservetheweather.service;
 
-import com.ioproject.reservetheweather.entity.Event;
+import com.ioproject.reservetheweather.model.Event;
 //import com.ioproject.reservetheweather.repository.EventRepository;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
+import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,32 +14,47 @@ import java.util.Optional;
 public class EventService {
     private final EventRepository eventRepository;
 
-    public EventService(EventRepository eventRepository) {
+    private final WeatherService weatherService;
+    public EventService(EventRepository eventRepository, WeatherService weatherService) {
         this.eventRepository = eventRepository;
+        this.weatherService = weatherService;
     }
 
     public List<Event> getEvents() {
         return eventRepository.findAll();
     }
 
-    public void checkWeather(Event event){
-        // TODO:
-        // porównanie aktualnej pogody z dopuszczalną pogodą
-        // jeśli jest zła: zmiana event.badWeather=true
+    public void checkWeather(Long eventID){
+
+        Optional<Event> event = eventRepository.findById(eventID);
+        WeatherData wd = new WeatherData();
+        wd =weatherService.checkWeather();
+        double temp = wd.getMain().getTemp();
+        if(temp > event.get().getMaxTemperature() || temp < event.get().getMinTemperature()){
+            event.get().setBadWeather(true);
+        }
+
     }
 
     public void addEvent(Event event) {
         eventRepository.save(event);
     }
 
-    public void resign(Long id) {
+
+    public void resign(Long eventID, Optional<User> user) {
         // TODO:
         // sprawdź czy pogoda jest zła
         // usuń użytkownika z zapisanych użytkowników i event u użytkownika
+
+        Optional<Event> event = eventRepository.findById(eventID);
+        event.get().removeUser(user.get());
+
     }
 
-    public void discount(Long id) {
+    public void discount(Long id, Optional<User> user) {
         // TODO:
+        Optional<Event> event = eventRepository.findById(id);
+
     }
 
     public void addPerson(Long eventid, User user) {
@@ -53,5 +69,23 @@ public class EventService {
         System.out.println("Najlepsza temperatura do odbycia zajęć: od "
                 + event.getMinTemperature() + "do "+ event.getMaxTemperature());
         System.out.println("Liczba miejsc: "+ event.getMaxUsers() + ", liczba zapisanych uczestników: "+event.getSignedUsers());
+    }
+
+    public void reschedule(Long eventID, Optional<User> user, String date1) {
+        // takie samo wydarzenie na które był zapisany ale z inną datą
+        Optional<Event> event = eventRepository.findById(eventID);
+        Event newEvent = new Event();
+        newEvent.setDate(date1);
+        newEvent = event.get();
+        user.get().resign(event.get());
+        user.get().joinEvent(newEvent);
+
+    }
+
+    public String badWeatherInfrom(User user, Event event){
+        String message = "Na datę "+ event.getTime() + " przewidywana jest zła pogoda.\n" +
+                "W związku z tym możesz poprosić o otrzymanie zniżki na zajęcia. " +
+                "Możesz także zrezygnować z udziału lub zapisać się na zajęcia w innym terminie.";
+        return message;
     }
 }

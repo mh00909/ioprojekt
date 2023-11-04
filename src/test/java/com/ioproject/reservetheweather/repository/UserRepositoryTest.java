@@ -1,6 +1,6 @@
 package com.ioproject.reservetheweather.repository;
 import static org.assertj.core.api.Assertions.*;
-import com.ioproject.reservetheweather.entity.User;
+import com.ioproject.reservetheweather.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
