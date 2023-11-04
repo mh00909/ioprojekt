@@ -46,6 +46,15 @@ public class UserController {
         return ResponseEntity.status(404).body("Podany e-mail jest już zajęty.");
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(){
+        UserDetails response = this.getLoggedIn();
+        if(response == null){
+            return ResponseEntity.status(404).body("Niepoprawne dane logowania.");
+        }
+        return ResponseEntity.ok("Udało się zalogować.");
+    }
+
     @GetMapping("/api/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
@@ -115,6 +124,12 @@ public class UserController {
         eventService.discount(id);
     }
 
+
+    @PostMapping("/api/user/myevents/reschedule")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public void rescheduleEvent(){
+
+    }
 
     public UserDetails getLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

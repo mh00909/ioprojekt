@@ -75,14 +75,14 @@ public class Event {
         description="";
     }
 
-    public Event(String name, String dateString, int duration, int maxUsers,
+    public Event(String name, String dateString, String description, int duration, int maxUsers,
                  int minTemperature, int maxTemperature){
         this.name=name;
         time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.duration = duration;
         this.signedUsers=0;
         this.maxUsers=maxUsers;
-        description="";
+        this.description= description;
 
         this.minTemperature=minTemperature;
         this.maxTemperature = maxTemperature;
