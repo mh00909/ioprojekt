@@ -37,7 +37,6 @@ public class WeatherController {
 
         ObjectMapper mapper = new ObjectMapper();
 
-
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
         WeatherData weatherData = weatherService.checkWeather();
         return ResponseEntity.ok(weatherData);

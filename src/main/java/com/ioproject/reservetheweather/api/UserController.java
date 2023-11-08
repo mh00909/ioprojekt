@@ -65,7 +65,6 @@ public class UserController {
 
 
 
-
     @GetMapping("/api/users/all")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Object> getAllUsers() {

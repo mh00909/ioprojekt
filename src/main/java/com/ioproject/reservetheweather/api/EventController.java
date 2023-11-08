@@ -48,7 +48,7 @@ public class EventController {
     }
 
 
-    @PostMapping("/api/events/signup")
+    @PostMapping("/api/events/signup/{eventid}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void signUpForEvent(@RequestParam Long eventid){
         Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
