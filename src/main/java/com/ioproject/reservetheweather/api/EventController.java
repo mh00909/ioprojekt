@@ -1,5 +1,4 @@
 package com.ioproject.reservetheweather.api;
-
 import com.ioproject.reservetheweather.model.Event;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
@@ -39,14 +38,13 @@ public class EventController {
         return ResponseEntity.ok(eventRepository.findAll());
     }
 
-    @GetMapping("/api/events/description")
+    @GetMapping("/api/events/description/{eventid}")
     public void showEventDescription(@RequestParam Long eventid){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
             eventService.showDescription(event.get());
         }
     }
-
 
     @PostMapping("/api/events/signup/{eventid}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
@@ -58,7 +56,7 @@ public class EventController {
         }
     }
 
-    @PostMapping("api/user/myevents/cancell")
+    @PostMapping("api/user/myevents/cancell/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void resignEvent(@RequestParam Long id){
         eventService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
@@ -71,16 +69,12 @@ public class EventController {
         eventService.discount(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
     }
 
-
     @PostMapping("/api/user/myevents/reschedule")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public void rescheduleEvent(@RequestParam Long eventId, @RequestParam String date1){
 
         eventService.reschedule(eventId, userRepository.findUserByMail(getLoggedIn().getUsername()), date1);
     }
-
-
-
 
     public UserDetails getLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
