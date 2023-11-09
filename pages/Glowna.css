@@ -1,0 +1,263 @@
+/* Glowna.css */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+
+.glowna {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.glowna .div {
+  background-color: #ffffff;
+  height: 1024px;
+  position: relative;
+  width: 1440px;
+}
+
+.glowna .overlap,
+.glowna .overlap-group {
+  height: 895px;
+  left: 0;
+  position: absolute;
+  width: 1440px;
+}
+/*
+.glowna .line {
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 83px;
+  width: 1531px;
+
+}
+*/
+.glowna .laptop {
+  height: 809px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 86px;
+  width: 1440px;
+}
+
+.glowna .chcesz-zarezerwowa,
+.glowna .text-wrapper,
+.glowna .span,
+.glowna .p,
+.glowna .text-wrapper-2,
+.glowna .text-wrapper-3,
+.glowna .text-wrapper-4,
+.glowna .text-wrapper-5,
+.glowna .text-wrapper-6 {
+  font-family: "Source Serif Pro", Helvetica;
+}
+
+.glowna .chcesz-zarezerwowa {
+  color: #000000;
+  font-size: 46px;
+  font-weight: 400;
+  left: 502px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 324px;
+  width: 938px;
+}
+
+.glowna .text-wrapper,
+.glowna .span {
+  color: #000000;
+  font-size: 46px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.glowna .span {
+  font-size: 40px;
+}
+
+.glowna .p {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 400;
+  left: 780px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 454px;
+  width: 488px;
+}
+
+.glowna .przycisk-dalej {
+  height: 71px;
+  left: 911px;
+  position: absolute;
+  top: 648px;
+  width: 281px;
+}
+
+.glowna .overlap-group-2 {
+  height: 71px;
+  position: relative;
+  width: 279px;
+}
+
+.glowna .przycisk-dalej-2 {
+  background-color: #d9d9d9;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 71px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 279px;
+}
+
+.glowna .text-wrapper-2 {
+  color: #f5f5f5;
+  font-size: 35px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 15px;
+  width: 262px;
+}
+
+.glowna .logo {
+  height: 159px;
+  left: 42px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 539px;
+}
+
+.glowna .przycisk-konto {
+  height: 55px;
+  left: 683px;
+  position: absolute;
+  top: 7px;
+  width: 234px;
+}
+
+.glowna .overlap-2 {
+  height: 58px;
+  position: relative;
+  width: 236px;
+}
+
+.glowna .domek {
+  height: 58px;
+  left: 6px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 62px;
+}
+
+.glowna .overlap-group-wrapper {
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 236px;
+}
+
+.glowna .overlap-group-3 {
+  border-radius: 20px;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.glowna .text-wrapper-3 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 76px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 136px;
+}
+
+.glowna .rectangle {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 234px;
+}
+
+.glowna .przycisk-kontakt {
+  height: 55px;
+  left: 1197px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.glowna .div-wrapper {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.glowna .text-wrapper-4 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 71px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 96px;
+}
+
+.glowna .przycisk-informacje {
+  height: 55px;
+  left: 940px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.glowna .text-wrapper-5 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 125px;
+}
+
+.glowna .text-wrapper-6 {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  left: 540px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 991px;
+  white-space: nowrap;
+  width: 414px;
+}

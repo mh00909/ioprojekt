@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+
+.kontakt {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.kontakt .overlap-wrapper {
+  background-color: #ffffff;
+  height: 1024px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.kontakt .overlap {
+  height: 988px;
+  position: relative;
+  top: 21px;
+  width: 1458px;
+}
+
+.kontakt .overlap-group {
+  height: 988px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1458px;
+}
+
+.kontakt .text-wrapper {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  left: 540px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 970px;
+  white-space: nowrap;
+  width: 414px;
+}
+
+.kontakt .tresc-strony {
+  height: 836px;
+  left: 0;
+  position: absolute;
+  top: 135px;
+  width: 1458px;
+}
+
+.kontakt .div {
+  background-image: url(https://c.animaapp.com/OsgJfIi2/img/dodaj-nag--wek--14--1.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 836px;
+  position: relative;
+  width: 1440px;
+}
+
+.kontakt .group {
+  height: 85px;
+  left: 0;
+  position: absolute;
+  top: 117px;
+  width: 525px;
+}
+
+.kontakt .group-2 {
+  height: 96px;
+  left: 32px;
+  position: absolute;
+  top: 541px;
+  width: 424px;
+}
+
+.kontakt .image {
+  height: 39px;
+  left: 12px;
+  object-fit: cover;
+  position: absolute;
+  top: 57px;
+  width: 38px;
+}
+
+.kontakt .group-3 {
+  height: 36px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 424px;
+}
+
+.kontakt .img {
+  height: 36px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 61px;
+}
+
+.kontakt .text-wrapper-2 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 69px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 3px;
+}
+
+.kontakt .text-wrapper-3 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 61px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 67px;
+}
+
+.kontakt .p {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 400;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 190px;
+}
+
+.kontakt .text-wrapper-4 {
+  color: #000000;
+  font-size: 40px;
+  font-weight: 400;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 277px;
+}
+
+.kontakt .text-wrapper-5 {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 400;
+  left: 30px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 320px;
+  width: 566px;
+}
+
+.kontakt .line {
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 84px;
+  width: 1431px;
+}
+
+.kontakt .dodaj-nagwek {
+  height: 159px;
+  left: 42px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 539px;
+}
+
+.kontakt .przycisk-konto {
+  height: 55px;
+  left: 683px;
+  position: absolute;
+  top: 7px;
+  width: 234px;
+}
+
+.kontakt .overlap-2 {
+  height: 58px;
+  position: relative;
+  width: 236px;
+}
+
+.kontakt .domek {
+  height: 58px;
+  left: 6px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 62px;
+}
+
+.kontakt .overlap-group-wrapper {
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 236px;
+}
+
+.kontakt .overlap-group-2 {
+  border-radius: 20px;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.kontakt .text-wrapper-6 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 76px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 136px;
+}
+
+.kontakt .rectangle {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 234px;
+}
+
+.kontakt .przycisk-kontakt {
+  height: 55px;
+  left: 1197px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.kontakt .div-wrapper {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.kontakt .text-wrapper-7 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 71px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 96px;
+}
+
+.kontakt .przycisk-informacje {
+  height: 55px;
+  left: 940px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.kontakt .text-wrapper-8 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 125px;
+}

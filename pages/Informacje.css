@@ -1,0 +1,233 @@
+
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+
+.informacje {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.informacje .div {
+  background-color: #ffffff;
+  height: 1024px;
+  overflow: hidden;
+  position: relative;
+  width: 1440px;
+}
+
+.informacje .overlap {
+  height: 798px;
+  left: 0;
+  position: absolute;
+  top: 239px;
+  width: 1440px;
+}
+
+.text-wrapper
+.informacje .div-wrapper,
+.informacje .text-wrapper-2,
+.informacje .text-wrapper-3,
+.informacje .text-wrapper-4,
+.informacje .text-wrapper-5 {
+  font-family: "Source Serif Pro", Helvetica;
+}
+
+.informacje .text-wrapper {
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  left: 540px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 752px;
+  white-space: nowrap;
+  width: 414px;
+}
+
+.informacje .chmury {
+  height: 674px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 10px;
+  width: 1440px;
+}
+
+.informacje .nie-dopuszcza-si {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 83px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 174px;
+  width: 466px;
+}
+
+.informacje .group {
+  height: 85px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 444px;
+}
+
+.informacje .text-wrapper-2 {
+  color: #000000;
+  font-size: 34px;
+  font-weight: 400;
+  left: 45px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-shadow: 0px 4px 4px #00000040;
+  top: 114px;
+}
+
+.informacje .overlap-group {
+  height: 159px;
+  left: 0;
+  position: absolute;
+  top: 21px;
+  width: 1433px;
+}
+
+.informacje .overlap-2 {
+  height: 159px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1431px;
+}
+
+.informacje .line {
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 84px;
+  width: 1431px;
+}
+
+.informacje .logo {
+  height: 159px;
+  left: 42px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 539px;
+}
+
+.informacje .przycisk-konto {
+  height: 55px;
+  left: 683px;
+  position: absolute;
+  top: 7px;
+  width: 234px;
+}
+
+.informacje .overlap-3 {
+  height: 58px;
+  position: relative;
+  width: 236px;
+}
+
+.informacje .domek {
+  height: 58px;
+  left: 6px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 62px;
+}
+
+.informacje .overlap-group-wrapper {
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 236px;
+}
+
+.informacje .overlap-group-2 {
+  border-radius: 20px;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.informacje .text-wrapper-3 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 76px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 136px;
+}
+
+.informacje .rectangle {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 234px;
+}
+
+.informacje .przycisk-kontakt {
+  height: 55px;
+  left: 1197px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.informacje .div-wrapper {
+  background-color: #d9d9d933;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 55px;
+  position: relative;
+  width: 234px;
+}
+
+.informacje .text-wrapper-4 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 71px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 96px;
+}
+
+.informacje .przycisk-informacje {
+  height: 55px;
+  left: 940px;
+  position: absolute;
+  top: 7px;
+  width: 236px;
+}
+
+.informacje .text-wrapper-5 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  left: 50px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 11px;
+  width: 125px;
+}
