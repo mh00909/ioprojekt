@@ -2,28 +2,63 @@ import React, { useState } from "react";
 import "./Logowanie.css";
 import axios from "axios";
 
-
-
+//obsłuży logowanie i rejestracje
 const Logowanie = () => {
-  const [loginUsername, setLoginUsername] = useState(""); // Stan przechowujący wprowadzony login
+  const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
- /* const handleSubmit = async (e) => {
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerMail, setRegisterMail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerPhoneNumber, setRegisterPhoneNumber] = useState("");
+  const [isRegistering, setIsRegistering] = useState(false);
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+  const loginEndpoint = `${apiBaseUrl}/login`;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
+      const response = await axios.post(loginEndpoint, {
         username: loginUsername,
         password: loginPassword,
       });
 
-      // Obsłuż odpowiedź od serwera (response.data)
       console.log(response.data);
+      // Obsłuż odpowiedź od serwera (response.data)
+      history.push("/Konto");
     } catch (error) {
-      // Obsłuż błędy, np. wyświetl komunikat o błędzie
       console.error("Błąd podczas wysyłania danych:", error);
+      setError("Błąd logowania. Spróbuj ponownie.");
     }
   };
-*/
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8080/api/register", {
+        username: registerUsername,
+        mail: registerMail,
+        password: registerPassword,
+        phone: registerPhoneNumber, 
+      });
+
+      console.log(response.data);
+      // Przekieruj użytkownika po udanej rejestracji
+      history.push("/Konto");
+
+      // Przełącz formularz na tryb logowania
+      setIsRegistering(false);
+
+      // Opcjonalnie, wyczyść pola formularza rejestracji
+      setRegisterUsername("");
+      setRegisterPassword("");
+    } catch (error) {
+      console.error("Błąd podczas rejestracji:", error);
+      setError("Błąd rejestracji. Spróbuj ponownie.");
+    }
+  };
+
 
 
   return (
@@ -46,6 +81,7 @@ const Logowanie = () => {
           src="https://c.animaapp.com/lc2qlH2F/img/masz-ju--konto-.png"
         />
         <div className="overlap-group">
+        <button className="przycisk-zaloguj" onClick={handleSubmit}>
           <img
             className="rectangle"
             alt="Rectangle"
@@ -56,6 +92,9 @@ const Logowanie = () => {
             alt="Zaloguj si"
             src="https://c.animaapp.com/lc2qlH2F/img/zaloguj-si-.png"
           />
+          </button>
+
+          
           <img
             className="img"
             alt="Rectangle"

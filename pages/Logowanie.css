@@ -56,6 +56,18 @@
     width: 348px;
   }
   
+  .przycisk-zaloguj {
+    background-color: #ffffff;
+    color: white;
+    right: 200px;
+    height: 94px;
+    width: 100px;
+
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
   .logowanie .zaloguj-si {
     height: 52px;
     left: 172px;
@@ -126,6 +138,7 @@
    /* position: absolute;*/
     top: 402px;
     width: 411px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.);
     }
 
   input {
