@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RestController
@@ -57,11 +58,12 @@ public class UserController {
 
     @GetMapping("/api/events/myevents")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void showMyEvents(){
+    public ResponseEntity<Object> showMyEvents(){
         Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
         if(user.isPresent()) {
-            userService.showMyEvents(user.get().getId());
+            return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
         }
+        return null;
     }
 
 
@@ -79,19 +81,23 @@ public class UserController {
     }
 
     @GetMapping("/api/user/update/name")
-    public void updateName(@RequestParam String newName){
-        userService.updateUserName(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newName);
+    public ResponseEntity<Object> updateName(@RequestParam String newName){
+        if(userService.updateUserName(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newName))
+            return ResponseEntity.ok("Poprawnie zmieniono nazwę użytkownika.");
+        return ResponseEntity.status(404).body("Nie udało się zmienić nazwy użytkownika.");
     }
     @GetMapping("/api/user/update/email")
-    public void updateMail(@RequestParam String newMail){
-        userService.updateUserMail(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newMail);
+    public ResponseEntity<Object> updateMail(@RequestParam String newMail){
+        if(userService.updateUserMail(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newMail))
+            return ResponseEntity.ok("Udało się zmienić e-mail.");
+        return ResponseEntity.status(404).body("Nie udało się zmienić adresu e-mail.");
     }
 
 
     @GetMapping("/api/kontakt")
-    public String kontakt(){
+    public ResponseEntity<Object> kontakt(){
         String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
-        return daneKontaktowe;
+        return ResponseEntity.ok(daneKontaktowe);
     }
 
     public UserDetails getLoggedIn() {

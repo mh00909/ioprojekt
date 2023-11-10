@@ -47,7 +47,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserMail(Long userID, String email) {
+    public boolean updateUserMail(Long userID, String email) {
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
 
@@ -57,15 +57,19 @@ public class UserService {
                 throw new IllegalStateException("Podany e-mail jest zajęty.");
             }
             user.setMail(email);
+            return true;
         }
+        return false;
     }
 
-    public void updateUserName(Long userID, String name){
+    public boolean updateUserName(Long userID, String name){
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
         if(name!=null && name.length()>0 ){
             user.setName(name);
+            return true;
         }
+        return false;
     }
 
 
@@ -76,18 +80,22 @@ public class UserService {
         return user.getMyEvents();
     }
 
-    public void joinEvent(Long eventid, User user){
+    public boolean joinEvent(Long eventid, User user){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
             user.joinEvent(event.get());
+            return true;
         }
+        return false;
     }
 
-    public void resign(Long eventID, Optional<User> user){
+    public boolean resign(Long eventID, Optional<User> user){
         Optional<Event> event = eventRepository.findById(eventID);
         if(event.isPresent()){
             user.get().resign(event.get());
+            return true;
         }
+        return false;
     }
 }
 

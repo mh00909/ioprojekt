@@ -39,41 +39,51 @@ public class EventController {
     }
 
     @GetMapping("/api/events/description/{eventid}")
-    public void showEventDescription(@RequestParam Long eventid){
+    public ResponseEntity<Object> showEventDescription(@RequestParam Long eventid){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
-            eventService.showDescription(event.get());
+            return ResponseEntity.ok(eventService.showDescription(event.get()));
         }
+        return ResponseEntity.status(404).body("Nie znaleziono strony.");
     }
 
     @PostMapping("/api/events/signup/{eventid}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void signUpForEvent(@RequestParam Long eventid){
+    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid){
         Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
         if(user.isPresent()) {
             eventService.addPerson(eventid, user.get());
             userService.joinEvent(eventid, user.get());
+            return ResponseEntity.ok("Zapisano poprawnie.");
         }
+        return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
     @PostMapping("api/user/myevents/cancell/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void resignEvent(@RequestParam Long id){
+    public ResponseEntity<Object> resignEvent(@RequestParam Long id){
         eventService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
         userService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
+        return ResponseEntity.ok("Zrezygnowano z zajęć.");
     }
 
     @PostMapping("api/user/myevents/discount")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void discountEvent(@RequestParam Long id){
-        eventService.discount(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
+    public ResponseEntity<Object> discountEvent(@RequestParam Long id){
+        if( eventService.discount(id, userRepository.findUserByMail(getLoggedIn().getUsername()))){
+            return ResponseEntity.ok("Przyznano zniżkę.");
+        }
+        return ResponseEntity.ok("Nie przyznano zniżki. Spróbuj ponownie.");
     }
 
     @PostMapping("/api/user/myevents/reschedule")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public void rescheduleEvent(@RequestParam Long eventId, @RequestParam String date1){
+    public ResponseEntity<Object> rescheduleEvent(@RequestParam Long eventId, @RequestParam String date1){
 
-        eventService.reschedule(eventId, userRepository.findUserByMail(getLoggedIn().getUsername()), date1);
+        if(eventService.reschedule(eventId, userRepository.findUserByMail(getLoggedIn().getUsername()), date1)){
+            return ResponseEntity.ok("Zapisano na zajęcia w innym terminie.");
+        }
+        return ResponseEntity.ok("Nie zmieniono terminu zajęć. Spróbuj ponownie.");
     }
 
     public UserDetails getLoggedIn() {
