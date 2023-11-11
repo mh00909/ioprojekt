@@ -62,17 +62,15 @@ const Logowanie = () => {
 
 
   return (
-    <div className="logowanie">
-      <div className="div">
+    <div className="logowanie"> {/*To spina calosc*/}
         <img
-          className="element"
-          alt="Element"
+          className="rights_reserved"
+          alt="Rights_reserved"
           src="https://c.animaapp.com/lc2qlH2F/img/--2024-reservetheweather--all-rights-reserved-.png"
         />
-        
         <img
-          className="dodaj-nagwek"
-          alt="Dodaj nagwek"
+          className="logo"
+          alt="Logo"
           src="https://c.animaapp.com/lc2qlH2F/img/dodaj-nag--wek--12--1.png"
         />
         <img
@@ -80,11 +78,11 @@ const Logowanie = () => {
           alt="Masz ju konto"
           src="https://c.animaapp.com/lc2qlH2F/img/masz-ju--konto-.png"
         />
-        <div className="overlap-group">
+        <div className="formularz_logowania">
         <button className="przycisk-zaloguj" onClick={handleSubmit}>
           <img
-            className="rectangle"
-            alt="Rectangle"
+            className="zaloguj_tlo"
+            alt="Zaloguj_tlo"
             src="https://c.animaapp.com/lc2qlH2F/img/rectangle-15.png"
           />
           <img
@@ -93,22 +91,10 @@ const Logowanie = () => {
             src="https://c.animaapp.com/lc2qlH2F/img/zaloguj-si-.png"
           />
           </button>
-
-          
           <img
-            className="img"
-            alt="Rectangle"
+            className="tlo_formularza"
+            alt="Tlo_formularza"
             src="https://c.animaapp.com/lc2qlH2F/img/rectangle-6.png"
-          />
-          <img
-            className="rectangle-2"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
-          />
-          <img
-            className="rectangle-3"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
           />
           <img
             className="login"
@@ -122,27 +108,15 @@ const Logowanie = () => {
           />
         </div>
         <div className="overlap">
-          <img
-            className="rectangle-4"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-7.png"
-          />
       <div className="logowanie">
       {/* Formularz logowania */}
-      {/* Input, który pozwala użytkownikowi wprowadzić login */}
       <input
         type="text"
         placeholder=""
         value={loginUsername}
-        onChange={(e) => setLoginUsername(e.target.value)} // Aktualizuje stan na podstawie zmian wprowadzonych przez użytkownika
-        
+        onChange={(e) => setLoginUsername(e.target.value)} // Aktualizuje stan na podstawie zmian wprowadzonych przez użytkownika  
       />
-          <img
-            className="rectangle-login"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
-          />
-           </div>
+      </div>
            <div className="logowanie">
             <input
               type="password"  // Użyj type="password", aby ukryć wprowadzone znaki
@@ -151,33 +125,58 @@ const Logowanie = () => {
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>
+          <div className="rejestracja">
+      {/* Formularz rejestracji */}
+      <input
+        type="text"
+        placeholder=""
+        value={registerUsername}
+        onChange={(e) => setRegisterUsername(e.target.value)}  
+      />
+      </div>
+           <div className="rejestracja">
+            <input
+              type="password" 
+              placeholder="" 
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
+          </div>
+          <div className="rejestracja">
+            <input
+              type="email" 
+              placeholder="" 
+              value={registerMail}
+              onChange={(e) => setRegisterMail(e.target.value)}
+            />
+          </div>
+          <div className="rejestracja">
+            <input
+              type="tel" 
+              placeholder="" 
+              value={registerPhoneNumber}
+              onChange={(e) => setRegisterPhoneNumber(e.target.value)}
+            />
+          </div>
           <img
-            className="rectangle-6"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
+            className="tlo_formalarza_r"
+            alt="Tlo_formularza_r"
+            src="https://c.animaapp.com/04bVqCpf/img/rectangle-7.png"
+          />
+          <button className="przycisk-zarejestruj" onClick={handleSubmit}>
+          <img
+            className="zarejestruj_tlo"
+            alt="Zarejestruj_tlo"
+            src="https://c.animaapp.com/04bVqCpf/img/rectangle-16.png"
           />
           <img
-            className="rectangle-7"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
+            className="zarejestruj-si"
+            alt="Zarejestruj si"
+            src="https://c.animaapp.com/04bVqCpf/img/zarejestruj-si-.png"
           />
+          </button>
           <img
-            className="rectangle-8"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
-          />
-          <img
-            className="rectangle-9"
-            alt="Rectangle"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-13.png"
-          />
-          <img
-            className="imi"
-            alt="Imi"
-            src="https://c.animaapp.com/lc2qlH2F/img/imi-.png"
-          />
-          <img
-            className="login-2"
+            className="login_r"
             alt="Login"
             src="https://c.animaapp.com/lc2qlH2F/img/login-1.png"
           />
@@ -192,9 +191,9 @@ const Logowanie = () => {
             src="https://c.animaapp.com/lc2qlH2F/img/numer-telefonu.png"
           />
           <img
-            className="nazwisko"
-            alt="Nazwisko"
-            src="https://c.animaapp.com/lc2qlH2F/img/nazwisko.png"
+            className="mail"
+            alt="Mail"
+            src="https://c.animaapp.com/04bVqCpf/img/mail.png"
           />
           <img
             className="wyprbuj-za-darmo"
@@ -203,26 +202,25 @@ const Logowanie = () => {
           />
         </div>
         <img
-          className="image"
-          alt="Image"
+          className="telefon_ikonka"
+          alt="Telefon_ikonka"
           src="https://c.animaapp.com/lc2qlH2F/img/image-3.png"
         />
         <img
-          className="image-2"
-          alt="Image"
+          className="email_ikonka"
+          alt="Email_ikonka"
           src="https://c.animaapp.com/lc2qlH2F/img/image-1.png"
         />
         <img
-          className="reservetheweather"
-          alt="Reservetheweather"
+          className="email"
+          alt="Email"
           src="https://c.animaapp.com/lc2qlH2F/img/reservetheweather-gmail-com.png"
         />
         <img
-          className="element-2"
-          alt="Element"
+          className="telefon"
+          alt="Telefon"
           src="https://c.animaapp.com/lc2qlH2F/img/-48-517-574-182.png"
         />
-      </div>
     </div>
   );
 };
