@@ -10,7 +10,9 @@ const Konto = () => {
         <div className="overlap-group">
           <img className="profil" alt="Profil" src="https://c.animaapp.com/DjotD7lA/img/profil.png" />
           <div className="text-wrapper-2">Dane rezerwacji:</div>
+          <a href="/Rezerwacje">
           <img className="rzerwuje" alt="Rzerwuje" src="https://c.animaapp.com/DjotD7lA/img/rzerwuje@2x.png" />
+          </a>
           <div className="opis">
             <div className="overlap-2">
               <img className="strzalka" alt="Strzalka" src="https://c.animaapp.com/DjotD7lA/img/strzalka.svg" />
