@@ -43,8 +43,6 @@ const Konto = () => {
                           src="https://c.animaapp.com/DjotD7lA/img/status-guzik@2x.png"
                         />
                         <div className="overlap-6">
-                          <div className="text-wrapper-3">Trener</div>
-                          <div className="text-wrapper-4">z:</div>
                           <div className="text-wrapper-5">Rodzaj zajęć</div>
                         </div>
                       </div>

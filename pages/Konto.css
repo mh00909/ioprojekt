@@ -121,7 +121,7 @@
     left: 0;
     opacity: 0.5;
     position: absolute;
-    top: 25px;
+    top: 5px;
     width: 317px;
   }
   
@@ -135,7 +135,7 @@
     position: absolute;
     text-align: center;
     text-shadow: 0px 4px 4px #00000040;
-    top: 28px;
+    top: 10px;
     width: 309px;
   }
   
@@ -518,4 +518,6 @@
     top: 11px;
     width: 125px;
   }
+  
+
   
