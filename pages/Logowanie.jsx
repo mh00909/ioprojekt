@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Logowanie.css";
 import axios from "axios";
 
+//next auth sprawdz logowanie
+
 //obsłuży logowanie i rejestracje
 const Logowanie = () => {
   const [loginUsername, setLoginUsername] = useState("");
@@ -120,7 +122,7 @@ const Logowanie = () => {
       </div>
            <div className="logowanie">
             <input
-              type="password"  // Użyj type="password", aby ukryć wprowadzone znaki
+              type="password"  
               placeholder="" // tu mozna wstawiac napisy typu podaj haslo
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
@@ -135,30 +137,30 @@ const Logowanie = () => {
         onChange={(e) => setRegisterUsername(e.target.value)}  
       />
       </div>
-           <div className="rejestracja">
-            <input
-              type="password" 
-              placeholder="" 
-              value={registerPassword}
-              onChange={(e) => setRegisterPassword(e.target.value)}
-            />
-          </div>
-          <div className="rejestracja">
+          <form className="rejestracja">
             <input
               type="email" 
               placeholder="" 
               value={registerMail}
               onChange={(e) => setRegisterMail(e.target.value)}
             />
-          </div>
-          <div className="rejestracja">
+          </form>
+           <form className="rejestracja">
+            <input
+              type="password" 
+              placeholder="" 
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
+          </form>
+          <form className="rejestracja">
             <input
               type="tel" 
               placeholder="" 
               value={registerPhoneNumber}
               onChange={(e) => setRegisterPhoneNumber(e.target.value)}
             />
-          </div>
+          </form>
           <img
             className="tlo_formalarza_r"
             alt="Tlo_formularza_r"
@@ -182,6 +184,11 @@ const Logowanie = () => {
             src="https://c.animaapp.com/lc2qlH2F/img/login-1.png"
           />
           <img
+            className="mail"
+            alt="Mail"
+            src="https://c.animaapp.com/04bVqCpf/img/mail.png"
+          />
+          <img
             className="haso-2"
             alt="Haso"
             src="https://c.animaapp.com/lc2qlH2F/img/has-o-1.png"
@@ -190,11 +197,6 @@ const Logowanie = () => {
             className="numer-telefonu"
             alt="Numer telefonu"
             src="https://c.animaapp.com/lc2qlH2F/img/numer-telefonu.png"
-          />
-          <img
-            className="mail"
-            alt="Mail"
-            src="https://c.animaapp.com/04bVqCpf/img/mail.png"
           />
           <img
             className="wyprbuj-za-darmo"

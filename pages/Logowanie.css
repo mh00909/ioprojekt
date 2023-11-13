@@ -138,6 +138,16 @@
     outline: none;
   }
 
+  .rejestracja input[type="email"]{
+    left: 48px;
+    width: 409px;
+    height: 37px;
+    top: 213px;
+    border: 1px solid #FFF;
+    font-size: 20px;
+    outline: none;
+  }
+
   .rejestracja input:focus {
     outline: none; 
   }
@@ -162,15 +172,6 @@
     outline: none;
   }
 
-  .rejestracja input[type="email"]{
-    left: 48px;
-    width: 409px;
-    height: 37px;
-    top: 213px;
-    border: 1px solid #FFF;
-    font-size: 20px;
-    outline: none;
-  }
 
   .logowanie .tlo_formularza_r {
     height: 465px;
