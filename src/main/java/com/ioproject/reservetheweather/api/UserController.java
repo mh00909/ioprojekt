@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+//@CrossOrigin(allowCredentials = "true")
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping
 public class UserController {
     @Autowired
@@ -35,7 +35,7 @@ public class UserController {
         this.eventService = eventService;
     }
 
-    @GetMapping("/api")
+    @GetMapping("/Glowna")
     public String hello() {
         return "Strona domowa";
     }
@@ -47,7 +47,7 @@ public class UserController {
         }
         return ResponseEntity.status(404).body("Podany e-mail jest już zajęty.");
     }
-
+/*
     @PostMapping("/login")
     public ResponseEntity<Object> login(){
         UserDetails response = this.getLoggedIn();
@@ -56,6 +56,7 @@ public class UserController {
         }
         return ResponseEntity.ok("Udało się zalogować.");
     }
+*/
 
     @GetMapping("/api/events/myevents")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")

@@ -9,10 +9,16 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -33,16 +39,44 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api", "/api/register", "/api/events/all").permitAll()
-                .anyRequest().authenticated())
-                .httpBasic(withDefaults())
-                .formLogin(withDefaults())
-                .csrf(AbstractHttpConfigurer::disable);
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api", "/api/register", "/api/events/all", "/login").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(form -> form
+                    //    .loginPage("/login") // Custom login page, if you have one
+                        .defaultSuccessUrl("/Glowna", true) // Redirect after successful login
+                                .failureUrl("/login?error=true")
+                       // .permitAll()) // Allow access to all for login page
+                )
+                .cors(withDefaults())
+              //  .logout(logout -> logout.permitAll()) // Configures logout functionality
+                .csrf().disable();
+             //   .cors(AbstractHttpConfigurer::disable);
         return http.build();
     }
 
 
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001", "http://localhost:3002",
+                "http://localhost:3003", "http://localhost:3004", "http://localhost:3005"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+        configuration.setAllowedHeaders(Arrays.asList(
+                "Content-Type",
+                "Authorization",
+                "X-Requested-With",
+                "Accept",
+                "Origin",
+                "X-XSRF-TOKEN"
+
+        ));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
