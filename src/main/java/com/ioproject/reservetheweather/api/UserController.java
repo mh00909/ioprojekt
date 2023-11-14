@@ -6,6 +6,7 @@ import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -50,8 +51,8 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Object> login(){
         UserDetails response = this.getLoggedIn();
-        if(response == null){
-            return ResponseEntity.status(404).body("Niepoprawne dane logowania.");
+        if (response == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Złe dane logowania.");
         }
         return ResponseEntity.ok("Udało się zalogować.");
     }
