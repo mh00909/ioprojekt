@@ -24,6 +24,12 @@ public class Event {
     private String name;
 
     @Column
+    private String miejsce;
+
+    @Column
+    private int cena;
+
+    @Column
     private LocalDateTime time;
     @Column
     private int duration;
