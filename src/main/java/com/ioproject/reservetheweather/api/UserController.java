@@ -47,16 +47,8 @@ public class UserController {
         }
         return ResponseEntity.status(404).body("Podany e-mail jest już zajęty.");
     }
-/*
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(){
-        UserDetails response = this.getLoggedIn();
-        if (response == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Złe dane logowania.");
-        }
-        return ResponseEntity.ok("Udało się zalogować.");
-    }
-*/
+
+
 
     @GetMapping("/api/events/myevents")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
@@ -76,7 +68,7 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    @GetMapping("/api/users/mypage")
+    @GetMapping("/Konto")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> getMyDetails() {
         return ResponseEntity.ok(userRepository.findUserByMail(getLoggedIn().getUsername()));

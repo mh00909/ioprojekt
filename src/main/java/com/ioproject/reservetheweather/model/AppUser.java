@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 
 public class AppUser implements UserDetails {
-    private String email;
+    private String name;
     private String password;
     private List<GrantedAuthority> roles;
     private boolean accountExpired = false;
@@ -17,7 +17,8 @@ public class AppUser implements UserDetails {
     private boolean credentialsExpired = false;
     private boolean accountDisabled = false;
     public AppUser(User user){
-        this.email = user.getMail();
+
+        this.name =user.getName();
         this.password = user.getPassword();
         this.roles = Arrays.stream(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
@@ -36,7 +37,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email;
+        return this.name;
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.ioproject.reservetheweather.model;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 @Data
@@ -11,6 +8,8 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "users")
 public class User {
     @Id
@@ -41,6 +40,7 @@ public class User {
         this.roles = roles;
     }
 
+    // ten w rejestracji
     public User(String name, String mail, String password, long phoneNumber) {
         this.name = name;
         this.mail = mail;
