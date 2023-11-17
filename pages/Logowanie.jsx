@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Logowanie.css";
-import axios from "axios";
+import api from "../api";
 
-//next auth sprawdz logowanie
 
 //obsłuży logowanie i rejestracje
 const Logowanie = () => {
@@ -16,22 +15,42 @@ const Logowanie = () => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const loginEndpoint = `${apiBaseUrl}/login`;
 
+  const [error, setError] = useState(""); // Define an error state variable
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.post(loginEndpoint, {
-        username: loginUsername,
-        password: loginPassword,
-      });
+    const formData = new URLSearchParams();
+    formData.append('username', loginUsername)
+    formData.append('password', loginPassword)
+    console.log("Dane logowania:", formData.toString());
 
-      console.log(response.data);
-      // Obsłuż odpowiedź od serwera (response.data)
-      history.push("/Konto");
+    try {
+      const response = await api.post('/login', formData);
+     // console.log(response.data)
+    // const isLoginSuccess = !response.url.includes('?error');
+
+
+      if(response.data == "Strona domowa"){
+        console.log('Udało się zalogować', response.data)
+        window.location.href = '/Glowna';
+      }
+      else{
+        // tu nie wiem co zrobić
+        window.location.href = '/Informacje';
+      //  setError("Niepoprawne logowania. Spróbuj ponownie.");
+      }
+
     } catch (error) {
       console.error("Błąd podczas wysyłania danych:", error);
-      setError("Błąd logowania. Spróbuj ponownie.");
+      if(error.response && error.response.status===401){
+        setError("Niepoprawne logowania. Spróbuj ponownie.");
+      }
+      else{
+        setError("Błąd logowania. Spróbuj ponownie.");
+      }
+      
     }
   };
 
@@ -64,7 +83,10 @@ const Logowanie = () => {
 
 
 
+
+
   return (
+    
     <div className="logowanie"> {/*To spina calosc*/}
         <img
           className="rights_reserved"
@@ -224,6 +246,7 @@ const Logowanie = () => {
           alt="Telefon"
           src="https://c.animaapp.com/lc2qlH2F/img/-48-517-574-182.png"
         />
+        
     </div>
   );
 };
