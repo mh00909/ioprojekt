@@ -26,15 +26,19 @@ public class UserService {
     }
 
 
-    @Transactional
-    public boolean addNewUser(User user) {
+    //@Transactional
+    public int addNewUser(User user) {
         Optional<User> exists = userRepository.findUserByMail(user.getMail());
+        Optional<User> exists2 = userRepository.findUserByName(user.getName());
         if(exists.isPresent()){
-            return false;
+            return 0;
+        }
+        if(exists2.isPresent()){
+            return 1;
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return true;
+        return 2;
     }
 
     public boolean deleteUser(Long userID) {

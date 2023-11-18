@@ -7,6 +7,7 @@ import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -40,12 +41,22 @@ public class UserController {
         return "Strona domowa";
     }
 
-    @PostMapping("/api/register")
-    public ResponseEntity<Object> saveUser(@RequestBody User user) {
-        if(userService.addNewUser(user)){
-            return ResponseEntity.ok("Użytkownik zarejestrowany.");
+    @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<?> saveUser(@ModelAttribute User user) {
+        if(userService.addNewUser(user) == 2){
+            return ResponseEntity.ok().body("Udało się");
+        } else {
+            if(userService.addNewUser(user) == 0){
+                return ResponseEntity.status(400)
+                        .body("Błąd: podany E-mail już zajęty");
+            }
+
+            else if(userService.addNewUser(user) == 1){
+                return ResponseEntity.status(400)
+                        .body("Błąd: podany login już zajęty");
+            }
         }
-        return ResponseEntity.status(404).body("Podany e-mail jest już zajęty.");
+        return ResponseEntity.status(404).body("Inny błąd");
     }
 
 
