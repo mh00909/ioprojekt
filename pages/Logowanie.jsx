@@ -15,7 +15,7 @@ const Logowanie = () => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const loginEndpoint = `${apiBaseUrl}/login`;
 
-  const [error, setError] = useState(""); // Define an error state variable
+  const [error, setError] = useState(""); 
 
 
   const handleSubmit = async (e) => {
@@ -28,28 +28,20 @@ const Logowanie = () => {
 
     try {
       const response = await api.post('/login', formData);
-     // console.log(response.data)
-    // const isLoginSuccess = !response.url.includes('?error');
-
-
+      // sprawdza zawartość, bo przy próbie logowania zwraca zawsze status ok
       if(response.data == "Strona domowa"){
         console.log('Udało się zalogować', response.data)
-        window.location.href = '/Glowna';
+        window.location.href = '/Konto';
       }
       else{
-        // tu nie wiem co zrobić
-        window.location.href = '/Informacje';
-      //  setError("Niepoprawne logowania. Spróbuj ponownie.");
+        // niepoprawne dane logowania
+        window.location.href = '/Glowna';
+        setError("Niepoprawne logowania. Spróbuj ponownie.");
       }
 
     } catch (error) {
-      console.error("Błąd podczas wysyłania danych:", error);
-      if(error.response && error.response.status===401){
-        setError("Niepoprawne logowania. Spróbuj ponownie.");
-      }
-      else{
-        setError("Błąd logowania. Spróbuj ponownie.");
-      }
+      console.error("Błąd podczas wysyłania danych:", error);      
+      setError("Błąd logowania. Spróbuj ponownie.");
       
     }
   };
@@ -57,17 +49,35 @@ const Logowanie = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new URLSearchParams();
+    formData.append('name', registerUsername)
+    formData.append('mail', registerMail)
+    formData.append('password', registerPassword)
+    formData.append('phoneNumber', registerPhoneNumber)
+    console.log("Dane rejestracji:", formData.toString());
+    
     try {
-      const response = await axios.post("http://localhost:8080/api/register", {
-        username: registerUsername,
-        mail: registerMail,
-        password: registerPassword,
-        phone: registerPhoneNumber, 
-      });
+      const response = await api.post("/Rejestracja", formData);
 
-      console.log(response.data);
-      // Przekieruj użytkownika po udanej rejestracji
-      history.push("/Konto");
+       if(response.data == "Udało się"){
+          window.location.href = '/Konto';
+       }
+       else if(response.status == 400){
+         // zajęty mail lub login
+
+         if(response.data == "Błąd: podany E-mail już zajęty"){
+
+
+         }
+         else if(response.data == "Błąd: podany login już zajęty"){
+
+         }
+
+       }
+       else{
+        // coś innego jest nie tak
+          window.location.href = '/Glowna';
+       }
 
       // Przełącz formularz na tryb logowania
       setIsRegistering(false);
@@ -188,7 +198,7 @@ const Logowanie = () => {
             alt="Tlo_formularza_r"
             src="https://c.animaapp.com/04bVqCpf/img/rectangle-7.png"
           />
-          <button className="przycisk-zarejestruj" onClick={handleSubmit}>
+          <button className="przycisk-zarejestruj" onClick={handleRegisterSubmit}>
           <img
             className="zarejestruj_tlo"
             alt="Zarejestruj_tlo"
