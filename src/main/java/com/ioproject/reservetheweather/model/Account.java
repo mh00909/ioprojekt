@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class AppUser implements UserDetails {
+public class Account implements UserDetails {
     private String name;
     private String password;
     private List<GrantedAuthority> roles;
@@ -16,7 +16,7 @@ public class AppUser implements UserDetails {
     private boolean accountLocked = false;
     private boolean credentialsExpired = false;
     private boolean accountDisabled = false;
-    public AppUser(User user){
+    public Account(User user){
 
         this.name =user.getName();
         this.password = user.getPassword();

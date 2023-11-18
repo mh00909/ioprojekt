@@ -3,7 +3,7 @@ package com.ioproject.reservetheweather;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
-import com.ioproject.reservetheweather.service.AppUserService;
+import com.ioproject.reservetheweather.service.AccountService;
 import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ class ReservetheweatherApplicationTests {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private AppUserService appUserService;
+	private AccountService accountService;
 	@Autowired
 	private EventService eventService;
 

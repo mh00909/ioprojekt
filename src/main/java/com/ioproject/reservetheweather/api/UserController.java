@@ -38,7 +38,20 @@ public class UserController {
 
     @GetMapping("/Glowna")
     public String hello() {
-        return "Strona domowa";
+
+        Optional<User> logged = userRepository.findUserByName(getLoggedIn().getUsername());
+
+        if(logged.isPresent()){
+            String role = logged.get().getRoles();
+            if(role.equals("ADMIN")){
+                return "Strona admina";
+            }
+            else {
+                return "Strona user";
+            }
+        }
+
+        return "Strona user";
     }
 
     @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
@@ -47,16 +60,16 @@ public class UserController {
             return ResponseEntity.ok().body("Udało się");
         } else {
             if(userService.addNewUser(user) == 0){
-                return ResponseEntity.status(400)
+                return ResponseEntity.ok()
                         .body("Błąd: podany E-mail już zajęty");
             }
 
             else if(userService.addNewUser(user) == 1){
-                return ResponseEntity.status(400)
+                return ResponseEntity.ok()
                         .body("Błąd: podany login już zajęty");
             }
         }
-        return ResponseEntity.status(404).body("Inny błąd");
+        return ResponseEntity.ok().body("Inny błąd");
     }
 
 

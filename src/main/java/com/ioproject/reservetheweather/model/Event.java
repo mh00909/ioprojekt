@@ -24,10 +24,10 @@ public class Event {
     private String name;
 
     @Column
-    private String miejsce;
+    private String location;
 
     @Column
-    private int cena;
+    private int price;
 
     @Column
     private LocalDateTime time;
@@ -48,7 +48,7 @@ public class Event {
 
     boolean badWeather = false;
 
-
+    //boolean status;
     public void setTime(LocalDateTime time) {
         this.time = time;
     }
