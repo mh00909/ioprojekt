@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Logowanie.css";
 import api from "../api";
 
@@ -93,8 +93,6 @@ const Logowanie = () => {
 
 
 
-
-
   return (
     
     <div className="logowanie"> {/*To spina calosc*/}
@@ -109,7 +107,7 @@ const Logowanie = () => {
           src="https://c.animaapp.com/lc2qlH2F/img/dodaj-nag--wek--12--1.png"
         />
         <img className="chmurki" alt="Chmurki" src="https://c.animaapp.com/x6s48Cpz/img/rectangle-17.png" />
-
+        
         <img
           className="masz-ju-konto"
           alt="Masz ju konto"
@@ -164,6 +162,11 @@ const Logowanie = () => {
           </div>
           <div className="rejestracja">
       {/* Formularz rejestracji */}
+      <img
+            className="tlo_formalarza_r formularz_rejestracji"
+            alt="Tlo_formularza_r"
+            src="https://c.animaapp.com/04bVqCpf/img/rectangle-7.png"
+          />
       <input
         type="text"
         placeholder=""
@@ -195,11 +198,6 @@ const Logowanie = () => {
               onChange={(e) => setRegisterPhoneNumber(e.target.value)}
             />
           </form>
-          <img
-            className="tlo_formalarza_r"
-            alt="Tlo_formularza_r"
-            src="https://c.animaapp.com/04bVqCpf/img/rectangle-7.png"
-          />
           <button className="przycisk-zarejestruj" onClick={handleRegisterSubmit}>
           <img
             className="zarejestruj_tlo"
@@ -258,7 +256,6 @@ const Logowanie = () => {
           alt="Telefon"
           src="https://c.animaapp.com/lc2qlH2F/img/-48-517-574-182.png"
         />
-        
     </div>
   );
 };
