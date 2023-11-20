@@ -108,22 +108,24 @@ const Logowanie = () => {
           alt="Logo"
           src="https://c.animaapp.com/lc2qlH2F/img/dodaj-nag--wek--12--1.png"
         />
+        <img className="chmurki" alt="Chmurki" src="https://c.animaapp.com/x6s48Cpz/img/rectangle-17.png" />
+
         <img
           className="masz-ju-konto"
           alt="Masz ju konto"
-          src="https://c.animaapp.com/lc2qlH2F/img/masz-ju--konto-.png"
+          src="https://c.animaapp.com/x6s48Cpz/img/masz-ju--konto-.png"
         />
         <div className="formularz_logowania">
         <button className="przycisk-zaloguj" onClick={handleSubmit}>
           <img
             className="zaloguj_tlo"
             alt="Zaloguj_tlo"
-            src="https://c.animaapp.com/lc2qlH2F/img/rectangle-15.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/rectangle-15.png"
           />
           <img
             className="zaloguj-si"
             alt="Zaloguj si"
-            src="https://c.animaapp.com/lc2qlH2F/img/zaloguj-si-.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/zaloguj-si-.png"
           />
           </button>
           <img
@@ -134,12 +136,12 @@ const Logowanie = () => {
           <img
             className="login"
             alt="Login"
-            src="https://c.animaapp.com/lc2qlH2F/img/login-1.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/login-1.png"
           />
           <img
             className="haso"
             alt="Haso"
-            src="https://c.animaapp.com/lc2qlH2F/img/has-o-1.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/has-o-1.png"
           />
         </div>
         <div className="overlap">
@@ -202,38 +204,38 @@ const Logowanie = () => {
           <img
             className="zarejestruj_tlo"
             alt="Zarejestruj_tlo"
-            src="https://c.animaapp.com/04bVqCpf/img/rectangle-16.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/rectangle-16.png"
           />
           <img
             className="zarejestruj-si"
             alt="Zarejestruj si"
-            src="https://c.animaapp.com/04bVqCpf/img/zarejestruj-si-.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/zarejestruj-si-.png"
           />
           </button>
           <img
             className="login_r"
             alt="Login"
-            src="https://c.animaapp.com/lc2qlH2F/img/login-1.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/login-1.png"
           />
           <img
             className="mail"
             alt="Mail"
-            src="https://c.animaapp.com/04bVqCpf/img/mail.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/mail.png"
           />
           <img
             className="haso-2"
             alt="Haso"
-            src="https://c.animaapp.com/lc2qlH2F/img/has-o-1.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/has-o-1.png"
           />
           <img
             className="numer-telefonu"
             alt="Numer telefonu"
-            src="https://c.animaapp.com/lc2qlH2F/img/numer-telefonu.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/numer-telefonu.png"
           />
           <img
             className="wyprbuj-za-darmo"
             alt="Wyprbuj za darmo"
-            src="https://c.animaapp.com/lc2qlH2F/img/wypr-buj-za-darmo.png"
+            src="https://c.animaapp.com/x6s48Cpz/img/wypr-buj-za-darmo.png"
           />
         </div>
         <img
