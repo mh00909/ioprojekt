@@ -19,7 +19,7 @@ const Kontakt = () => {
                 </div>
                 <div className="text-wrapper-3">+48 517 574 182</div>
               </div>
-              <p className="p">Chcesz zarezerwować miejsce na zajeciach ?</p>
+              <p className="p">Chcesz zarezerwować miejsce na zajęciach ?</p>
               <div className="text-wrapper-4">Pomożemy Ci w tym!</div>
               <p className="text-wrapper-5">
                 W razie pytań służymy pomocą. Napisz do nas! Zwykle odpisujemy w przeciągu 24 godzin. Jeśli tak się

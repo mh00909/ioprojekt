@@ -17,7 +17,7 @@ const Dane_Rezerwacji = () => {
               <div className="text-wrapper-2">Zniżka</div>
             </div>
           </div>
-          <img className="odwolaj" alt="Odwolaj" src="https://c.animaapp.com/RraaDVLa/img/odwolaj@2x.png" />
+          <img className="odwolaj" alt="Odwołaj" src="https://c.animaapp.com/RraaDVLa/img/odwolaj@2x.png" />
           <div className="group">
             <div className="karteczka">
               <div className="overlap-2">

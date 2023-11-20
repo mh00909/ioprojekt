@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+
+.rezerwacje-admin {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .rezerwacje-admin .div {
+    background-color: #ffffff;
+    height: 1024px;
+    position: relative;
+    width: 1440px;
+  }
+  
+  .rezerwacje-admin .text-wrapper {
+    color: #000000;
+    font-size: 15px;
+    font-weight: 400;
+    left: 540px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 991px;
+    white-space: nowrap;
+    width: 414px;
+  }
+  
+  .rezerwacje-admin .overlap {
+    height: 958px;
+    left: 0;
+    position: absolute;
+    top: 21px;
+    width: 1440px;
+  }
+  
+  .rezerwacje-admin .overlap-group {
+    height: 958px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1440px;
+  }
+  
+  .rezerwacje-admin .line {
+    height: 3px;
+    left: 0;
+    position: absolute;
+    top: 84px;
+    width: 1431px;
+  }
+  
+  .rezerwacje-admin .tlo {
+    height: 840px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 118px;
+    width: 1440px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-2 {
+    color: #000000;
+    font-size: 43px;
+    font-weight: 400;
+    left: 496px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 271px;
+  }
+  
+  .rezerwacje-admin .logo {
+    height: 159px;
+    left: 42px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 539px;
+  }
+  
+  .rezerwacje-admin .wydarzenie {
+    height: 186px;
+    left: 73px;
+    position: absolute;
+    top: 338px;
+    width: 657px;
+  }
+  
+  .rezerwacje-admin .overlap-2 {
+    background-color: #f5f5f5;
+    height: 186px;
+    position: relative;
+    width: 641px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-3 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 263px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 53px;
+    white-space: nowrap;
+    width: 73px;
+  }
+  
+  .rezerwacje-admin .overlap-3 {
+    height: 27px;
+    left: 228px;
+    position: absolute;
+    top: 105px;
+    width: 141px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-4 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    left: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 117px;
+  }
+  
+  .rezerwacje-admin .map {
+    height: 27px;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 27px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-5 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 243px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+    width: 82px;
+  }
+  
+  .rezerwacje-admin .overlap-4 {
+    height: 88px;
+    left: 7px;
+    position: absolute;
+    top: 0;
+    width: 131px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-6 {
+    color: #8faeca;
+    font-size: 30px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 0;
+    width: 117px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-7 {
+    color: #000000;
+    font-size: 28px;
+    font-weight: 400;
+    left: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    width: 119px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-8 {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 400;
+    left: 7px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 90px;
+    width: 178px;
+  }
+  
+  .rezerwacje-admin .users {
+    height: 23px;
+    left: 231px;
+    object-fit: cover;
+    position: absolute;
+    top: 56px;
+    width: 24px;
+  }
+  
+  .rezerwacje-admin .przycisk-usun {
+    height: 31px;
+    left: 487px;
+    position: absolute;
+    top: 141px;
+    width: 145px;
+  }
+  
+  .rezerwacje-admin .overlap-group-2 {
+    height: 38px;
+    left: -4px;
+    position: relative;
+    width: 147px;
+  }
+  
+  .rezerwacje-admin .status-guzik {
+    height: 38px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 145px;
+  }
+  
+  .rezerwacje-admin .trash {
+    height: 20px;
+    left: 15px;
+    object-fit: cover;
+    position: absolute;
+    top: 4px;
+    width: 21px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-9 {
+    color: #f5f5f5;
+    font-size: 22px;
+    font-weight: 400;
+    left: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 132px;
+  }
+  
+  .rezerwacje-admin .przycisk-przeloz {
+    height: 32px;
+    left: 488px;
+    position: absolute;
+    top: 100px;
+    width: 144px;
+  }
+  
+  .rezerwacje-admin .overlap-5 {
+    height: 38px;
+    left: -4px;
+    position: relative;
+    width: 146px;
+  }
+  
+  .rezerwacje-admin .img {
+    height: 38px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 146px;
+  }
+  
+  .rezerwacje-admin .pencil {
+    height: 24px;
+    left: 13px;
+    object-fit: cover;
+    position: absolute;
+    top: 3px;
+    width: 22px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-10 {
+    color: #f5f5f5;
+    font-size: 22px;
+    font-weight: 400;
+    left: 13px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 1px;
+    width: 133px;
+  }
+  
+  .rezerwacje-admin .overlap-6 {
+    height: 93px;
+    left: 481px;
+    position: absolute;
+    top: 2px;
+    width: 150px;
+  }
+  
+  .rezerwacje-admin .data-rect {
+    height: 30px;
+    left: 2px;
+    position: absolute;
+    top: 20px;
+    width: 148px;
+  }
+  
+  .rezerwacje-admin .godzina-rect {
+    height: 30px;
+    left: 1px;
+    position: absolute;
+    top: 63px;
+    width: 148px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-11 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 56px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-12 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 0px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 44px;
+    width: 94px;
+  }
+  
+  .rezerwacje-admin .overlap-wrapper {
+    height: 186px;
+    left: 73px;
+    position: absolute;
+    top: 538px;
+    width: 657px;
+  }
+  
+  .rezerwacje-admin .overlap-group-wrapper {
+    height: 186px;
+    left: 732px;
+    position: absolute;
+    top: 338px;
+    width: 657px;
+  }
+  
+  .rezerwacje-admin .formularz-tlo {
+    height: 168px;
+    left: 772px;
+    position: absolute;
+    top: 89px;
+    width: 645px;
+    box-shadow: 0px 4px 4px #00000040;
+    border-radius: 20px;
+
+  }
+  
+  .rezerwacje-admin .overlap-7 {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    height: 168px;
+    position: relative;
+    width: 641px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-13 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 325px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    white-space: nowrap;
+    width: 73px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-14 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 233px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 245px;
+  }
+  
+  .rezerwacje-admin .nazwa-form {
+    height: 22px;
+    left: 1093px;
+    position: absolute;
+    top: 116px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .lokalizacja-form {
+    height: 22px;
+    left: 1093px;
+    position: absolute;
+    top: 209px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-15 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 789px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 141px;
+    white-space: nowrap;
+    width: 106px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-16 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    left: 1090px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 189px;
+    white-space: nowrap;
+    width: 117px;
+  }
+  
+  .rezerwacje-admin .miejsce-form {
+    height: 22px;
+    left: 1093px;
+    position: absolute;
+    top: 161px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-17 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    left: 801px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 189px;
+    white-space: nowrap;
+    width: 117px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-18 {
+    color: #000000;
+    font-size: 21px;
+    font-weight: 400;
+    left: 700px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 93px;
+    width: 245px;
+  }
+  
+  .rezerwacje-admin .data-form {
+    height: 22px;
+    left: 803px;
+    position: absolute;
+    top: 116px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .czas-form {
+    height: 22px;
+    left: 803px;
+    position: absolute;
+    top: 209px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .godzina-form {
+    height: 22px;
+    left: 801px;
+    position: absolute;
+    top: 163px;
+    width: 153px;
+  }
+  
+  .rezerwacje-admin .przycisk-dodaj {
+    height: 34px;
+    left: 1265px;
+    position: absolute;
+    top: 147px;
+    width: 140px;
+  }
+  
+  .rezerwacje-admin .overlap-8 {
+    height: 42px;
+    left: -4px;
+    position: relative;
+    width: 146px;
+  }
+  
+  .rezerwacje-admin .status-guzik-2 {
+    height: 42px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 146px;
+  }
+  
+  .rezerwacje-admin .text-wrapper-19 {
+    color: #f5f5f5;
+    font-size: 25px;
+    font-weight: 400;
+    left: 27px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 115px;
+  }
+  
+  .rezerwacje-admin .add {
+    height: 23px;
+    left: 20px;
+    object-fit: cover;
+    position: absolute;
+    top: 4px;
+    width: 25px;
+  }
+  
+  .rezerwacje-admin .naglowek-form {
+    height: 49px;
+    left: 769px;
+    position: absolute;
+    top: 27px;
+    width: 643px;
+  }
+  
+  .rezerwacje-admin .div-wrapper {
+    background-color: #d9d9d933;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 49px;
+    position: relative;
+    width: 641px;
+  }
+  
+  .rezerwacje-admin .p {
+    color: #000000;
+    font-size: 24px;
+    font-weight: 400;
+    left: 36px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -15px;
+    width: 579px;
+  }
+  
