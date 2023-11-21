@@ -28,10 +28,14 @@ const Logowanie = () => {
 
     try {
       const response = await api.post('/login', formData);
-      // sprawdza zawartość, bo przy próbie logowania zwraca zawsze status ok
-      if(response.data == "Strona domowa"){
-        console.log('Udało się zalogować', response.data)
+
+      if(response.data == "Strona user"){
+        console.log('Udało się zalogować user', response.data)
         window.location.href = '/Konto';
+      }
+      else if(response.data == "Strona admina"){
+        console.log('Udało się zalogować admin', response.data)
+        window.location.href = '/RezerwacjeAdmin';
       }
       else{
         // niepoprawne dane logowania
@@ -62,21 +66,16 @@ const Logowanie = () => {
        if(response.data == "Udało się"){
           window.location.href = '/Konto';
        }
-       else if(response.status == 400){
-         // zajęty mail lub login
-
-         if(response.data == "Błąd: podany E-mail już zajęty"){
-
-
-         }
-         else if(response.data == "Błąd: podany login już zajęty"){
-
-         }
-
+       else if(response.data == "Błąd: podany E-mail już zajęty"){
+          alert("Błąd: podany E-mail jest już zajęty");
+       }
+       else if(response.data == "Błąd: podany login już zajęty"){
+          alert("Błąd: podany login jest już zajęty");
        }
        else{
         // coś innego jest nie tak
-          window.location.href = '/Glowna';
+        alert("Zły format danych.");
+          //window.location.href = '/Glowna';
        }
 
       // Przełącz formularz na tryb logowania
