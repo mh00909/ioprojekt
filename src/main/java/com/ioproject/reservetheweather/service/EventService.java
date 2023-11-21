@@ -7,6 +7,8 @@ import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,20 +46,41 @@ public class EventService {
 
 
     public boolean resign(Long eventID, Optional<User> user) {
-        // TODO:
-        // sprawdź czy pogoda jest zła
-        // usuń użytkownika z zapisanych użytkowników i event u użytkownika
+    // usuwa użytkownika z uczestników tego wydarzenia
+        if(user.isPresent()){
+            Optional<Event> event = eventRepository.findById(eventID);
+            if(event.isPresent()){
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime eventTime = event.get().getTime();
+                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                if(hours < 24){
+                    // obsłuży usuwanie zajęć z listy zajęć, na które jest zapisany użytkownik
+                    user.get().resign(event.get());
+                    event.get().removeUser(user.get());
+                    return true;
+                }
+            }
+        }
 
-        Optional<Event> event = eventRepository.findById(eventID);
-        event.get().removeUser(user.get());
-        return true;
-
+        return false;
     }
 
-    public boolean discount(Long id, Optional<User> user) {
-        // TODO:
-        Optional<Event> event = eventRepository.findById(id);
-        return true;
+    public boolean discount(Long eventID, Optional<User> user) {
+        if(user.isPresent()){
+            Optional<Event> event = eventRepository.findById(eventID);
+            if(event.isPresent()){
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime eventTime = event.get().getTime();
+                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                if(hours < 24){
+                   // zniżka o 30%
+                    event.get().setPrice(event.get().getPrice() * 0.7);
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public boolean addPerson(Long eventid, User user) {
@@ -79,13 +102,28 @@ public class EventService {
 
     public boolean reschedule(Long eventID, Optional<User> user, String date1) {
         // takie samo wydarzenie na które był zapisany ale z inną datą
-        Optional<Event> event = eventRepository.findById(eventID);
-        Event newEvent = new Event();
-        newEvent.setDate(date1);
-        newEvent = event.get();
-        user.get().resign(event.get());
-        user.get().joinEvent(newEvent);
-        return true;
+
+        if(user.isPresent()){
+            Optional<Event> event = eventRepository.findById(eventID);
+            if(event.isPresent()){
+                LocalDateTime now = LocalDateTime.now();
+                LocalDateTime eventTime = event.get().getTime();
+                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                if(hours < 24){
+
+                    Event newEvent = new Event();
+                    newEvent.setDate(date1);
+
+                    user.get().resign(event.get());
+                    user.get().joinEvent(newEvent);
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
     public String badWeatherInfrom(User user, Event event){

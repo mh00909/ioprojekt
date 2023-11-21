@@ -59,6 +59,14 @@ public class EventController {
         return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
+    @PostMapping("/events/add")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public ResponseEntity<Object> addEvent(@RequestParam Event event){
+        eventService.addEvent(event);
+        return ResponseEntity.ok("Dodano wydarzenie");
+    }
+
+
     @PostMapping("api/user/myevents/cancell/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> resignEvent(@RequestParam Long id){

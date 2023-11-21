@@ -27,7 +27,7 @@ public class Event {
     private String location;
 
     @Column
-    private int price;
+    private double price;
 
     @Column
     private LocalDateTime time;

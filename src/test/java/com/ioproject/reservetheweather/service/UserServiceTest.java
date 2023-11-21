@@ -49,9 +49,9 @@ class UserServiceTest {
 
         User userToInsert = new User("Ewa Kowalik", email, "abc", 123456789);
 
-        boolean inserted = underTest.addNewUser(userToInsert);
+        int inserted = underTest.addNewUser(userToInsert);
 
-        assertFalse(inserted);
+        assertFalse(inserted==1);
     }
 
 

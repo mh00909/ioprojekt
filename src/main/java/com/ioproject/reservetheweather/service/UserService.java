@@ -9,24 +9,47 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * Klasa służąca do zarządzania użytkownikami.
+ * Oferuje funkcjonalności związane z tworzeniem, usuwaniem i aktualizacją danych.
+ * Umożliwia również przeglądanie wydarzeń powiązanych z użytkownikiem.
+ *
+ */
 @Service
 public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
-
     private PasswordEncoder passwordEncoder;
+
+    /**
+     * Konstruktor tworzący serwis użytkownika.
+     * @param userRepository Repozytorium użytkowników
+     * @param eventRepository Repozytorium wydarzeń
+     * @param passwordEncoder Kodowanie haseł
+     */
     public UserService(UserRepository userRepository, EventRepository eventRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.eventRepository = eventRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
+
+    /**
+     * Pobiera listę wszystkich użytkowników
+     * @return Lista użytkowników
+     */
    public List<User> getUsers(){
         return userRepository.findAll();
     }
 
 
-    //@Transactional
+    /**
+     * Dodaje nowego użytkownika.
+     * @param user Obiekt użytkownika do dodania
+     * @return Kod statusu operacji (0 - istnieje e-mail, 1 - istnieje nazwa, 2 - sukces)
+     */
+    @Transactional
     public int addNewUser(User user) {
         Optional<User> exists = userRepository.findUserByMail(user.getMail());
         Optional<User> exists2 = userRepository.findUserByName(user.getName());
@@ -43,15 +66,29 @@ public class UserService {
         return 2;
     }
 
+    /**
+     * Usuwa użytkownika na podstawie jego ID
+     * @param userID ID użytkownika do usunięcia
+     * @return true, jeśli operacja się powiedzie
+     * @throws IllegalStateException, jeśli użytkownik nie istnieje
+     */
     public boolean deleteUser(Long userID) {
-    boolean exists = userRepository.existsById(userID);
-    if(!exists){
-        throw new IllegalStateException("Użytkownik nie istnieje!");
-    }
+        boolean exists = userRepository.existsById(userID);
+        if(!exists){
+            throw new IllegalStateException("Użytkownik nie istnieje!");
+        }
         userRepository.deleteById(userID);
         return true;
     }
 
+    /**
+     * Aktualizuje adres e-mail użytkownika.
+     *
+     * @param userID ID użytkownika
+     * @param email Nowy adres e-mail
+     * @return true, jeśli aktualizacja się powiedzie
+     * @throws IllegalStateException jeśli użytkownik nie istnieje lub e-mail jest zajęty
+     */
     @Transactional
     public boolean updateUserMail(Long userID, String email) {
         User user = userRepository.findById(userID)
@@ -68,6 +105,14 @@ public class UserService {
         return false;
     }
 
+
+    /**
+     * Aktualizuje nazwę użytkownika.
+     *
+     * @param userID ID użytkownika
+     * @param name Nowa nazwa użytkownika
+     * @return true, jeśli aktualizacja się powiedzie
+     */
     public boolean updateUserName(Long userID, String name){
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
@@ -80,12 +125,29 @@ public class UserService {
 
 
 
+    /**
+     * Wyświetla wydarzenia, w których uczestniczy dany użytkownik.
+     *
+     * @param userID ID użytkownika
+     * @return Lista wydarzeń użytkownika
+     * @throws IllegalStateException jeśli użytkownik nie istnieje
+     */
+
     public List<Event> showMyEvents(Long userID) {
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
         return user.getMyEvents();
     }
 
+
+
+    /**
+     * Pozwala użytkownikowi dołączyć do wydarzenia.
+     *
+     * @param eventid ID wydarzenia
+     * @param user Użytkownik dołączający do wydarzenia
+     * @return true, jeśli dołączenie się powiedzie
+     */
     public boolean joinEvent(Long eventid, User user){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
@@ -95,6 +157,14 @@ public class UserService {
         return false;
     }
 
+
+    /**
+     * Pozwala użytkownikowi zrezygnować z udziału w wydarzeniu.
+     *
+     * @param eventID ID wydarzenia
+     * @param user Użytkownik rezygnujący z wydarzenia
+     * @return true, jeśli rezygnacja się powiedzie
+     */
     public boolean resign(Long eventID, Optional<User> user){
         Optional<Event> event = eventRepository.findById(eventID);
         if(event.isPresent()){

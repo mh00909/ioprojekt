@@ -46,12 +46,12 @@ public class UserController {
             if(role.equals("ADMIN")){
                 return "Strona admina";
             }
-            else {
+            else if(role.equals("USER")) {
                 return "Strona user";
             }
         }
 
-        return "Strona user";
+        return "Strona";
     }
 
     @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)

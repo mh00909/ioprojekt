@@ -54,7 +54,7 @@ class UserControllerTest {
     @Test
     public void saveUserTest() throws Exception {
 
-        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(true);
+        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(1);
 
         ResultActions response = mockMvc.perform(post("/api/register")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -65,7 +65,7 @@ class UserControllerTest {
     }
     @Test
     public void saveAdminTest() throws Exception {
-        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(true);
+        given(userService.addNewUser(ArgumentMatchers.any(User.class))).willReturn(1);
         ResultActions response = mockMvc.perform(post("/api/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(admin)));
