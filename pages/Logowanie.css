@@ -27,11 +27,11 @@
   
   .logowanie .chmurki {
     height: 805px;
-    left: 300px;
+    left: 0px;
     object-fit: cover;
     position: absolute;
     top: 135px;
-    width: 1440px;
+    width: 2000px;
   }
 
   .logowanie .masz-ju-konto {
@@ -312,3 +312,6 @@
     width: 152px;
   }
   
+  .logowanie .logowanie_cal {
+    left: 150px;
+  }

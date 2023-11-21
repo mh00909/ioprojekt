@@ -106,7 +106,6 @@ const Logowanie = () => {
           src="https://c.animaapp.com/lc2qlH2F/img/dodaj-nag--wek--12--1.png"
         />
         <img className="chmurki" alt="Chmurki" src="https://c.animaapp.com/x6s48Cpz/img/rectangle-17.png" />
-        
         <img
           className="masz-ju-konto"
           alt="Masz ju konto"
@@ -159,6 +158,7 @@ const Logowanie = () => {
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>
+
           <div className="rejestracja">
       {/* Formularz rejestracji */}
       <img
