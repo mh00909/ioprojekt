@@ -27,7 +27,7 @@
   
   .logowanie .chmurki {
     height: 805px;
-    left: 0px;
+    left: -20px;
     object-fit: cover;
     position: absolute;
     top: 135px;
