@@ -176,28 +176,19 @@ export const RezerwacjeAdmin = () => {
                   <div className="text-wrapper-14">Nazwa</div>
                 </div>
               </div>
-              <img className="nazwa-form" alt="Nazwa form" src="https://c.animaapp.com/t0STnSju/img/nazwa-form.png" />
-              <img
-                className="lokalizacja-form"
-                alt="Lokalizacja form"
-                src="https://c.animaapp.com/t0STnSju/img/lokalizacja-form.png"
-              />
+              <input type="text" className="godzina-form" placeholder="Wprowadź godzinę" />
+              <input type="text" className="nazwa-form" placeholder="Jaki to typ zajęć?" />
+              <input type="text" className="lokalizacja-form" placeholder="Podaj lokalizację?" />
+
               <div className="text-wrapper-15">Godzina</div>
               <div className="text-wrapper-16">Lokalizacja</div>
-              <img
-                className="miejsce-form"
-                alt="Miejsce form"
-                src="https://c.animaapp.com/t0STnSju/img/miejsce-form.png"
-              />
+              <input type="text" className="miejsce-form" placeholder="Podaj max osób" />
               <div className="text-wrapper-17">Czas trwania</div>
               <div className="text-wrapper-18">Data</div>
-              <img className="data-form" alt="Data form" src="https://c.animaapp.com/t0STnSju/img/data-form.png" />
-              <img className="czas-form" alt="Czas form" src="https://c.animaapp.com/t0STnSju/img/nazwa-form.png" />
-              <img
-                className="godzina-form"
-                alt="Godzina form"
-                src="https://c.animaapp.com/t0STnSju/img/godzina-form.png"
-              />
+              <input type="text" className="data-form" placeholder="Wprowadź datę" />
+
+              <input type="text" className="czas-form" placeholder="Wprowadź czas" />
+              <input type="text" className="godzina-form" placeholder="Wprowadź godzinę" />
               <div className="przycisk-dodaj">
                 <div className="overlap-8">
                   <img

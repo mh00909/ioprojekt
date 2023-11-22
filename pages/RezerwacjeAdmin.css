@@ -412,20 +412,17 @@
     width: 245px;
   }
   
-  .rezerwacje-admin .nazwa-form {
-    height: 22px;
-    left: 1093px;
-    position: absolute;
-    top: 116px;
-    width: 153px;
-  }
   
   .rezerwacje-admin .lokalizacja-form {
-    height: 22px;
+    height: 25px;
     left: 1093px;
     position: absolute;
-    top: 209px;
+    top: 210px;
     width: 153px;
+    border: none;
+    outline: none;
+    left: 1093px;
+    font-size: 14px;
   }
   
   .rezerwacje-admin .text-wrapper-15 {
@@ -457,11 +454,14 @@
   }
   
   .rezerwacje-admin .miejsce-form {
-    height: 22px;
+    height: 25px;
     left: 1093px;
     position: absolute;
     top: 161px;
     width: 153px;
+    border: none;
+    outline: none;
+    font-size: 14px;
   }
   
   .rezerwacje-admin .text-wrapper-17 {
@@ -490,29 +490,58 @@
     top: 93px;
     width: 245px;
   }
+
+
   
   .rezerwacje-admin .data-form {
-    height: 22px;
+    height: 17px;
     left: 803px;
     position: absolute;
-    top: 116px;
-    width: 153px;
+    top: 113px;
+    width: 143px;
+    padding: 5px; 
+    border: none;
+    font-size: 14px; 
+    outline: none;
   }
+
+  .rezerwacje-admin .data-form:focus {
+    outline: none; 
+}
   
   .rezerwacje-admin .czas-form {
-    height: 22px;
+    height: 17px;
     left: 803px;
     position: absolute;
-    top: 209px;
-    width: 153px;
+    top: 211px;
+    width: 143px;
+    padding: 5px; 
+    border: none;
+    font-size: 14px; 
+    outline: none;
   }
   
   .rezerwacje-admin .godzina-form {
-    height: 22px;
-    left: 801px;
+    height: 17px;
+    left: 803px;
     position: absolute;
     top: 163px;
+    width: 143px;
+    padding: 5px; 
+    border: none;
+    font-size: 14px; 
+    outline: none;
+  }
+
+  .rezerwacje-admin .nazwa-form {
+    height: 25px;
+    left: 1093px;
+    position: absolute;
+    top: 113px;
     width: 153px;
+    border: none;
+    outline: none;
+    font-size: 14px;
   }
   
   .rezerwacje-admin .przycisk-dodaj {
