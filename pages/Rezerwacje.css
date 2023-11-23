@@ -59,17 +59,19 @@
     width: 1440px;
   }
   
+
   .rezerwacje .div {
     color: #000000;
-    font-size: 43px;
+    font-size: 25px;
     font-weight: 400;
-    left: 494px;
+    left: 450px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-shadow: 0px 4px 4px #00000040;
-    top: 283px;
+    top: 280px;
   }
+  
   
   .rezerwacje .logo {
     height: 159px;
@@ -344,4 +346,3 @@
     top: 11px;
     width: 125px;
   }
-  

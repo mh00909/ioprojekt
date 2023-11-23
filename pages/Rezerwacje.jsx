@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from 'react';
 import "./Rezerwacje.css";
 import "../app/globals.css"
+import DateSelector from './DateSelector';
+import "./DateSelector.css";
+
 
 const Rezerwacje = () => {
   return (
@@ -11,7 +14,8 @@ const Rezerwacje = () => {
             <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
             <img className="line" alt="Line" src="https://c.animaapp.com/iiOpoSVt/img/line-4.svg" />
             <img className="tlo" alt="Tlo" src="https://c.animaapp.com/iiOpoSVt/img/tlo.png" />
-            <div className="div">Zajęcia do rezerwacji:</div>
+            <div className="div">
+            <DateSelector/></div>
             <img className="logo" alt="Logo" src="https://c.animaapp.com/iiOpoSVt/img/logo.png" />
             <div className="karteczka">
               <div className="overlap-2">
