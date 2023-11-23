@@ -29,9 +29,9 @@ const PrognozaPogody = () => {
     <div className="prognoza-pogody">
       {/* Tutaj umieść kod do wyświetlania danych prognozy pogody */}
       {pogoda && (
-        <div>
-          <h2>{pogoda.name}</h2>
-          <p>Temperatura: {pogoda.main.temp}°C</p>
+        <div className="prognoza-pogody-content">
+        <h2>{pogoda.name}</h2>
+        <p>Temperatura: {Math.round(pogoda.main.temp - 273.15)}°C</p>
           <p>Warunki atmosferyczne: {pogoda.weather[0].description}</p>
           {/* Tu będą inne dane prognozy pogody  */}
           {/* Na przykład, ikona pogodowa: */}
