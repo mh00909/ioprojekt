@@ -389,7 +389,7 @@
     color: #000000;
     font-size: 21px;
     font-weight: 400;
-    left: 325px;
+    left: 216px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
@@ -403,7 +403,7 @@
     color: #000000;
     font-size: 21px;
     font-weight: 400;
-    left: 233px;
+    left: 125px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
@@ -415,15 +415,38 @@
   
   .rezerwacje-admin .lokalizacja-form {
     height: 25px;
-    left: 1093px;
+    left: 990px;
     position: absolute;
     top: 210px;
     width: 153px;
     border: none;
     outline: none;
-    left: 1093px;
     font-size: 14px;
   }
+
+    
+  .rezerwacje-admin .maxtemp-form {
+    height: 25px;
+    position: absolute;
+    top: 160px;
+    width: 153px;
+    border: none;
+    outline: none;
+    left: 1185px;
+    font-size: 14px;
+  }
+
+  .rezerwacje-admin .mintemp-form {
+    height: 25px;
+    position: absolute;
+    top: 113px;
+    width: 153px;
+    border: none;
+    outline: none;
+    left: 1185px;
+    font-size: 14px;
+  }
+  
   
   .rezerwacje-admin .text-wrapper-15 {
     color: #000000;
@@ -443,7 +466,7 @@
     color: #000000;
     font-size: 20px;
     font-weight: 400;
-    left: 1090px;
+    left: 980px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
@@ -453,9 +476,39 @@
     width: 117px;
   }
   
+  .text-wrapper-mintemp {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    left: 1185px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 96px;
+    white-space: nowrap;
+    width: 117px;
+
+  }
+
+  .text-wrapper-maxtemp {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 400;
+    left: 1185px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 140px;
+    white-space: nowrap;
+    width: 117px;
+
+  }
+
   .rezerwacje-admin .miejsce-form {
     height: 25px;
-    left: 1093px;
+    left: 990px;
     position: absolute;
     top: 161px;
     width: 153px;
@@ -535,7 +588,7 @@
 
   .rezerwacje-admin .nazwa-form {
     height: 25px;
-    left: 1093px;
+    left: 990px;
     position: absolute;
     top: 113px;
     width: 153px;
@@ -546,9 +599,9 @@
   
   .rezerwacje-admin .przycisk-dodaj {
     height: 34px;
-    left: 1265px;
+    left: 1195px;
     position: absolute;
-    top: 147px;
+    top: 200px;
     width: 140px;
   }
   

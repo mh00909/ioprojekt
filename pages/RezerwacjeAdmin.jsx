@@ -179,6 +179,12 @@ export const RezerwacjeAdmin = () => {
               <input type="text" className="godzina-form" placeholder="Wprowadź godzinę" />
               <input type="text" className="nazwa-form" placeholder="Jaki to typ zajęć?" />
               <input type="text" className="lokalizacja-form" placeholder="Podaj lokalizację?" />
+              <div className="text-wrapper-mintemp">Minimalna temperatura</div>
+              <input type="text" className="mintemp-form" placeholder="Ile °C?" />
+              <div className="text-wrapper-maxtemp">Maksymalna temperatura</div>
+              <input type="text" className="maxtemp-form" placeholder="Ile °C?" />
+
+
 
               <div className="text-wrapper-15">Godzina</div>
               <div className="text-wrapper-16">Lokalizacja</div>
