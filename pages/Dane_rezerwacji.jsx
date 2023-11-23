@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import "./Dane_rezerwacji.css";
 import "../app/globals.css"
+import PrognozaPogody from './PrognozaPogody';
+
+
 
 const Dane_Rezerwacji = () => {
   return (
@@ -85,6 +88,7 @@ const Dane_Rezerwacji = () => {
         </a>
       </div>
     </div>
+    <PrognozaPogody />
   </div>
 );
 };
