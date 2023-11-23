@@ -17,6 +17,7 @@ const Rezerwacje = () => {
             <div className="div">
             <DateSelector/></div>
             <img className="logo" alt="Logo" src="https://c.animaapp.com/iiOpoSVt/img/logo.png" />
+            {/*
             <div className="karteczka">
               <div className="overlap-2">
                 <img
@@ -37,7 +38,7 @@ const Rezerwacje = () => {
                 <div className="text-wrapper-7">Czas trwania</div>
                 <img className="users" alt="Users" src="https://c.animaapp.com/iiOpoSVt/img/users-2@2x.png" />
               </div>
-            </div>
+            </div>*/}
             <div className="overlap-group-wrapper">
               <div className="overlap-2">
                 <img
