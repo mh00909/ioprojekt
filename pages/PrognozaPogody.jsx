@@ -10,7 +10,7 @@ const PrognozaPogody = () => {
     const fetchData = async () => {
       try {
         const apiKey = '2a22ea7242da86deb44ea46357b5236d';
-        const city = 'Krakow'; // można również użyć współrzędnych geograficznych
+        const city = 'Kraków'; // można również użyć współrzędnych geograficznych
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
         const response = await fetch(apiUrl);

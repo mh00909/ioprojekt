@@ -425,4 +425,12 @@
     top: 11px;
     width: 125px;
   }
+
+  .prognoza-pogody {
+    position: absolute;
+    margin-top: -140px;
+    right: -147px;
+    font-size: 25px;
+    color: #f5f5f5;
+  }
   
