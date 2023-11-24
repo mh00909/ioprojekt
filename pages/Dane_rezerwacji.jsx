@@ -3,7 +3,6 @@ import "./Dane_rezerwacji.css";
 import "./PrognozaPogody.css";
 import "../app/globals.css"
 import PrognozaPogody from './PrognozaPogody';
-import Kalendarz from './Kalendarz.jsx';
 import Box from './Box.jsx';
 
 
