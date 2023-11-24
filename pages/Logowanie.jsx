@@ -28,10 +28,13 @@ const Logowanie = () => {
 
     try {
       const response = await api.post('/login', formData);
-      // sprawdza zawartość, bo przy próbie logowania zwraca zawsze status ok
-      if(response.data == "Strona domowa"){
-        console.log('Udało się zalogować', response.data)
+      if(response.data == "Strona user"){
+        console.log('Udało się zalogować user', response.data);
         window.location.href = '/Konto';
+      }
+      else if(response.data == "Strona admina"){
+        console.log('Udało się zalogować admin', response.data);
+        window.location.href = '/RezerwacjeAdmin';
       }
       else{
         // niepoprawne dane logowania
@@ -39,6 +42,7 @@ const Logowanie = () => {
         setError("Niepoprawne logowania. Spróbuj ponownie.");
       }
 
+    
     } catch (error) {
       console.error("Błąd podczas wysyłania danych:", error);      
       setError("Błąd logowania. Spróbuj ponownie.");
