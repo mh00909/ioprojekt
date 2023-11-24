@@ -1,7 +1,6 @@
 import React from "react";
 import "./Glowna.css";
 import "../app/globals.css"
-import Mgla from './Mgla.jsx';
 
 const Glowna = () => {
   return (
