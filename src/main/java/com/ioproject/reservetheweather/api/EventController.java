@@ -7,6 +7,7 @@ import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -59,9 +60,9 @@ public class EventController {
         return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
-    @PostMapping("/events/add")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<Object> addEvent(@RequestParam Event event){
+
+    @RequestMapping(value = "/addEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public ResponseEntity<Object> addEvent(@ModelAttribute Event event){
         eventService.addEvent(event);
         return ResponseEntity.ok("Dodano wydarzenie");
     }

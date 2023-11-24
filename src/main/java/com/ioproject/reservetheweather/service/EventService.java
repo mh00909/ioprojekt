@@ -7,6 +7,7 @@ import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -50,9 +51,9 @@ public class EventService {
         if(user.isPresent()){
             Optional<Event> event = eventRepository.findById(eventID);
             if(event.isPresent()){
-                LocalDateTime now = LocalDateTime.now();
-                LocalDateTime eventTime = event.get().getTime();
-                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                LocalDate now = LocalDate.now();
+                LocalDate eventDate = event.get().getDate();
+                long hours = ChronoUnit.HOURS.between(now, eventDate);
                 if(hours < 24){
                     // obsłuży usuwanie zajęć z listy zajęć, na które jest zapisany użytkownik
                     user.get().resign(event.get());
@@ -69,9 +70,9 @@ public class EventService {
         if(user.isPresent()){
             Optional<Event> event = eventRepository.findById(eventID);
             if(event.isPresent()){
-                LocalDateTime now = LocalDateTime.now();
-                LocalDateTime eventTime = event.get().getTime();
-                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                LocalDate now = LocalDate.now();
+                LocalDate eventDate = event.get().getDate();
+                long hours = ChronoUnit.HOURS.between(now, eventDate);
                 if(hours < 24){
 
                     if(!event.get().discount){
@@ -116,12 +117,12 @@ public class EventService {
             Optional<Event> event = eventRepository.findById(eventID);
             if(event.isPresent()){
                 LocalDateTime now = LocalDateTime.now();
-                LocalDateTime eventTime = event.get().getTime();
-                long hours = ChronoUnit.HOURS.between(now, eventTime);
+                LocalDate eventDate = event.get().getDate();
+                long hours = ChronoUnit.HOURS.between(now, eventDate);
                 if(hours < 24){
 
                     Event newEvent = new Event();
-                    newEvent.setDate(date1);
+                    newEvent.setDate(LocalDate.parse(date1));
 
                     user.get().resign(event.get());
                     user.get().joinEvent(newEvent);

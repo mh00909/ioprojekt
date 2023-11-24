@@ -39,7 +39,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api", "/Rejestracja", "/api/events/all", "/login").permitAll()
+                        .requestMatchers("/api", "/Rejestracja", "/api/events/all", "/login", "/addEvent").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                     //    .loginPage("/login") // Custom login page, if you have one
