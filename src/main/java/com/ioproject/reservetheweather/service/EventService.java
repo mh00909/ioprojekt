@@ -73,9 +73,18 @@ public class EventService {
                 LocalDateTime eventTime = event.get().getTime();
                 long hours = ChronoUnit.HOURS.between(now, eventTime);
                 if(hours < 24){
-                   // zniżka o 30%
-                    event.get().setPrice(event.get().getPrice() * 0.7);
-                    return true;
+
+                    if(!event.get().discount){
+                        // zniżka o 30%
+                        event.get().setPrice(event.get().getPrice() * 0.7);
+                        event.get().discount = true;
+                        return true;
+                    }
+                    else{
+                        // zniżka została już przyznana
+                        return false;
+                    }
+
                 }
             }
         }

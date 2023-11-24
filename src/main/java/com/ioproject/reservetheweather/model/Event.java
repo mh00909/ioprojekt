@@ -46,7 +46,8 @@ public class Event {
     @Column
     int maxTemperature;
 
-    boolean badWeather = false;
+    public boolean badWeather = false;
+    public boolean discount = false;
 
     //boolean status;
     public void setTime(LocalDateTime time) {
