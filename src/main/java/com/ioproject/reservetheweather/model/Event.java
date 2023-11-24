@@ -42,9 +42,9 @@ public class Event {
     @ManyToMany
     List<User> users;
     @Column
-    int minTemperature;
+    double minTemperature;
     @Column
-    int maxTemperature;
+    double maxTemperature;
 
     public boolean badWeather = false;
     public boolean discount = false;
@@ -93,40 +93,26 @@ public class Event {
     }
 
 
-
-
-
-    public void setId(Long id) {this.id = id;}
-    public Long getId() {return id;}
-    public String getName() {return name;}
-    public int getDuration() {return duration;}
-    public String getDescription() {return description;}
-    public int getMaxUsers() {return maxUsers;}
-    public int getSignedUsers() {return signedUsers;}
-    public void setName(String name) {this.name = name;}
-    public void setDuration(int duration) {this.duration = duration;}
-    public void setDescription(String description) {this.description = description;}
-    public void setMaxUsers(int maxUsers) {this.maxUsers = maxUsers;}
-    public void setSignedUsers(int signedUsers) {this.signedUsers = signedUsers;}
-    public LocalDateTime getTime() {
-        return time;
+    // przy dodawaniu przez admina
+    public Event(String eventDate, String eventTime, int eventDuration,
+                 String eventDescription, String eventName,
+                 int maxUsers, String eventLocation, double eventPrice,
+                 double eventMinTemperature, double eventMaxTemperature){
+        setDate(eventDate + " " + eventTime);
+        duration = eventDuration;
+        description=eventDescription;
+        this.maxUsers = maxUsers;
+        this.signedUsers=0;
+        name=eventName;
+        location = eventLocation;
+        price = eventPrice;
+        minTemperature = eventMinTemperature;
+        maxTemperature = eventMaxTemperature;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
-    public int getMinTemperature() {
-        return minTemperature;
-    }
 
-    public int getMaxTemperature() {
-        return maxTemperature;
-    }
 
-    public boolean isBadWeather() {
-        return badWeather;
-    }
 
     public void setDate(String dateString){
         time = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
