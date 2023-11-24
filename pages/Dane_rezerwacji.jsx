@@ -12,7 +12,6 @@ import Box from './Box.jsx';
 const Dane_Rezerwacji = () => {
   return (
     <div className="dane-rezerwacji">
-     { /*<Kalendarzc />*/}
      {/*<Box />*/}
     <div className="div">
       <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
