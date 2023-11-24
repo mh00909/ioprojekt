@@ -652,6 +652,13 @@
     position: absolute;
     top: 200px;
     width: 140px;
+    background-color: #8faeca;
+    border-color: #8faeca;
+    box-shadow: 0px 4px 4px #00000040;
+    border-style: dotted;
+    font-size: xx-large;
+    text-align: center;
+    text-decoration-color: aliceblue;
   }
   
   .rezerwacje-admin .overlap-8 {

@@ -245,8 +245,9 @@ const RezerwacjeAdmin = () => {
                      onChange={(e) => setEventName(e.target.value)}
               /> 
       
-              <div className="przycisk-dodaj">
-                <div className="overlap-8">
+              <button className="przycisk-dodaj" onClick={handleSubmit} style={{ color: '#ffffff', lineHeight: '0.7'  }}>
+                  +
+               {/* <div className="overlap-8">
                   <img
                     className="status-guzik-2"
                     alt="Status guzik"
@@ -254,8 +255,8 @@ const RezerwacjeAdmin = () => {
                   />
                   <div className="text-wrapper-19">dodaj</div>
                   <img className="add" alt="Add" src="https://c.animaapp.com/t0STnSju/img/add-1@2x.png" />
-                </div>
-              </div>
+    </div>*/}
+              </button>
             </div>
             <div className="naglowek-form">
               <div className="div-wrapper">
