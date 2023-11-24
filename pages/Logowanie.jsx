@@ -66,23 +66,20 @@ const Logowanie = () => {
        if(response.data == "Udało się"){
           window.location.href = '/Konto';
        }
-       else if(response.status == 400){
+       else {
          // zajęty mail lub login
 
          if(response.data == "Błąd: podany E-mail już zajęty"){
-
+          alert("Błąd: podany E-mail jest już zajęty");
 
          }
          else if(response.data == "Błąd: podany login już zajęty"){
-
+          alert("Błąd: podany login jest już zajęty");
          }
-
+         else{
+          alert("Zły format danych.");
        }
-       else{
-        // coś innego jest nie tak
-          window.location.href = '/Glowna';
-       }
-
+      }
       // Przełącz formularz na tryb logowania
       setIsRegistering(false);
 
