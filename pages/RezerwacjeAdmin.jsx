@@ -171,30 +171,29 @@ export const RezerwacjeAdmin = () => {
                 </div>
               </div>
               <div className="formularz-tlo">
-                <div className="overlap-7">
-                  <div className="text-wrapper-13">Miejsca</div>
-                  <div className="text-wrapper-14">Nazwa</div>
-                </div>
+                <div className="overlap-7"></div>
               </div>
-              <input type="text" className="godzina-form" placeholder="Wprowadź godzinę" />
+              <div className="text-wrapper-data">Data</div>
+              <input type="date" className="data-form" placeholder="Wprowadź datę" />
+              <div className="text-wrapper-godzina">Godzina</div>
+              <input type="time" className="godzina-form" placeholder="Wprowadź godzinę" />
+              <div className="text-wrapper-czas">Czas trwania</div>
+              <input type="numer" className="czas-form" placeholder="Wprowadź czas" />
+              <div className="text-wrapper-nazwa">Nazwa</div>
               <input type="text" className="nazwa-form" placeholder="Jaki to typ zajęć?" />
-              <input type="text" className="lokalizacja-form" placeholder="Podaj lokalizację?" />
+              <div className="text-wrapper-miejsca">Miejsca</div>
+              <input type="number" className="miejsce-form" placeholder="Podaj max osób" />
+              <div className="text-wrapper-lokalizacja">Lokalizacja</div>
+              <input type="text" className="lokalizacja-form" placeholder="Podaj lokalizację" />
               <div className="text-wrapper-mintemp">Minimalna temperatura</div>
-              <input type="text" className="mintemp-form" placeholder="Ile °C?" />
+              <input type="number" className="mintemp-form" placeholder="Ile °C?" />
               <div className="text-wrapper-maxtemp">Maksymalna temperatura</div>
-              <input type="text" className="maxtemp-form" placeholder="Ile °C?" />
-
-
-
-              <div className="text-wrapper-15">Godzina</div>
-              <div className="text-wrapper-16">Lokalizacja</div>
-              <input type="text" className="miejsce-form" placeholder="Podaj max osób" />
-              <div className="text-wrapper-17">Czas trwania</div>
-              <div className="text-wrapper-18">Data</div>
-              <input type="text" className="data-form" placeholder="Wprowadź datę" />
-
-              <input type="text" className="czas-form" placeholder="Wprowadź czas" />
-              <input type="text" className="godzina-form" placeholder="Wprowadź godzinę" />
+              <input type="number" className="maxtemp-form" placeholder="Ile °C?" />
+              <div className="text-wrapper-cena">Cena</div>
+              <input type="number" className="cena-form" placeholder="Podaj cenę?" />
+              <div className="text-wrapper-opis">Opis</div>
+              <input type="text" className="opis-form" placeholder="Podaj opis zajęć" />
+      
               <div className="przycisk-dodaj">
                 <div className="overlap-8">
                   <img

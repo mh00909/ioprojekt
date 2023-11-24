@@ -385,39 +385,51 @@
     width: 641px;
   }
   
-  .rezerwacje-admin .text-wrapper-13 {
+  .rezerwacje-admin .text-wrapper-miejsca {
     color: #000000;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 400;
-    left: 216px;
+    left: 980px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 50px;
+    top: 130px;
     white-space: nowrap;
     width: 73px;
   }
+
+  .rezerwacje-admin .miejsce-form {
+    height: 21px;
+    left: 990px;
+    position: absolute;
+    top: 150px;
+    width: 153px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
   
-  .rezerwacje-admin .text-wrapper-14 {
+  
+  .rezerwacje-admin .text-wrapper-nazwa {
     color: #000000;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 400;
-    left: 125px;
+    left: 890px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 5px;
+    top: 90px;
     width: 245px;
   }
   
   
   .rezerwacje-admin .lokalizacja-form {
-    height: 25px;
+    height: 21px;
     left: 990px;
     position: absolute;
-    top: 210px;
+    top: 189px;
     width: 153px;
     border: none;
     outline: none;
@@ -426,9 +438,9 @@
 
     
   .rezerwacje-admin .maxtemp-form {
-    height: 25px;
+    height: 21px;
     position: absolute;
-    top: 160px;
+    top: 150px;
     width: 153px;
     border: none;
     outline: none;
@@ -437,9 +449,9 @@
   }
 
   .rezerwacje-admin .mintemp-form {
-    height: 25px;
+    height: 21px;
     position: absolute;
-    top: 113px;
+    top: 108px;
     width: 153px;
     border: none;
     outline: none;
@@ -448,44 +460,56 @@
   }
   
   
-  .rezerwacje-admin .text-wrapper-15 {
+  .rezerwacje-admin .text-wrapper-godzina {
     color: #000000;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 400;
-    left: 789px;
+    left: 783px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 141px;
+    top: 132px;
     white-space: nowrap;
     width: 106px;
   }
+
+  .rezerwacje-admin .godzina-form {
+    height: 12px;
+    left: 803px;
+    position: absolute;
+    top: 150px;
+    width: 143px;
+    padding: 5px; 
+    border: none;
+    font-size: 14px; 
+    outline: none;
+  }
   
-  .rezerwacje-admin .text-wrapper-16 {
+  .rezerwacje-admin .text-wrapper-lokalizacja {
     color: #000000;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 400;
-    left: 980px;
+    left: 975px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 189px;
+    top: 171px;
     white-space: nowrap;
     width: 117px;
   }
   
   .text-wrapper-mintemp {
     color: #000000;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 400;
     left: 1185px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 96px;
+    top: 90px;
     white-space: nowrap;
     width: 117px;
 
@@ -493,110 +517,137 @@
 
   .text-wrapper-maxtemp {
     color: #000000;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 400;
     left: 1185px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 140px;
+    top: 133px;
     white-space: nowrap;
     width: 117px;
 
   }
 
-  .rezerwacje-admin .miejsce-form {
-    height: 25px;
-    left: 990px;
+  .rezerwacje-admin .text-wrapper-czas {
+    color: #000000;
+    font-size: 17px;
+    font-weight: 400;
+    left: 794px;
+    letter-spacing: 0;
+    line-height: normal;
     position: absolute;
-    top: 161px;
-    width: 153px;
+    text-align: center;
+    top: 171px;
+    white-space: nowrap;
+    width: 117px;
+  }
+
+   
+  .rezerwacje-admin .czas-form {
+    height: 12px;
+    left: 803px;
+    position: absolute;
+    top: 190px;
+    width: 143px;
+    padding: 5px; 
+    border: none;
+    font-size: 14px; 
+    outline: none;
+  }
+  
+  
+  .rezerwacje-admin .text-wrapper-opis {
+    color: #000000;
+    font-size: 17px;
+    font-weight: 400;
+    left: 765px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 209px;
+    white-space: nowrap;
+    width: 117px;
+  }
+
+  .rezerwacje-admin .opis-form {
+    height: 19px;
+    left: 803px;
+    position: absolute;
+    top: 228px;
+    width: 150px;
     border: none;
     outline: none;
     font-size: 14px;
   }
   
-  .rezerwacje-admin .text-wrapper-17 {
+  .rezerwacje-admin .text-wrapper-data {
     color: #000000;
-    font-size: 20px;
-    font-weight: 400;
-    left: 801px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 189px;
-    white-space: nowrap;
-    width: 117px;
-  }
-  
-  .rezerwacje-admin .text-wrapper-18 {
-    color: #000000;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 400;
     left: 700px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     text-align: center;
-    top: 93px;
+    top: 90px;
     width: 245px;
-  }
-
-
-  
-  .rezerwacje-admin .data-form {
-    height: 17px;
-    left: 803px;
-    position: absolute;
-    top: 113px;
-    width: 143px;
-    padding: 5px; 
-    border: none;
-    font-size: 14px; 
-    outline: none;
   }
 
   .rezerwacje-admin .data-form:focus {
     outline: none; 
 }
-  
-  .rezerwacje-admin .czas-form {
-    height: 17px;
-    left: 803px;
-    position: absolute;
-    top: 211px;
-    width: 143px;
-    padding: 5px; 
-    border: none;
-    font-size: 14px; 
-    outline: none;
-  }
-  
-  .rezerwacje-admin .godzina-form {
-    height: 17px;
-    left: 803px;
-    position: absolute;
-    top: 163px;
-    width: 143px;
-    padding: 5px; 
-    border: none;
-    font-size: 14px; 
-    outline: none;
-  }
+
+.rezerwacje-admin .data-form {
+  height: 12px;
+  left: 803px;
+  position: absolute;
+  top: 109px;
+  width: 143px;
+  padding: 5px; 
+  border: none;
+  font-size: 14px; 
+  outline: none;
+}
+
 
   .rezerwacje-admin .nazwa-form {
-    height: 25px;
+    height: 21px;
     left: 990px;
     position: absolute;
-    top: 113px;
+    top: 108px;
     width: 153px;
     border: none;
     outline: none;
     font-size: 14px;
   }
   
+  .rezerwacje-admin .text-wrapper-cena {
+    color: #000000;
+    font-size: 17px;
+    font-weight: 400;
+    left: 888px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 209px;
+    width: 245px;
+  }
+
+  .rezerwacje-admin .cena-form {
+    height: 19px;
+    left: 990px;
+    position: absolute;
+    top: 228px;
+    width: 153px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
   .rezerwacje-admin .przycisk-dodaj {
     height: 34px;
     left: 1195px;
