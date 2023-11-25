@@ -142,4 +142,14 @@ public class EventService {
                 "Możesz także zrezygnować z udziału lub zapisać się na zajęcia w innym terminie.";
         return message;
     }
+
+    public boolean removeEvent(Long id) {
+
+        Optional<Event> event = eventRepository.findById(id);
+        if(event.isPresent()){
+            eventRepository.delete(event.get());
+            return true;
+        }
+        return false;
+    }
 }

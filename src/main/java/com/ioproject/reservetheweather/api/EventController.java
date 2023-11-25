@@ -68,7 +68,7 @@ public class EventController {
     }
 
 
-    @PostMapping("api/user/myevents/cancell/{id}")
+    @PostMapping("/api/user/myevents/cancell/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> resignEvent(@RequestParam Long id){
         eventService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
@@ -76,7 +76,7 @@ public class EventController {
         return ResponseEntity.ok("Zrezygnowano z zajęć.");
     }
 
-    @PostMapping("api/user/myevents/discount")
+    @PostMapping("/api/user/myevents/discount")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> discountEvent(@RequestParam Long id){
         if( eventService.discount(id, userRepository.findUserByMail(getLoggedIn().getUsername()))){
@@ -94,6 +94,23 @@ public class EventController {
         }
         return ResponseEntity.ok("Nie zmieniono terminu zajęć. Spróbuj ponownie.");
     }
+
+
+    @PostMapping("api/user/myevents/removeevent/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Object> removeEvent(@RequestParam Long id){
+        boolean removed = eventService.removeEvent(id);
+        if(removed){
+            return ResponseEntity.ok("Zrezygnowano z zajęć.");
+        }
+        return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
+    }
+
+
+
+
+
+
 
     public UserDetails getLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
