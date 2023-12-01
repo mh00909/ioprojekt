@@ -5,7 +5,6 @@ import "../app/globals.css"
 const Glowna = () => {
   return (
     <div className="glowna">
-      {/*<Mgla/>*/}
       <div className="div">
         <div className="overlap">
           <div className="overlap-group">
