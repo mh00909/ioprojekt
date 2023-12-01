@@ -3,7 +3,7 @@
 
 import React from 'react';
 import EventItem from './EventItem';
-import './AllEvents.css'; // Dodaj import do pliku ze stylami
+import './AllEvents.css'; 
 
 const AllEvents = ({ allEvents }) => (
   <div className="container">
