@@ -346,3 +346,17 @@
     top: 11px;
     width: 125px;
   }
+
+
+
+  
+
+  .rezerwacje .all-events-container {
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-top: 360px;
+  }

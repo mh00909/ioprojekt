@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import "./Rezerwacje.css";
 import "../app/globals.css"
 import DateSelector from './DateSelector';
 import "./DateSelector.css";
+import api from "../api";
+import AllEvents from './components/AllEvents';
+
 
 
 const Rezerwacje = () => {
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+
+  const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
+  const [allEvents, setAllEvents] = useState([]);
+
+  const [error, setError] = useState(""); 
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      try {
+        const response = await api.get('/api/events/all');
+        setAllEvents(response.data);
+      } catch (error) {
+        console.error('Błąd podczas pobierania danych:', error);
+        // Obsłuż błąd pobierania danych
+      }
+    };
+
+    fetchAllEvents();
+  }, []);
   return (
     <div className="rezerwacje">
       <div className="overlap-wrapper">
@@ -13,6 +35,9 @@ const Rezerwacje = () => {
           <div className="overlap-group">
             <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
             <img className="line" alt="Line" src="https://c.animaapp.com/iiOpoSVt/img/line-4.svg" />
+            <div className="all-events-container">
+              <AllEvents allEvents={allEvents} />
+             </div>
             <img className="tlo" alt="Tlo" src="https://c.animaapp.com/iiOpoSVt/img/tlo.png" />
             <div className="div"><DateSelector/></div>
             <img className="logo" alt="Logo" src="https://c.animaapp.com/iiOpoSVt/img/logo.png" />
