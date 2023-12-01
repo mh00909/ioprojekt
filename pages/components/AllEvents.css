@@ -3,25 +3,24 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Wyśrodkowanie elementów w poziomie */
+}
+
+.event-item {
+  flex: 0 0 calc(48% - 20px); /* Ustaw szerokość na 48% z uwzględnieniem marginesu między elementami */
+  margin-bottom: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* Dostosowanie szerokości elementu na mniejszych ekranach */
+@media screen and (max-width: 768px) {
   .event-item {
-    width: calc(30% - 20px); /* Uwzględniam tutaj margines między elementami */
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
+    flex: 0 0 calc(100% - 20px); /* Na mniejszych ekranach, element zajmuje 100% szerokości */
   }
-  
-  /* Dostosowanie szerokości elementu na mniejszych ekranach */
-  @media screen and (max-width: 768px) {
-    .event-item {
-      width: calc(48% - 20px);
-    }
-  }
-  
+}

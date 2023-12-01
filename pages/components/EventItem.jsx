@@ -2,6 +2,7 @@
 
 import React from 'react';
 import './EventItem.css'; 
+import mapImage from '../Images/map.png';
 
 const EventItem = ({ event }) => (
   <div className="event-item">
@@ -11,7 +12,7 @@ const EventItem = ({ event }) => (
     <p>Time: {event.time}</p>
     <p>Duration: {event.duration} hours</p>
     <p>Description: {event.description}</p>
-    <p>Location: {event.location}</p>
+    <p>Location: <img src="https://c.animaapp.com/t0STnSju/img/map-2@2x.png" alt="Map Icon" /> {event.location}</p>
     <p>Max Users: {event.max_users}</p>
     <p>Min Temperature: {event.min_temperature} °C</p>
     <p>Max Temperature: {event.max_temperature} °C</p>

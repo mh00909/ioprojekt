@@ -20,5 +20,11 @@
   .event-item p {
     margin: 5px 0;
   }
+
+  .event-item img {
+    height: 20px; /* Ustawia maksymalną wysokość obrazka na 100% wysokości kontenera */
+    margin-bottom: -5px; /* Opcjonalny margines na dole obrazka */
+    margin-right: 35px;
+  }
   
   
