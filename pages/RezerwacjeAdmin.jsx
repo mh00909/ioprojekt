@@ -3,6 +3,8 @@ import DateSelector from './DateSelector';
 import "./DateSelector.css";
 import "./RezerwacjeAdmin.css";
 import api from "../api";
+import AllEvents from './components/AllEvents';
+
 
 const RezerwacjeAdmin = () => {
   const [eventDate, setEventDate] = useState("");
@@ -19,7 +21,6 @@ const RezerwacjeAdmin = () => {
   {/*Tu pod spodem jak bedziemy mieć endpoint do dodania zajęć będzie można go wpisać*/}
   const addEventEndpoint = `${apiBaseUrl}/addEvent`;
 
-  {/*Tu ma się dać dodawać zajęcia*/}
 
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
   const [allEvents, setAllEvents] = useState([]);
@@ -65,38 +66,24 @@ const RezerwacjeAdmin = () => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        console.log("Przed pobraniem danych");
-        const response = await api.get(allEventsEndpoint);
+        const response = await api.get('/api/events/all');
         setAllEvents(response.data);
-        console.log("Dane pobrane:", response.data);
       } catch (error) {
-        console.error("Błąd podczas pobierania danych:", error);
-        setError("Błąd podczas pobierania danych. Spróbuj ponownie.");
+        console.error('Błąd podczas pobierania danych:', error);
+        // Obsłuż błąd pobierania danych
       }
     };
-  
+
     fetchAllEvents();
-  }, [allEventsEndpoint]);
+  }, []);
+
 
     return (
       <div className="rezerwacje-admin">
 
-
-
-
-            <div className="wydarzenie">
-      <h2>Wszystkie zajęcia</h2>
-      {allEvents.map((event) => (
-        <div key={event.id} className="overlap-2">
-          <div className="text-wrapper-5">Nazwa: {event.nazwa}</div>
-          <div className="overlap-4">
-            <div className="text-wrapper-6">Data: {event.data}</div>
-            <div className="text-wrapper-7">Godzina: {event.godzina}</div>
-          </div>
-          {/* Dodaj pozostałe informacje */}
-          {/* ... */}
-        </div>
-      ))}
+    <div>
+      <h1>Wszystkie Zajęcia</h1>
+      <AllEvents allEvents={allEvents} />
     </div>
 
         <div className="div">
