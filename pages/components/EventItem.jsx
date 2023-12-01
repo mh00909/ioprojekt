@@ -1,9 +1,10 @@
 // components/EventItem.jsx
 
 import React from 'react';
+import './EventItem.css'; 
 
 const EventItem = ({ event }) => (
-  <div>
+  <div className="event-item">
     <h3>{event.name}</h3>
     <p>ID: {event.id}</p>
     <p>Date: {event.date}</p>
