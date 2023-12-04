@@ -67,6 +67,26 @@ public class EventController {
         return ResponseEntity.ok("Dodano wydarzenie");
     }
 
+    @RequestMapping(value = "/api/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<Object> removeEvent(@RequestParam Event event){
+        boolean removed = eventService.removeEvent(event.getId());
+        if(removed){
+            return ResponseEntity.ok("Zrezygnowano z zajęć.");
+        }
+        return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
+    }
+
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////// do sprawdzenia
+
+
+
 
     @PostMapping("/api/user/myevents/cancell/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
@@ -94,19 +114,6 @@ public class EventController {
         }
         return ResponseEntity.ok("Nie zmieniono terminu zajęć. Spróbuj ponownie.");
     }
-
-
-    @PostMapping("api/user/myevents/removeevent/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Object> removeEvent(@RequestParam Long id){
-        boolean removed = eventService.removeEvent(id);
-        if(removed){
-            return ResponseEntity.ok("Zrezygnowano z zajęć.");
-        }
-        return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
-    }
-
-
 
 
 
