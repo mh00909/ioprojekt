@@ -31,17 +31,15 @@ import "./DateSelector.css";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DateSelector = ({ fetchData }) => {
+const DateSelector = ({ onSelectDate }) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = async (date) => {
     setSelectedDate(date);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/events/byDate?date=${date.toISOString().split('T')[0]}`);
-      const data = await response.json();
-
-      fetchData(data);
+      // Poprawa: Przekazujemy datę z powrotem do rodzica
+      onSelectDate(date);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -60,3 +58,6 @@ const DateSelector = ({ fetchData }) => {
 };
 
 export default DateSelector;
+
+
+

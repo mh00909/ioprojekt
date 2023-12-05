@@ -83,18 +83,18 @@ const EventItem = ({ event }) => {
     <div className="event-item">
       <h3>{event.name}</h3>
       <p>ID: {event.id}</p>
-      <p>Date: {event.date}</p>
-      <p>Time: {event.time}</p>
-      <p>Duration: {event.duration} hours</p>
-      <p>Description: {event.description}</p>
-      <p>Location: <img src="https://c.animaapp.com/t0STnSju/img/map-2@2x.png" alt="Map Icon" /> {event.location}</p>
-      <p>Max Users: {event.max_users}</p>
-      <p>Min Temperature: {event.min_temperature} °C</p>
-      <p>Max Temperature: {event.max_temperature} °C</p>
-      <p>Price: {event.price} PLN</p>
-      <p>Signed Users: {event.signed_users}</p>
-      <p>Bad Weather: {event.bad_weather ? 'Yes' : 'No'}</p>
-      <p>Discount: {event.discount ? 'Yes' : 'No'}</p>
+      <p>Data: {event.date}</p>
+      <p>Godzina: {event.time}</p>
+      <p>Czas trwania: {event.duration} godzin</p>
+      <p>Opis: {event.description}</p>
+      <p>Lokalizacja: <img src="https://c.animaapp.com/t0STnSju/img/map-2@2x.png" alt="Map Icon" /> {event.location}</p>
+      <p>Limit uczestników: {event.maxUsers}</p>
+      <p>Min temperatura: {event.minTemperature} °C</p>
+      <p>Max temperatura: {event.maxTemperature} °C</p>
+      <p>Cena: {event.price} PLN</p>
+      <p>Uczetnicy: {event.signedUsers}</p>
+      <p>Zła pogoda: {event.badWeather ? 'Tak' : 'Nie'}</p>
+      <p>Możliwa zniżka: {event.discount ? 'Tak' : 'Nie'}</p>
       
       <button className='Odwolaj'
        style = {{    

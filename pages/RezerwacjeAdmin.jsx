@@ -17,6 +17,8 @@ const RezerwacjeAdmin = () => {
   const [eventPrice, setEventPrice] = useState("");
   const [eventMinTemperature, setMinTemperature] = useState("");
   const [eventMaxTemperature, setMaxTemperature] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   {/*Tu pod spodem jak bedziemy mieć endpoint do dodania zajęć będzie można go wpisać*/}
   const addEventEndpoint = `${apiBaseUrl}/addEvent`;
@@ -46,20 +48,16 @@ const RezerwacjeAdmin = () => {
 
     try {
       const response = await api.post('/addEvent', formData);
-      if(response.data == "Strona domowa"){
+      if (response.data === "Strona domowa") {
         console.log('Udało się dodać zajęcia', response.data)
         window.location.href = '/RezerwacjeAdmin';
-      }
-      else{
-        // niepoprawne dane 
+      } else {
         window.location.href = '/RezerwacjeAdmin';
         setError("Niepoprawne dane. Spróbuj ponownie.");
       }
-
     } catch (error) {
-      console.error("Błąd podczas wysyłania danych:", error);      
+      console.error("Błąd podczas wysyłania danych:", error);
       setError("Błąd podczas dodania zajęć. Spróbuj ponownie.");
-      
     }
   };
 
@@ -70,14 +68,15 @@ const RezerwacjeAdmin = () => {
         setAllEvents(response.data);
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
-        // Obsłuż błąd pobierania danych
       }
     };
 
     fetchAllEvents();
-  }, []);
+  }, [selectedDate]);
 
-
+  const handleDateSelection = (date) => {
+    setSelectedDate(date);
+  };
     return (
       <div className="rezerwacje-admin">
 
@@ -93,7 +92,7 @@ const RezerwacjeAdmin = () => {
               <img className="line" alt="Line" src="https://c.animaapp.com/t0STnSju/img/line-4.svg" />
               <img className="tlo" alt="Tlo" src="https://c.animaapp.com/t0STnSju/img/tlo.png" />
               <div className="text-wrapper-2">Widok administratora</div>
-              <div className="selector-style"><DateSelector/></div>
+              <div className="selector-style"><DateSelector onSelectDate={handleDateSelection} /></div>
               <img className="logo" alt="Logo" src="https://c.animaapp.com/t0STnSju/img/logo.png" />
               <div className="formularz-tlo">
                 <div className="overlap-7"></div>
@@ -113,7 +112,7 @@ const RezerwacjeAdmin = () => {
                      onChange={(e) => setEventTime(e.target.value)}
               /> 
               <div className="text-wrapper-czas">Czas trwania</div>
-              <input type="numer"
+              <input type="number"
                      className="czas-form" 
                      placeholder="Wprowadź czas" 
                      value={eventDuration}

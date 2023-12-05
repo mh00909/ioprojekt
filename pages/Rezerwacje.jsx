@@ -17,7 +17,7 @@ const Rezerwacje = () => {
   const [error, setError] = useState(""); 
   useEffect(() => {
     const fetchAllEvents = async () => {
-      try {
+      try { 
         const response = await api.get('/api/events/all');
         setAllEvents(response.data);
       } catch (error) {

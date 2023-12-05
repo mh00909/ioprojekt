@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Konto.css";
+import api from "../api";
+
 
 const Konto = () => {
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+
+  const userLoginEndpoint = `${apiBaseUrl}/Konto`;
+  const [userData, setUserData] = useState([]);
+
+  const [error, setError] = useState(""); 
+
+
+
+
+  useEffect(() => {
+    // Funkcja do pobrania danych zalogowanego użytkownika z backendu
+    const fetchUserData = async () => {
+      try {
+        const response = await api.get('/Konto');
+        setUserData(response.data);
+      } catch (error) {
+        console.error("Błąd pobierania danych użytkownika:", error);
+      }
+    };
+
+    // Wywołaj funkcję pobierania danych przy pierwszym renderowaniu komponentu
+    fetchUserData();
+  }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
+
   return (
     <div className="konto">
     <div className="div">
@@ -67,7 +94,7 @@ const Konto = () => {
               <div className="text-wrapper-11">Profil użytkownika:</div>
             </div>
           </div>
-          <div className="text-wrapper-12">login</div>
+          <div className="text-wrapper-12">Login: {userData && userData.login}</div>
         </div>
         <div className="przycisk-konto">
           <div className="overlap-9">
