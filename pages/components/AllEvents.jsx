@@ -1,19 +1,18 @@
-
-// components/AllEvents.jsx
-
 import React from 'react';
 import EventItem from './EventItem';
-import './AllEvents.css'; 
+import './AllEvents.css';
 
-const AllEvents = ({ allEvents }) => (
-  <div className="container">
-    {allEvents.map((event) => (
-      <EventItem key={event.id} event={event} className="event-item" />
-    ))}
-  </div>
-);
+const AllEvents = ({ allEvents, selectedDate }) => {
+  // Filtrowanie wydarzeń na podstawie wybranej daty
+  const filteredEvents = allEvents.filter(event => event.date === selectedDate);
+
+  return (
+    <div className="container">
+      {filteredEvents.map((event) => (
+        <EventItem key={event.id} event={event} className="event-item" />
+      ))}
+    </div>
+  );
+};
 
 export default AllEvents;
-
-
-

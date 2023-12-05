@@ -79,12 +79,9 @@ const RezerwacjeAdmin = () => {
   };
     return (
       <div className="rezerwacje-admin">
-
-     
-
         <div className="div">
         <div className="all-events-container">
-        <AllEvents allEvents={allEvents} />
+        <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
       </div>
           <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
           <div className="overlap">

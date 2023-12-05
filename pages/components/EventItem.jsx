@@ -43,12 +43,6 @@ const EventItem = ({ event }) => {
   };
 
 
-
-
-
-
-
-
   const handleCancelEvent = async () => {
     try {
       console.log('Cancelling event with ID:', event.id);
