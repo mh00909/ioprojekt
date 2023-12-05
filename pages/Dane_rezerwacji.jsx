@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Dane_rezerwacji.css";
-import "./PrognozaPogody.css";
 import "../app/globals.css"
-import PrognozaPogody from './PrognozaPogody';
+import PrognozaPogody from './components/PrognozaPogody';
 
 
 

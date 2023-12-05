@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DateSelector from './DateSelector';
-import "./DateSelector.css";
+import DateSelector from './components/DateSelector';
 import "./RezerwacjeAdmin.css";
 import api from "../api";
 import AllEvents from './components/AllEvents';

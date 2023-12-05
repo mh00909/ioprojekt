@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./Rezerwacje.css";
 import "../app/globals.css"
-import DateSelector from './DateSelector';
-import "./DateSelector.css";
+import DateSelector from './components/DateSelector';
 import api from "../api";
 import AllEvents from './components/AllEvents';
 
