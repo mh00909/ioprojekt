@@ -167,15 +167,6 @@ const RezerwacjeAdmin = () => {
       
               <button className="przycisk-dodaj" onClick={handleSubmit} style={{ color: '#ffffff', lineHeight: '0.7'  }}>
                   +
-               {/* <div className="overlap-8">
-                  <img
-                    className="status-guzik-2"
-                    alt="Status guzik"
-                    src="https://c.animaapp.com/t0STnSju/img/status-guzik@2x.png"
-                  />
-                  <div className="text-wrapper-19">dodaj</div>
-                  <img className="add" alt="Add" src="https://c.animaapp.com/t0STnSju/img/add-1@2x.png" />
-    </div>*/}
               </button>
             </div>
             <div className="naglowek-form">
