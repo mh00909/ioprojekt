@@ -3,8 +3,9 @@ import "./Konto.css";
 import api from "../api";
 
 
-const Konto = () => {
+const Konto = ({user}) => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+  console.log('Właściwość user w komponencie Konto:', user);
 
   const userLoginEndpoint = `${apiBaseUrl}/Konto`;
   const [userData, setUserData] = useState([]);
@@ -94,7 +95,11 @@ const Konto = () => {
               <div className="text-wrapper-11">Profil użytkownika:</div>
             </div>
           </div>
-          <div className="text-wrapper-12">Login: {userData && userData.login}</div>
+          {user ? (
+          <div className="text-wrapper-12">Login: {user.name}</div>
+          ) : (
+           <div className="text-wrapper-12">Login: Niezalogowany</div>
+          )}
         </div>
         <div className="przycisk-konto">
           <div className="overlap-9">
