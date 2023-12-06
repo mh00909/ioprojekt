@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+{/**/}import React, { useState, useEffect } from "react";
 import "./Konto.css";
 import api from "../api";
 
@@ -95,11 +95,9 @@ const Konto = ({user}) => {
               <div className="text-wrapper-11">Profil użytkownika:</div>
             </div>
           </div>
-          {user ? (
-          <div className="text-wrapper-12">Login: {user.name}</div>
-          ) : (
-           <div className="text-wrapper-12">Login: Niezalogowany</div>
-          )}
+          <div className="text-wrapper-12">
+            Login: {user ? user.name : "Niezalogowany"}
+          </div>
         </div>
         <div className="przycisk-konto">
           <div className="overlap-9">
@@ -133,3 +131,4 @@ const Konto = ({user}) => {
 };
 
 export default Konto;
+{/**/}
