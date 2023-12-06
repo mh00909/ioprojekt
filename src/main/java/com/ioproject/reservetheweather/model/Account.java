@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// transformuje User do formatu używanego przez SpringSecurity
 
 public class Account implements UserDetails {
     private String name;
@@ -17,12 +18,11 @@ public class Account implements UserDetails {
     private boolean credentialsExpired = false;
     private boolean accountDisabled = false;
     public Account(User user){
-
-        this.name =user.getName();
+        this.name = user.getName();
         this.password = user.getPassword();
-        this.roles = Arrays.stream(user.getRoles().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        String userRole = user.getRoles();
+        this.roles = Collections.singletonList(new SimpleGrantedAuthority(userRole));
+
     }
 
     @Override
