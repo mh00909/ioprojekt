@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
-.bez-rejestracji {
+.without-registration {
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -8,14 +8,14 @@
   width: 100%;
 }
 
-.bez-rejestracji .div {
+.without-registration .container {
   background-color: #ffffff;
   height: 1024px;
   position: relative;
   width: 1440px;
 }
 
-.bez-rejestracji .overlap {
+.without-registration .overlap {
   height: 159px;
   left: 0;
   position: absolute;
@@ -23,7 +23,7 @@
   width: 1433px;
 }
 
-.bez-rejestracji .overlap-group {
+.without-registration .overlap-group {
   height: 159px;
   left: 0;
   position: absolute;
@@ -31,15 +31,7 @@
   width: 1431px;
 }
 
-.bez-rejestracji .line {
-  height: 3px;
-  left: 0;
-  position: absolute;
-  top: 84px;
-  width: 1431px;
-}
-
-.bez-rejestracji .dodaj-nagwek {
+.without-registration .add-header {
   height: 159px;
   left: 42px;
   object-fit: cover;
@@ -48,7 +40,7 @@
   width: 539px;
 }
 
-.bez-rejestracji .przycisk-konto {
+.without-registration .account-button {
   height: 55px;
   left: 683px;
   position: absolute;
@@ -56,13 +48,13 @@
   width: 234px;
 }
 
-.bez-rejestracji .overlap-2 {
+.without-registration .overlap-2 {
   height: 58px;
   position: relative;
   width: 236px;
 }
 
-.bez-rejestracji .domek {
+.without-registration .house {
   height: 58px;
   left: 6px;
   object-fit: cover;
@@ -71,7 +63,7 @@
   width: 62px;
 }
 
-.bez-rejestracji .overlap-group-wrapper {
+.without-registration .overlap-group-wrapper {
   height: 55px;
   left: 0;
   position: absolute;
@@ -79,23 +71,23 @@
   width: 236px;
 }
 
-.bez-rejestracji .overlap-group-2 {
+.without-registration .overlap-group-2 {
   border-radius: 20px;
   height: 55px;
   position: relative;
   width: 234px;
 }
 
-.bez-rejestracji .text-wrapper,
-.bez-rejestracji .div-wrapper,
-.bez-rejestracji .text-wrapper-2,
-.bez-rejestracji .text-wrapper-3,
-.bez-rejestracji .text-wrapper-4,
-.bez-rejestracji .text-wrapper-5 {
+.without-registration .text-wrapper,
+.without-registration .div-wrapper,
+.without-registration .text-wrapper-2,
+.without-registration .text-wrapper-3,
+.without-registration .text-wrapper-4,
+.without-registration .text-wrapper-5 {
   font-family: "Source Serif Pro", Helvetica;
 }
 
-.bez-rejestracji .text-wrapper {
+.without-registration .text-wrapper {
   color: #000000;
   font-size: 24px;
   font-weight: 400;
@@ -107,7 +99,7 @@
   width: 136px;
 }
 
-.bez-rejestracji .rectangle {
+.without-registration .rectangle {
   background-color: #d9d9d933;
   border-radius: 20px;
   box-shadow: 0px 4px 4px #00000040;
@@ -118,7 +110,7 @@
   width: 234px;
 }
 
-.bez-rejestracji .przycisk-kontakt {
+.without-registration .contact-button {
   height: 55px;
   left: 1197px;
   position: absolute;
@@ -126,7 +118,7 @@
   width: 236px;
 }
 
-.bez-rejestracji .div-wrapper {
+.without-registration .div-wrapper {
   background-color: #d9d9d933;
   border-radius: 20px;
   box-shadow: 0px 4px 4px #00000040;
@@ -135,7 +127,7 @@
   width: 234px;
 }
 
-.bez-rejestracji .text-wrapper-2 {
+.without-registration .text-wrapper-2 {
   color: #000000;
   font-size: 24px;
   font-weight: 400;
@@ -147,7 +139,7 @@
   width: 96px;
 }
 
-.bez-rejestracji .przycisk-informacje {
+.without-registration .info-button {
   height: 55px;
   left: 940px;
   position: absolute;
@@ -155,7 +147,7 @@
   width: 236px;
 }
 
-.bez-rejestracji .text-wrapper-3 {
+.without-registration .text-wrapper-3 {
   color: #000000;
   font-size: 24px;
   font-weight: 400;
@@ -167,7 +159,7 @@
   width: 125px;
 }
 
-.bez-rejestracji .p {
+.without-registration .p {
   color: #000000;
   font-size: 15px;
   font-weight: 400;
@@ -181,7 +173,7 @@
   width: 414px;
 }
 
-.bez-rejestracji .overlap-3 {
+.without-registration .overlap-3 {
   background-image: url(https://c.animaapp.com/S851EPP9/img/dodaj-nag--wek--9--1.png);
   background-position: 50% 50%;
   background-size: cover;
@@ -192,7 +184,7 @@
   width: 1440px;
 }
 
-.bez-rejestracji .group {
+.without-registration .group {
   height: 61px;
   left: 309px;
   position: absolute;
@@ -200,13 +192,13 @@
   width: 273px;
 }
 
-.bez-rejestracji .overlap-group-3 {
+.without-registration .overlap-group-3 {
   height: 61px;
   position: relative;
   width: 271px;
 }
 
-.bez-rejestracji .rectangle-2 {
+.without-registration .rectangle-2 {
   background-color: #d9d9d9;
   box-shadow: 0px 4px 4px #00000040;
   height: 61px;
@@ -216,7 +208,7 @@
   width: 271px;
 }
 
-.bez-rejestracji .text-wrapper-4 {
+.without-registration .text-wrapper-4 {
   color: #f5f5f5;
   font-size: 35px;
   font-weight: 400;
@@ -229,7 +221,7 @@
   width: 99px;
 }
 
-.bez-rejestracji .text-wrapper-5 {
+.without-registration .text-wrapper-5 {
   color: #000000;
   font-size: 30px;
   font-weight: 400;
@@ -240,4 +232,14 @@
   text-align: center;
   top: 192px;
   width: 507px;
+}
+
+@media only screen and (max-width: 768px) {
+  .without-registration .text-wrapper,
+  .without-registration .text-wrapper-2,
+  .without-registration .text-wrapper-3,
+  .without-registration .text-wrapper-4,
+  .without-registration .text-wrapper-5 {
+    font-size: 18px; 
+  }
 }

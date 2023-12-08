@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DateSelector from './components/DateSelector';
-import "./RezerwacjeAdmin.css";
+import "./AdminPanel.css";
 import api from "../api";
 import AllEvents from './components/AllEvents';
 
 
-const RezerwacjeAdmin = () => {
+const AdminPanel = () => {
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
   const [eventDuration, setEventDuration] = useState("");
@@ -19,7 +19,6 @@ const RezerwacjeAdmin = () => {
   const [selectedDate, setSelectedDate] = useState("");
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
-  {/*Tu pod spodem jak bedziemy mieć endpoint do dodania zajęć będzie można go wpisać*/}
   const addEventEndpoint = `${apiBaseUrl}/addEvent`;
 
 
@@ -49,9 +48,9 @@ const RezerwacjeAdmin = () => {
       const response = await api.post('/addEvent', formData);
       if (response.data === "Strona domowa") {
         console.log('Udało się dodać zajęcia', response.data)
-        window.location.href = '/RezerwacjeAdmin';
+        window.location.href = '/AdminPanel';
       } else {
-        window.location.href = '/RezerwacjeAdmin';
+        window.location.href = '/AdminPanel';
         setError("Niepoprawne dane. Spróbuj ponownie.");
       }
     } catch (error) {
@@ -77,7 +76,7 @@ const RezerwacjeAdmin = () => {
     setSelectedDate(date);
   };
     return (
-      <div className="rezerwacje-admin">
+      <div className="admin-panel">
         <div className="div">
         <div className="all-events-container">
         <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
@@ -100,30 +99,30 @@ const RezerwacjeAdmin = () => {
                      value={eventDate}
                      onChange={(e) => setEventDate(e.target.value)}
               />
-              <div className="text-wrapper-godzina">Godzina</div>
+              <div className="text-wrapper-time">Godzina</div>
               <input type="time"
-                     className="godzina-form"
+                     className="time-form"
                      placeholder="Wprowadź godzinę"
                      value={eventTime}
                      onChange={(e) => setEventTime(e.target.value)}
               /> 
-              <div className="text-wrapper-czas">Czas trwania</div>
+              <div className="text-wrapper-duration">Czas trwania</div>
               <input type="number"
-                     className="czas-form" 
+                     className="duration-form" 
                      placeholder="Wprowadź czas" 
                      value={eventDuration}
                      onChange={(e) => setEventDuration(e.target.value)}
               /> 
-              <div className="text-wrapper-miejsca">Miejsca</div>
+              <div className="text-wrapper-maxusers">Miejsca</div>
               <input type="number" 
-                     className="miejsce-form" 
+                     className="maxusers-form" 
                      placeholder="Podaj max osób" 
                      value={maxUsers}
                      onChange={(e) => setMaxUsers(e.target.value)}
               /> 
-              <div className="text-wrapper-lokalizacja">Lokalizacja</div>
+              <div className="text-wrapper-location">Lokalizacja</div>
               <input type="text" 
-                     className="lokalizacja-form" 
+                     className="location-form" 
                     placeholder="Podaj lokalizację" 
                     value={eventLocation}
                     onChange={(e) => setEventLocation(e.target.value)}
@@ -137,38 +136,38 @@ const RezerwacjeAdmin = () => {
               /> 
               <div className="text-wrapper-maxtemp">Maksymalna temperatura</div>
               <input type="number"
-                     className="maxtemp-form" 
+                    className="maxtemp-form" 
                     placeholder="Ile °C?" 
                     value={eventMaxTemperature}
                     onChange={(e) => setMaxTemperature(e.target.value)}
               /> 
-              <div className="text-wrapper-cena">Cena</div>
+              <div className="text-wrapper-price">Cena</div>
               <input type="number"
-                     className="cena-form"
+                     className="price-form"
                      placeholder="Podaj cenę?"
                      value={eventPrice}
                      onChange={(e) => setEventPrice(e.target.value)}
               /> 
-              <div className="text-wrapper-opis">Opis</div>
+              <div className="text-wrapper-description">Opis</div>
               <input type="text"
-                     className="opis-form"
+                     className="description-form"
                      placeholder="Podaj opis zajęć"
                      value={eventDescription}
                      onChange={(e) => setEventDescription(e.target.value)}
               /> 
-              <div className="text-wrapper-nazwa">Nazwa</div>
+              <div className="text-wrapper-name">Nazwa</div>
               <input type="text" 
-                     className="nazwa-form" 
+                     className="name-form" 
                      placeholder="Jaki to typ zajęć?" 
                      value={eventName}
                      onChange={(e) => setEventName(e.target.value)}
               /> 
       
-              <button className="przycisk-dodaj" onClick={handleSubmit} style={{ color: '#ffffff', lineHeight: '0.7'  }}>
+              <button className="button-add" onClick={handleSubmit} style={{ color: '#ffffff', lineHeight: '0.7'  }}>
                   +
               </button>
             </div>
-            <div className="naglowek-form">
+            <div className="header-form">
               <div className="div-wrapper">
                 <p className="p">W celu dodania zajęć wypełnij poniższy formularz:</p>
               </div>
@@ -179,4 +178,4 @@ const RezerwacjeAdmin = () => {
     );
   };
   
-export default RezerwacjeAdmin;  
+export default AdminPanel;  

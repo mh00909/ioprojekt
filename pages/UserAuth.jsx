@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./Logowanie.css";
+import "./UserAuth.css";
 import api from "../api";
 
 
 //obsłuży logowanie i rejestracje
-const Logowanie = () => {
+const UserAuth = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
@@ -30,15 +30,15 @@ const Logowanie = () => {
       const response = await api.post('/login', formData);
       if(response.data == "Strona user"){
         console.log('Udało się zalogować user', response.data);
-        window.location.href = '/Konto';
+        window.location.href = '/Account';
       }
       else if(response.data == "Strona admina"){
         console.log('Udało się zalogować admin', response.data);
-        window.location.href = '/RezerwacjeAdmin';
+        window.location.href = '/AdminPanel';
       }
       else{
         // niepoprawne dane logowania
-        window.location.href = '/Glowna';
+        window.location.href = '/Main';
         setError("Niepoprawne logowania. Spróbuj ponownie.");
       }
 
@@ -64,7 +64,7 @@ const Logowanie = () => {
       const response = await api.post("/Rejestracja", formData);
 
        if(response.data == "Udało się"){
-          window.location.href = '/Konto';
+          window.location.href = '/Account';
        }
        else {
          // zajęty mail lub login
@@ -95,7 +95,7 @@ const Logowanie = () => {
 
   return (
     
-    <div className="logowanie"> {/*To spina calosc*/}
+    <div className="user-auth"> 
         <img
           className="rights_reserved"
           alt="Rights_reserved"
@@ -106,14 +106,14 @@ const Logowanie = () => {
           alt="Logo"
           src="https://c.animaapp.com/lc2qlH2F/img/dodaj-nag--wek--12--1.png"
         />
-        <img className="chmurki" alt="Chmurki" src="https://c.animaapp.com/x6s48Cpz/img/rectangle-17.png" />
+        <img className="clouds" alt="Chmurki" src="https://c.animaapp.com/x6s48Cpz/img/rectangle-17.png" />
         
         <img
           className="masz-ju-konto"
           alt="Masz ju konto"
           src="https://c.animaapp.com/x6s48Cpz/img/masz-ju--konto-.png"
         />
-        <div className="formularz_logowania">
+        <div className="login-form">
         <button className="przycisk-zaloguj" onClick={handleSubmit}>
           <img
             className="zaloguj_tlo"
@@ -127,7 +127,7 @@ const Logowanie = () => {
           />
           </button>
           <img
-            className="tlo_formularza"
+            className="background-form"
             alt="Tlo_formularza"
             src="https://c.animaapp.com/lc2qlH2F/img/rectangle-6.png"
           />
@@ -160,7 +160,7 @@ const Logowanie = () => {
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>
-          <div className="rejestracja">
+          <div className="registration">
       {/* Formularz rejestracji */}
       <img
             className="tlo_formalarza_r formularz_rejestracji"
@@ -174,7 +174,7 @@ const Logowanie = () => {
         onChange={(e) => setRegisterUsername(e.target.value)}  
       />
       </div>
-          <form className="rejestracja">
+          <form className="registration">
             <input
               type="email" 
               placeholder="" 
@@ -182,7 +182,7 @@ const Logowanie = () => {
               onChange={(e) => setRegisterMail(e.target.value)}
             />
           </form>
-           <form className="rejestracja">
+           <form className="registration">
             <input
               type="password" 
               placeholder="" 
@@ -190,7 +190,7 @@ const Logowanie = () => {
               onChange={(e) => setRegisterPassword(e.target.value)}
             />
           </form>
-          <form className="rejestracja">
+          <form className="registration">
             <input
               type="tel" 
               placeholder="" 
@@ -200,13 +200,13 @@ const Logowanie = () => {
           </form>
           <button className="przycisk-zarejestruj" onClick={handleRegisterSubmit}>
           <img
-            className="zarejestruj_tlo"
+            className="register-background"
             alt="Zarejestruj_tlo"
             src="https://c.animaapp.com/x6s48Cpz/img/rectangle-16.png"
           />
           <img
-            className="zarejestruj-si"
-            alt="Zarejestruj si"
+            className="register"
+            alt="Register"
             src="https://c.animaapp.com/x6s48Cpz/img/zarejestruj-si-.png"
           />
           </button>
@@ -221,29 +221,29 @@ const Logowanie = () => {
             src="https://c.animaapp.com/x6s48Cpz/img/mail.png"
           />
           <img
-            className="haso-2"
+            className="password-2"
             alt="Haso"
             src="https://c.animaapp.com/x6s48Cpz/img/has-o-1.png"
           />
           <img
-            className="numer-telefonu"
-            alt="Numer telefonu"
+            className="phone-number"
+            alt="Phone Number"
             src="https://c.animaapp.com/x6s48Cpz/img/numer-telefonu.png"
           />
           <img
-            className="wyprbuj-za-darmo"
-            alt="Wyprbuj za darmo"
+            className="try_for_free"
+            alt="Try for free"
             src="https://c.animaapp.com/x6s48Cpz/img/wypr-buj-za-darmo.png"
           />
         </div>
         <img
-          className="telefon_ikonka"
-          alt="Telefon_ikonka"
+          className="phone_icon"
+          alt="Phone_icon"
           src="https://c.animaapp.com/lc2qlH2F/img/image-3.png"
         />
         <img
-          className="email_ikonka"
-          alt="Email_ikonka"
+          className="email_icon"
+          alt="Email_icon"
           src="https://c.animaapp.com/lc2qlH2F/img/image-1.png"
         />
         <img
@@ -252,8 +252,8 @@ const Logowanie = () => {
           src="https://c.animaapp.com/lc2qlH2F/img/reservetheweather-gmail-com.png"
         />
         <img
-          className="telefon"
-          alt="Telefon"
+          className="phone"
+          alt="Phone"
           src="https://c.animaapp.com/lc2qlH2F/img/-48-517-574-182.png"
         />
     </div>
@@ -261,4 +261,4 @@ const Logowanie = () => {
 };
 
 
-export default Logowanie;
+export default UserAuth;

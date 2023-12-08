@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import "./Rezerwacje.css";
+import "./Reservations.css";
 import "../app/globals.css"
 import DateSelector from './components/DateSelector';
 import api from "../api";
 import AllEvents from './components/AllEvents';
 
-const Rezerwacje = () => {
+const Reservations = () => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
 
@@ -32,7 +32,7 @@ const Rezerwacje = () => {
   };
 
   return (
-    <div className="rezerwacje">
+    <div className="reservations">
       <div className="overlap-wrapper">
         <div className="overlap">
           <div className="overlap-group">
@@ -41,17 +41,17 @@ const Rezerwacje = () => {
             <div className="all-events-container">
               <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
             </div>
-            <img className="tlo" alt="Tlo" src="https://c.animaapp.com/iiOpoSVt/img/tlo.png" />
+            <img className="background" alt="Tlo" src="https://c.animaapp.com/iiOpoSVt/img/tlo.png" />
             <div className="div">
               <DateSelector onSelectDate={handleDateSelection} />
             </div>
             <img className="logo" alt="Logo" src="https://c.animaapp.com/iiOpoSVt/img/logo.png" />
           </div>
-          <a href="/Konto">
-            <div className="przycisk-konto">
+          <a href="/Account">
+            <div className="button-account">
               <div className="overlap-4">
-                <img className="domek" alt="Domek" src="https://c.animaapp.com/iiOpoSVt/img/domek.png" />
-                <div className="przycisk-konto-2">
+                <img className="Home" alt="Domek" src="https://c.animaapp.com/iiOpoSVt/img/domek.png" />
+                <div className="button-account-2">
                   <div className="overlap-group-3">
                     <div className="text-wrapper-8">Moje Konto</div>
                     <div className="rectangle" />
@@ -60,15 +60,15 @@ const Rezerwacje = () => {
               </div>
             </div>
           </a>
-          <a href="/Kontakt">
-            <div className="przycisk-kontakt">
+          <a href="/Contact">
+            <div className="button-contact">
               <div className="overlap-5">
                 <div className="text-wrapper-9">Kontakt</div>
               </div>
             </div>
           </a>
-          <a href="/Informacje">
-            <div className="przycisk-informacje">
+          <a href="/Information">
+            <div className="button-information">
               <div className="overlap-5">
                 <div className="text-wrapper-10">Informacje</div>
               </div>
@@ -80,4 +80,4 @@ const Rezerwacje = () => {
   );
 };
 
-export default Rezerwacje;
+export default Reservations;

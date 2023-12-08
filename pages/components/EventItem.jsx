@@ -1,5 +1,5 @@
 // components/EventItem.jsx
-
+/*Odwoływanie zajęc teorytycznie działa kiedy w endpoincie w javie nie ma preauthorize*/
 import React, { useState } from 'react';
 import './EventItem.css'; 
 
@@ -43,6 +43,7 @@ const EventItem = ({ event }) => {
   };
 
 
+ 
   const handleCancelEvent = async () => {
     try {
       console.log('Cancelling event with ID:', event.id);
@@ -58,11 +59,11 @@ const EventItem = ({ event }) => {
 
       if (response.ok) {
         console.log('Event cancelled successfully');
-        // Tutaj jescze dodam kod do odświeżania listy wydarzeń po pomyślnym usunięciu
+        // Tutaj jeszcze dodam kod do odświeżania listy wydarzeń po pomyślnym usunięciu
       } else {
         console.error('Failed to cancel event');
         console.log('Error details:', response.status, response.statusText);
-      } 
+      }
     } catch (error) {
       console.error('Error cancelling event:', error);
       console.log('Error details:', error);

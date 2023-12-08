@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
-.logowanie {
+.user-auth {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -8,7 +8,7 @@
     width: 100%;
   }
   
-  .logowanie .rights_reserved {
+  .user-auth .rights_reserved {
     height: 15px;
     left: 590px;
     position: absolute;
@@ -16,7 +16,7 @@
     width: 314px;
   }
   
-  .logowanie .logo {
+  .user-auth .logo {
     height: 159px;
     left: 42px;
     object-fit: cover;
@@ -25,7 +25,7 @@
     width: 539px;
   }
   
-  .logowanie .chmurki {
+  .user-auth .clouds {
     height: 805px;
     left: -20px;
     object-fit: cover;
@@ -34,7 +34,7 @@
     width: 2000px;
   }
 
-  .logowanie .masz-ju-konto {
+  .user-auth .masz-ju-konto {
     height: 79px;
     left: 400px;
     position: absolute;
@@ -42,7 +42,7 @@
     width: 554px;
   }
   
-  .logowanie .formularz_logowania {
+  .user-auth .login-form {
     height: 348px;
     left: 157px;
     position: absolute;
@@ -69,7 +69,7 @@
     border-radius: 20px;
   }
 
-  .logowanie .zaloguj-si {
+  .user-auth .zaloguj-si {
     width: 65%;
     position: absolute;
     text-align: center;
@@ -78,7 +78,7 @@
   
   
   
-  .logowanie .tlo_formularza {
+  .user-auth .background-form {
     height: 274px;
     left: 283px;
     position: absolute;
@@ -86,7 +86,7 @@
     width: 576px;
   }
   
-  .logowanie .login {
+  .user-auth .login {
     height: 34px;
     left: 330px;
     position: absolute;
@@ -94,7 +94,7 @@
     width: 87px;
   }
   
-  .logowanie .haso {
+  .user-auth .haso {
     height: 26px;
     left: 330px;
     position: absolute;
@@ -102,7 +102,7 @@
     width: 86px;
   }
   
-  .logowanie .overlap {
+  .user-auth .overlap {
     height: 595px;
     left: 862px;
     position: absolute;
@@ -127,7 +127,7 @@
   }
 
 
-  .logowanie input[type="password"] {
+  .user-auth input[type="password"] {
     left: -377px;
     width: 409px;
     height: 33px;
@@ -139,7 +139,7 @@
   
 
  
-  .rejestracja input {
+  .registration input {
     left: 331px;
     width: 409px;
     height: 37px;
@@ -149,7 +149,7 @@
     outline: none;
   }
 
-  .rejestracja input[type="email"]{
+  .registration input[type="email"]{
     left: 331px;
     width: 409px;
     height: 37px;
@@ -159,11 +159,11 @@
     outline: none;
   }
 
-  .rejestracja input:focus {
+  .registration input:focus {
     outline: none; 
   }
 
-  .rejestracja input[type="password"]{
+  .registration input[type="password"]{
     left: 331px;
     width: 409px;
     height: 37px;
@@ -173,7 +173,7 @@
     outline: none;
   }
 
-  .rejestracja input[type="tel"]{
+  .registration input[type="tel"]{
     left: 331px;
     width: 409px;
     height: 37px;
@@ -184,7 +184,7 @@
   }
 
 
-  .logowanie .tlo_formularza_r {
+  .user-auth .tlo_formularza_r {
     position: absolute;
     height: 465px;
     left: 500px;
@@ -192,7 +192,7 @@
     width: 507px;
   }
 
-  .logowanie .formularz_rejestracji {
+  .user-auth .formularz_rejestracji {
     position: absolute;
     height: 465px;
     left: 280px; 
@@ -220,12 +220,12 @@
 
   }
   
-  .przycisk-zarejestruj .zarejestruj_tlo {
+  .przycisk-zarejestruj .register-background {
     height: 67px;
     width: 336px;
   }
   
-  .przycisk-zarejestruj .zarejestruj-si {
+  .przycisk-zarejestruj .register {
     color: rgb(148, 36, 36);
     height: 40px;
     line-height: 42px;
@@ -238,7 +238,7 @@
   }
   
 
-  .logowanie .login_r {
+  .user-auth .login_r {
     height: 34px;
     left: 336px;
     position: absolute;
@@ -246,7 +246,7 @@
     width: 87px;
   }
   
-  .logowanie .haso-2 {
+  .user-auth .password-2 {
     height: 26px;
     left: 336px;
     position: absolute;
@@ -254,7 +254,7 @@
     width: 86px;
   }
   
-  .logowanie .numer-telefonu {
+  .user-auth .phone-number {
     height: 27px;
     left: 336px;
     position: absolute;
@@ -262,7 +262,7 @@
     width: 245px;
   }
   
-  .logowanie .mail {
+  .user-auth .mail {
     height: 26px;
     left: 336px;
     position: absolute;
@@ -270,7 +270,7 @@
     width: 67px;
   }
   
-  .logowanie .wyprbuj-za-darmo {
+  .user-auth .try_for_free {
     height: 62px;
     left: 300px;
     position: absolute;
@@ -278,7 +278,7 @@
     width: 477px;
   }
   
-  .logowanie .telefon_ikonka {
+  .user-auth .phone_icon {
     height: 39px;
     left: 1219px;
     object-fit: cover;
@@ -287,7 +287,7 @@
     width: 38px;
   }
   
-  .logowanie .email_ikonka {
+  .user-auth .email_icon {
     height: 36px;
     left: 743px;
     object-fit: cover;
@@ -296,7 +296,7 @@
     width: 61px;
   }
   
-  .logowanie .email {
+  .user-auth .email {
     height: 23px;
     left: 813px;
     position: absolute;
@@ -304,7 +304,7 @@
     width: 351px;
   }
   
-  .logowanie .telefon {
+  .user-auth .phone {
     height: 19px;
     left: 1266px;
     position: absolute;
@@ -312,6 +312,6 @@
     width: 152px;
   }
   
-  .logowanie .logowanie_cal {
+  .user-auth .user-auth_cal {
     left: 150px;
   }

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
 
-.rezerwacje-admin {
+.admin-panel {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -8,14 +8,14 @@
     width: 100%;
   }
   
-  .rezerwacje-admin .div {
+  .admin-panel .div {
     background-color: #ffffff;
     height: 1024px;
     position: relative;
     width: 1440px;
   }
   
-  .rezerwacje-admin .text-wrapper {
+  .admin-panel .text-wrapper {
     color: #000000;
     font-size: 15px;
     font-weight: 400;
@@ -29,7 +29,7 @@
     width: 414px;
   }
   
-  .rezerwacje-admin .overlap {
+  .admin-panel .overlap {
     height: 958px;
     left: 0;
     position: absolute;
@@ -37,7 +37,7 @@
     width: 1440px;
   }
   
-  .rezerwacje-admin .overlap-group {
+  .admin-panel .overlap-group {
     height: 958px;
     left: 0;
     position: absolute;
@@ -45,7 +45,7 @@
     width: 1440px;
   }
   
-  .rezerwacje-admin .line {
+  .admin-panel .line {
     height: 3px;
     left: 0;
     position: absolute;
@@ -53,7 +53,7 @@
     width: 1431px;
   }
   
-  .rezerwacje-admin .tlo {
+  .admin-panel .tlo {
     height: 840px;
     left: 0;
     object-fit: cover;
@@ -62,7 +62,7 @@
     width: 1440px;
   }
   
-  .rezerwacje-admin .text-wrapper-2 {
+  .admin-panel .text-wrapper-2 {
     color: #000000;
     font-size: 43px;
     font-weight: 400;
@@ -74,7 +74,7 @@
     top: 271px;
   }
   
-  .rezerwacje-admin .logo {
+  .admin-panel .logo {
     height: 159px;
     left: 42px;
     object-fit: cover;
@@ -83,7 +83,7 @@
     width: 539px;
   }
   
-  .rezerwacje-admin .wydarzenie {
+  .admin-panel .wydarzenie {
     height: 186px;
     left: 73px;
     position: absolute;
@@ -91,14 +91,14 @@
     width: 657px;
   }
   
-  .rezerwacje-admin .overlap-2 {
+  .admin-panel .overlap-2 {
     background-color: #f5f5f5;
     height: 186px;
     position: relative;
     width: 641px;
   }
   
-  .rezerwacje-admin .text-wrapper-3 {
+  .admin-panel .text-wrapper-3 {
     color: #000000;
     font-size: 21px;
     font-weight: 400;
@@ -112,7 +112,7 @@
     width: 73px;
   }
   
-  .rezerwacje-admin .overlap-3 {
+  .admin-panel .overlap-3 {
     height: 27px;
     left: 228px;
     position: absolute;
@@ -120,7 +120,7 @@
     width: 141px;
   }
   
-  .rezerwacje-admin .text-wrapper-4 {
+  .admin-panel .text-wrapper-4 {
     color: #000000;
     font-size: 20px;
     font-weight: 400;
@@ -134,7 +134,7 @@
     width: 117px;
   }
   
-  .rezerwacje-admin .map {
+  .admin-panel .map {
     height: 27px;
     left: 0;
     object-fit: cover;
@@ -143,7 +143,7 @@
     width: 27px;
   }
   
-  .rezerwacje-admin .text-wrapper-5 {
+  .admin-panel .text-wrapper-5 {
     color: #000000;
     font-size: 21px;
     font-weight: 400;
@@ -156,7 +156,7 @@
     width: 82px;
   }
   
-  .rezerwacje-admin .overlap-4 {
+  .admin-panel .overlap-4 {
     height: 88px;
     left: 7px;
     position: absolute;
@@ -164,7 +164,7 @@
     width: 131px;
   }
   
-  .rezerwacje-admin .text-wrapper-6 {
+  .admin-panel .text-wrapper-6 {
     color: #8faeca;
     font-size: 30px;
     font-weight: 400;
@@ -178,7 +178,7 @@
     width: 117px;
   }
   
-  .rezerwacje-admin .text-wrapper-7 {
+  .admin-panel .text-wrapper-7 {
     color: #000000;
     font-size: 28px;
     font-weight: 400;
@@ -191,7 +191,7 @@
     width: 119px;
   }
   
-  .rezerwacje-admin .text-wrapper-8 {
+  .admin-panel .text-wrapper-8 {
     color: #000000;
     font-size: 24px;
     font-weight: 400;
@@ -204,7 +204,7 @@
     width: 178px;
   }
   
-  .rezerwacje-admin .users {
+  .admin-panel .users {
     height: 23px;
     left: 231px;
     object-fit: cover;
@@ -212,23 +212,16 @@
     top: 56px;
     width: 24px;
   }
+
   
-  .rezerwacje-admin .przycisk-usun {
-    height: 31px;
-    left: 487px;
-    position: absolute;
-    top: 141px;
-    width: 145px;
-  }
-  
-  .rezerwacje-admin .overlap-group-2 {
+  .admin-panel .overlap-group-2 {
     height: 38px;
     left: -4px;
     position: relative;
     width: 147px;
   }
   
-  .rezerwacje-admin .status-guzik {
+  .admin-panel .status-guzik {
     height: 38px;
     left: 0;
     position: absolute;
@@ -236,7 +229,7 @@
     width: 145px;
   }
   
-  .rezerwacje-admin .trash {
+  .admin-panel .trash {
     height: 20px;
     left: 15px;
     object-fit: cover;
@@ -245,7 +238,7 @@
     width: 21px;
   }
   
-  .rezerwacje-admin .text-wrapper-9 {
+  .admin-panel .text-wrapper-9 {
     color: #f5f5f5;
     font-size: 22px;
     font-weight: 400;
@@ -258,22 +251,16 @@
     width: 132px;
   }
   
-  .rezerwacje-admin .przycisk-przeloz {
-    height: 32px;
-    left: 488px;
-    position: absolute;
-    top: 100px;
-    width: 144px;
-  }
+
   
-  .rezerwacje-admin .overlap-5 {
+  .admin-panel .overlap-5 {
     height: 38px;
     left: -4px;
     position: relative;
     width: 146px;
   }
   
-  .rezerwacje-admin .img {
+  .admin-panel .img {
     height: 38px;
     left: 0;
     position: absolute;
@@ -281,7 +268,7 @@
     width: 146px;
   }
   
-  .rezerwacje-admin .pencil {
+  .admin-panel .pencil {
     height: 24px;
     left: 13px;
     object-fit: cover;
@@ -290,7 +277,7 @@
     width: 22px;
   }
   
-  .rezerwacje-admin .text-wrapper-10 {
+  .admin-panel .text-wrapper-10 {
     color: #f5f5f5;
     font-size: 22px;
     font-weight: 400;
@@ -303,7 +290,7 @@
     width: 133px;
   }
   
-  .rezerwacje-admin .overlap-6 {
+  .admin-panel .overlap-6 {
     height: 93px;
     left: 481px;
     position: absolute;
@@ -311,7 +298,7 @@
     width: 150px;
   }
   
-  .rezerwacje-admin .data-rect {
+  .admin-panel .data-rect {
     height: 30px;
     left: 2px;
     position: absolute;
@@ -319,7 +306,7 @@
     width: 148px;
   }
   
-  .rezerwacje-admin .godzina-rect {
+  .admin-panel .godzina-rect {
     height: 30px;
     left: 1px;
     position: absolute;
@@ -327,7 +314,7 @@
     width: 148px;
   }
   
-  .rezerwacje-admin .text-wrapper-11 {
+  .admin-panel .text-wrapper-11 {
     color: #000000;
     font-size: 21px;
     font-weight: 400;
@@ -340,7 +327,7 @@
     width: 56px;
   }
   
-  .rezerwacje-admin .text-wrapper-12 {
+  .admin-panel .text-wrapper-12 {
     color: #000000;
     font-size: 21px;
     font-weight: 400;
@@ -353,7 +340,7 @@
     width: 94px;
   }
   
-  .rezerwacje-admin .overlap-wrapper {
+  .admin-panel .overlap-wrapper {
     height: 186px;
     left: 73px;
     position: absolute;
@@ -361,7 +348,7 @@
     width: 657px;
   }
   
-  .rezerwacje-admin .overlap-group-wrapper {
+  .admin-panel .overlap-group-wrapper {
     height: 186px;
     left: 732px;
     position: absolute;
@@ -369,7 +356,7 @@
     width: 657px;
   }
   
-  .rezerwacje-admin .formularz-tlo {
+  .admin-panel .formularz-tlo {
     height: 168px;
     left: 772px;
     position: absolute;
@@ -377,7 +364,7 @@
     width: 645px;
   }
   
-  .rezerwacje-admin .overlap-7 {
+  .admin-panel .overlap-7 {
     background-color: #f5f5f5;
     border-radius: 20px;
     height: 168px;
@@ -385,7 +372,7 @@
     width: 641px;
   }
   
-  .rezerwacje-admin .text-wrapper-miejsca {
+  .admin-panel .text-wrapper-maxusers {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -399,7 +386,7 @@
     width: 73px;
   }
 
-  .rezerwacje-admin .miejsce-form {
+  .admin-panel .maxusers-form {
     height: 21px;
     left: 990px;
     position: absolute;
@@ -411,11 +398,11 @@
   }
   
   
-  .rezerwacje-admin .lokalizacja-form {
+  .admin-panel .location-form {
     height: 21px;
     left: 990px;
     position: absolute;
-    top: 189px;
+    top: 192px;
     width: 153px;
     border: none;
     outline: none;
@@ -423,10 +410,10 @@
   }
 
     
-  .rezerwacje-admin .maxtemp-form {
+  .admin-panel .maxtemp-form {
     height: 21px;
     position: absolute;
-    top: 150px;
+    top: 155px;
     width: 153px;
     border: none;
     outline: none;
@@ -434,10 +421,10 @@
     font-size: 14px;
   }
 
-  .rezerwacje-admin .mintemp-form {
+  .admin-panel .mintemp-form {
     height: 21px;
     position: absolute;
-    top: 108px;
+    top: 112px;
     width: 153px;
     border: none;
     outline: none;
@@ -446,7 +433,7 @@
   }
   
   
-  .rezerwacje-admin .text-wrapper-godzina {
+  .admin-panel .text-wrapper-time {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -460,7 +447,7 @@
     width: 106px;
   }
 
-  .rezerwacje-admin .godzina-form {
+  .admin-panel .time-form {
     height: 12px;
     left: 803px;
     position: absolute;
@@ -472,7 +459,7 @@
     outline: none;
   }
   
-  .rezerwacje-admin .text-wrapper-lokalizacja {
+  .admin-panel .text-wrapper-location {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -516,7 +503,7 @@
 
   }
 
-  .rezerwacje-admin .text-wrapper-czas {
+  .admin-panel .text-wrapper-duration {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -531,7 +518,7 @@
   }
 
    
-  .rezerwacje-admin .czas-form {
+  .admin-panel .duration-form {
     height: 12px;
     left: 803px;
     position: absolute;
@@ -544,7 +531,7 @@
   }
   
   
-  .rezerwacje-admin .text-wrapper-opis {
+  .admin-panel .text-wrapper-description {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -558,18 +545,18 @@
     width: 117px;
   }
 
-  .rezerwacje-admin .opis-form {
+  .admin-panel .description-form {
     height: 19px;
     left: 803px;
     position: absolute;
-    top: 228px;
+    top: 230px;
     width: 150px;
     border: none;
     outline: none;
     font-size: 14px;
   }
   
-  .rezerwacje-admin .text-wrapper-data {
+  .admin-panel .text-wrapper-data {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -582,11 +569,11 @@
     width: 245px;
   }
 
-  .rezerwacje-admin .data-form:focus {
+  .admin-panel .data-form:focus {
     outline: none; 
 }
 
-.rezerwacje-admin .data-form {
+.admin-panel .data-form {
   height: 12px;
   left: 803px;
   position: absolute;
@@ -598,7 +585,7 @@
   outline: none;
 }
 
-.rezerwacje-admin .text-wrapper-nazwa {
+.admin-panel .text-wrapper-name {
   color: #000000;
   font-size: 17px;
   font-weight: 400;
@@ -611,7 +598,7 @@
   width: 245px;
 }
 
-  .rezerwacje-admin .nazwa-form {
+  .admin-panel .name-form {
     height: 21px;
     left: 990px;
     position: absolute;
@@ -622,7 +609,7 @@
     font-size: 14px;
   }
   
-  .rezerwacje-admin .text-wrapper-cena {
+  .admin-panel .text-wrapper-price {
     color: #000000;
     font-size: 17px;
     font-weight: 400;
@@ -635,18 +622,18 @@
     width: 245px;
   }
 
-  .rezerwacje-admin .cena-form {
+  .admin-panel .price-form {
     height: 19px;
     left: 990px;
     position: absolute;
-    top: 228px;
+    top: 230px;
     width: 153px;
     border: none;
     outline: none;
     font-size: 14px;
   }
 
-  .rezerwacje-admin .przycisk-dodaj {
+  .admin-panel .button-add {
     height: 34px;
     left: 1195px;
     position: absolute;
@@ -660,14 +647,14 @@
     text-align: center;
   }
   
-  .rezerwacje-admin .overlap-8 {
+  .admin-panel .overlap-8 {
     height: 42px;
     left: -4px;
     position: relative;
     width: 146px;
   }
   
-  .rezerwacje-admin .status-guzik-2 {
+  .admin-panel .status-guzik-2 {
     height: 42px;
     left: 0;
     position: absolute;
@@ -675,7 +662,7 @@
     width: 146px;
   }
   
-  .rezerwacje-admin .text-wrapper-19 {
+  .admin-panel .text-wrapper-19 {
     color: #f5f5f5;
     font-size: 25px;
     font-weight: 400;
@@ -688,7 +675,7 @@
     width: 115px;
   }
   
-  .rezerwacje-admin .add {
+  .admin-panel .add {
     height: 23px;
     left: 20px;
     object-fit: cover;
@@ -697,7 +684,7 @@
     width: 25px;
   }
   
-  .rezerwacje-admin .naglowek-form {
+  .admin-panel .header-form {
     height: 49px;
     left: 769px;
     position: absolute;
@@ -705,7 +692,7 @@
     width: 643px;
   }
   
-  .rezerwacje-admin .div-wrapper {
+  .admin-panel .div-wrapper {
     background-color: #d9d9d933;
     border-radius: 20px;
     box-shadow: 0px 4px 4px #00000040;
@@ -714,7 +701,7 @@
     width: 641px;
   }
   
-  .rezerwacje-admin .p {
+  .admin-panel .p {
     color: #000000;
     font-size: 22px;
     font-weight: 400;
@@ -727,7 +714,7 @@
   }
   
 
-  .rezerwacje-admin .selector-style {
+  .admin-panel .selector-style {
     color: #000000;
     font-size: 10px;
     font-weight: 400;
@@ -743,7 +730,7 @@
   }
 
 
-  .rezerwacje-admin .all-events-container {
+  .admin-panel .all-events-container {
     position: relative;
     font-size: 10px;
     display: flex;

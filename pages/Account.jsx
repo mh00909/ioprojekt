@@ -1,9 +1,9 @@
 {/**/}import React, { useState, useEffect } from "react";
-import "./Konto.css";
+import "./Account.css";
 import api from "../api";
 
 
-const Konto = ({user}) => {
+const Account = ({user}) => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   console.log('Właściwość user w komponencie Konto:', user);
 
@@ -31,14 +31,14 @@ const Konto = ({user}) => {
   }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
 
   return (
-    <div className="konto">
+    <div className="account">
     <div className="div">
       <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
       <div className="overlap">
         <div className="overlap-group">
-          <img className="profil" alt="Profil" src="https://c.animaapp.com/DjotD7lA/img/profil.png" />
+          <img className="profile" alt="Profil" src="https://c.animaapp.com/DjotD7lA/img/profil.png" />
           <div className="text-wrapper-2">Dane rezerwacji:</div>
-          <a href="/Rezerwacje">
+          <a href="/Reservations">
           <img className="rzerwuje" alt="Rzerwuje" src="https://c.animaapp.com/DjotD7lA/img/rzerwuje@2x.png" />
           </a>
           <div className="opis">
@@ -54,11 +54,11 @@ const Konto = ({user}) => {
           </div>
           <img className="line" alt="Line" src="https://c.animaapp.com/DjotD7lA/img/line-4.svg" />
           <img
-            className="dodaj-nagwek"
+            className="add-header"
             alt="Dodaj nagwek"
             src="https://c.animaapp.com/DjotD7lA/img/dodaj-nag--wek--12--1.png"
           />
-          <div className="karteczka">
+          <div className="card">
             <div className="overlap-3">
               <div className="group">
                 <div className="div-wrapper">
@@ -91,7 +91,7 @@ const Konto = ({user}) => {
           </div>
           <div className="overlap-wrapper">
             <div className="overlap-8">
-              <div className="profil-uytkownika" />
+              <div className="user-profile" />
               <div className="text-wrapper-11">Profil użytkownika:</div>
             </div>
           </div>
@@ -99,10 +99,10 @@ const Konto = ({user}) => {
             Login: {user ? user.name : "Niezalogowany"}
           </div>
         </div>
-        <div className="przycisk-konto">
+        <div className="button-account">
           <div className="overlap-9">
-            <img className="domek" alt="Domek" src="https://c.animaapp.com/DjotD7lA/img/domek.png" />
-            <div className="przycisk-konto-2">
+            <img className="Home" alt="Domek" src="https://c.animaapp.com/DjotD7lA/img/domek.png" />
+            <div className="button-account-2">
               <div className="overlap-group-4">
                 <div className="text-wrapper-13">Moje Konto</div>
                 <div className="div-2" />
@@ -110,15 +110,15 @@ const Konto = ({user}) => {
             </div>
           </div>
         </div>
-        <a href="/Kontakt">
-        <div className="przycisk-kontakt">
+        <a href="/Contact">
+        <div className="button-contact">
           <div className="overlap-10">
             <div className="text-wrapper-14">Kontakt</div>
           </div>
         </div>
         </a>
-        <a href="/Informacje">
-        <div className="przycisk-informacje">
+        <a href="/Information">
+        <div className="button-information">
           <div className="overlap-10">
             <div className="text-wrapper-15">Informacje</div>
           </div>
@@ -130,5 +130,5 @@ const Konto = ({user}) => {
   );
 };
 
-export default Konto;
+export default Account;
 {/**/}
