@@ -25,3 +25,9 @@ web:
 openweathermap:
   api:
     key: 79629070da576f068ac6d9c43c9b46b1
+
+logging:
+  level:
+    org:
+      springframework:
+        security=DEBUG:

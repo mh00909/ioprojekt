@@ -1,7 +1,12 @@
 package com.ioproject.reservetheweather.model;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,7 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,9 +35,17 @@ public class User {
     @Column
     private String roles;
 
+
     @ManyToMany
     private List<Event> myEvents;
 
+
+
+    @Column
+    private boolean accountExpired = false;
+    @Column private boolean accountLocked = false;
+    @Column private boolean credentialsExpired = false;
+    @Column private boolean accountDisabled = false;
     /**
      * Konstruktor, w którym ręcznie wpisujemy id użytkownika
      * @param id
@@ -107,6 +120,51 @@ public class User {
         }
         return false;
     }
+
+
+
+
+
+
+
+
+    // z klasy Account
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority(roles));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return !accountExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return !accountLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return !credentialsExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return !accountDisabled;
+    }
+
 }
 
 

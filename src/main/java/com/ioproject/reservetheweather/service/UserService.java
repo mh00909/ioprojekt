@@ -4,6 +4,12 @@ import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,22 +23,13 @@ import java.util.Optional;
  *
  */
 @Service
+@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor(force = true)
 public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
     private PasswordEncoder passwordEncoder;
-
-    /**
-     * Konstruktor tworzący serwis użytkownika.
-     * @param userRepository Repozytorium użytkowników
-     * @param eventRepository Repozytorium wydarzeń
-     * @param passwordEncoder Kodowanie haseł
-     */
-    public UserService(UserRepository userRepository, EventRepository eventRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.eventRepository = eventRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
 
     /**
@@ -173,5 +170,21 @@ public class UserService {
         }
         return false;
     }
+
+
+
+
+    public UserDetailsService userDetailsService(){
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                Optional<User> user = userRepository.findUserByName(username);
+
+                return userRepository.findUserByName(username)
+                        .orElseThrow(()->new UsernameNotFoundException("Nie znaleziono użytkownika"));
+            }
+        };
+    }
+
 }
 

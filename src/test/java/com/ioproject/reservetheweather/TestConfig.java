@@ -21,7 +21,7 @@ public class TestConfig {
 
  */
 
-import com.ioproject.reservetheweather.service.AccountService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -41,10 +41,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class TestConfig{
 
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        return new AccountService() ;
-    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){

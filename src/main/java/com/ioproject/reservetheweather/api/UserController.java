@@ -1,23 +1,14 @@
 package com.ioproject.reservetheweather.api;
-import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
-//@CrossOrigin(allowCredentials = "true")
 @RestController
 @RequestMapping
 public class UserController {
@@ -39,7 +30,7 @@ public class UserController {
     @GetMapping("/Glowna")
     public String hello() {
 
-        Optional<User> logged = userRepository.findUserByName(getLoggedIn().getUsername());
+     /*   Optional<User> logged = userRepository.findUserByName(getLoggedIn().getUsername());
 
         if(logged.isPresent()){
             String role = logged.get().getRoles();
@@ -51,9 +42,11 @@ public class UserController {
             }
         }
 
+
+      */
         return "Strona";
     }
-
+/*
     @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<?> saveUser(@ModelAttribute User user) {
         if(userService.addNewUser(user) == 2){
@@ -73,27 +66,31 @@ public class UserController {
     }
 
 
+ */
+
 
     @GetMapping("/api/events/myevents")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> showMyEvents(){
-        Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
+     /*   Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
         if(user.isPresent()) {
             return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
         }
+
+      */
         return null;
     }
 
 
 
     @GetMapping("/api/users/all")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //@PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Object> getAllUsers() {
         return ResponseEntity.ok(userRepository.findAll());
     }
-
+/*
     @GetMapping("/Konto")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> getMyDetails() {
         return ResponseEntity.ok(userRepository.findUserByMail(getLoggedIn().getUsername()));
     }
@@ -112,12 +109,14 @@ public class UserController {
     }
 
 
+ */
+
     @GetMapping("/api/kontakt")
     public ResponseEntity<Object> kontakt(){
         String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
         return ResponseEntity.ok(daneKontaktowe);
     }
-
+/*
     public UserDetails getLoggedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
@@ -125,4 +124,6 @@ public class UserController {
         }
         return null;
     }
+
+ */
 }

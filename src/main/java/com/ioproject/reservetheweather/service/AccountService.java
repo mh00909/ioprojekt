@@ -1,5 +1,5 @@
 package com.ioproject.reservetheweather.service;
-
+/*
 import com.ioproject.reservetheweather.model.Account;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.UserRepository;
@@ -20,3 +20,6 @@ public class AccountService implements UserDetailsService {
         return user.map(Account::new).orElseThrow(() -> new UsernameNotFoundException("użytkownik nie istnieje"));
     }
 }
+
+
+ */
