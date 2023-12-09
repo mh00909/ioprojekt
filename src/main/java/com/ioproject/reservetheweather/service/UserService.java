@@ -53,9 +53,6 @@ public class UserService {
         if(exists2.isPresent()){
             return 1;
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles("USER");
-
         userRepository.save(user);
         return 2;
     }

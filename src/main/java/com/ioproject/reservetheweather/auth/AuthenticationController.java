@@ -1,17 +1,21 @@
 package com.ioproject.reservetheweather.auth;
 
 import com.ioproject.reservetheweather.model.User;
+import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
+    private final UserRepository userRepository;
 
    /* @PostMapping("/signup")
     public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest){
@@ -25,18 +29,32 @@ public class AuthenticationController {
    */
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(
+    public ResponseEntity<Object> signup(
             @RequestParam("name") String name,
             @RequestParam("mail") String mail,
             @RequestParam("password") String password,
             @RequestParam("phoneNumber") long phoneNumber) {
+
+
+        Optional<User> user1 = userRepository.findUserByName(name);
+        Optional<User> user2 = userRepository.findUserByMail(mail);
+        if(user1.isPresent()){
+            return ResponseEntity.ok("Błąd: podany login już zajęty");
+        }
+        if(user2.isPresent()){
+            return ResponseEntity.ok("Błąd: podany E-mail już zajęty");
+        }
 
         SignUpRequest signUpRequest = new SignUpRequest();
         signUpRequest.setName(name);
         signUpRequest.setMail(mail);
         signUpRequest.setPassword(password);
         signUpRequest.setPhoneNumber(phoneNumber);
+
+
         return ResponseEntity.ok(authenticationService.signup(signUpRequest));
+
+
     }
   @PostMapping("/signin")
   public ResponseEntity<JwtAuthenticationResponse> signin(

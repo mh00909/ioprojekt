@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -30,20 +30,6 @@ public class UserController {
     @GetMapping("/Glowna")
     public String hello() {
 
-     /*   Optional<User> logged = userRepository.findUserByName(getLoggedIn().getUsername());
-
-        if(logged.isPresent()){
-            String role = logged.get().getRoles();
-            if(role.equals("ADMIN")){
-                return "Strona admina";
-            }
-            else if(role.equals("USER")) {
-                return "Strona user";
-            }
-        }
-
-
-      */
         return "Strona";
     }
 /*
@@ -70,8 +56,9 @@ public class UserController {
 
 
     @GetMapping("/api/events/myevents")
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<Object> showMyEvents(){
+
+
      /*   Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
         if(user.isPresent()) {
             return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));

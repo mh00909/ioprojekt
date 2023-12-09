@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -118,17 +119,20 @@ public class User implements UserDetails {
             myEvents.remove(event);
             return true;
         }
+
         return false;
     }
 
 
+    public UserDetails getCurrentUserDetails() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal);
+        }
+        return null;
+    }
 
 
-
-
-
-
-    // z klasy Account
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

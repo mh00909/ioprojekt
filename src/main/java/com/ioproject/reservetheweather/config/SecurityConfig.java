@@ -78,7 +78,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 
-        http.csrf(AbstractHttpConfigurer::disable)
+        http
+                .cors().configurationSource(corsConfigurationSource()).and()
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/signup", "/Glowna")
                         .permitAll()
                         .requestMatchers("/api/admin").hasAuthority("ROLE_ADMIN")
