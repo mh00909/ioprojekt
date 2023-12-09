@@ -38,11 +38,15 @@ public class AuthenticationService {
 
         var user = userRepository.findUserByName(signInRequest.getName()).orElseThrow(
                 ()->new IllegalArgumentException("Nieprawidłowy login lub hasło."));
+
         var jwt = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(new HashMap<>(),user);
+
         JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
+        jwtAuthenticationResponse.setRole(user.getRoles());
+
         System.out.println(user.getName());
         return jwtAuthenticationResponse;
     }

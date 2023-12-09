@@ -81,10 +81,13 @@ public class SecurityConfig {
         http
                 .cors().configurationSource(corsConfigurationSource()).and()
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/signup", "/Glowna")
+                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/signup",
+                                "/Main", "/AdminPanel", "/api/events/all",
+                                "/api/admin/addEvent",
+                                "/api/admin/removeEvent")
                         .permitAll()
-                        .requestMatchers("/api/admin").hasAuthority("ROLE_ADMIN")
-                        .requestMatchers("/api/user").hasAuthority("ROLE_USER"))
+                        .requestMatchers("/api/admin").hasAuthority("ADMIN")
+                        .requestMatchers("/api/user").hasAuthority("USER"))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider(userDetailsService(), passwordEncoder()))
                         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

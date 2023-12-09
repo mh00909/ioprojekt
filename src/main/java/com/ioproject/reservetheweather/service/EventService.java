@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -148,6 +149,17 @@ public class EventService {
         Optional<Event> event = eventRepository.findById(id);
         if(event.isPresent()){
             eventRepository.delete(event.get());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean rescheduleEvent(Long id, LocalDate newDate, LocalTime newTime){
+        Optional<Event> eventOpt = eventRepository.findById(id);
+        if(eventOpt.isPresent()){
+            Event event = eventOpt.get();
+            event.setDate(newDate);
+            event.setTime(newTime);
             return true;
         }
         return false;

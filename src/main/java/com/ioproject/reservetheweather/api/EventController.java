@@ -39,6 +39,7 @@ public class EventController {
         String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
         return ResponseEntity.ok(daneKontaktowe);
     }
+
     @GetMapping("/api/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
