@@ -1,16 +1,32 @@
 // components/EventItem.jsx
-/*Odwoływanie zajęc teorytycznie działa kiedy w endpoincie w javie nie ma preauthorize*/
-import React, { useState } from 'react';
-import './EventItem.css'; 
+import React, { useState, useEffect } from 'react';
+import './EventItem.css';
 
 const EventItem = ({ event }) => {
   const [isCancelling, setIsCancelling] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
+  const [weather, setWeather] = useState(null);
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
-
-
-
+  
+  const isToday = (date) => {
+    const today = new Date();
+    const eventDate = new Date(date);
+    return (
+      today.getFullYear() === eventDate.getFullYear() &&
+      today.getMonth() === eventDate.getMonth() &&
+      today.getDate() === eventDate.getDate()
+    );
+  };
+  
+  const hasDiscount = () => {
+    if (weather && isToday(event.date)) {
+      const temperature = weather.main && Math.round(weather.main.temp - 273.15);
+      return temperature < event.minTemperature || temperature > event.maxTemperature;
+    }
+    return false;
+  };
+  
   const handleSignUpEvent = async () => {
     try {
       setIsSigningUp(true);
@@ -42,8 +58,6 @@ const EventItem = ({ event }) => {
     }
   };
 
-
- 
   const handleCancelEvent = async () => {
     try {
       console.log('Cancelling event with ID:', event.id);
@@ -73,6 +87,39 @@ const EventItem = ({ event }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const maxRetries = 3;
+      let retries = 0;
+  
+      while (retries < maxRetries) {
+        try {
+          const apiKey = '2a22ea7242da86deb44ea46357b5236d';
+          const city = 'Krakow';
+          const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  
+          const response = await fetch(apiUrl);
+  
+          if (response.ok) {
+            const data = await response.json();
+            setWeather(data);
+            break; // Wyjdź z pętli, jeśli dane zostały pobrane pomyślnie
+          } else if (response.status === 429) {
+            // Jeśli limit zapytań, opóźnij i spróbuj ponownie
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            retries++;
+          } else {
+            throw new Error(`Failed to fetch data. Status: ${response.status}`);
+          }
+        } catch (error) {
+          console.error('Error during API request:', error);
+          break; // Wyjdź z pętli w przypadku innych błędów
+        }
+      }
+    };
+  
+    fetchData();
+  }, []); 
 
   return (
     <div className="event-item">
@@ -87,10 +134,16 @@ const EventItem = ({ event }) => {
       <p>Min temperatura: {event.minTemperature} °C</p>
       <p>Max temperatura: {event.maxTemperature} °C</p>
       <p>Cena: {event.price} PLN</p>
-      <p>Uczetnicy: {event.signedUsers}</p>
-      <p>Zła pogoda: {event.badWeather ? 'Tak' : 'Nie'}</p>
-      <p>Możliwa zniżka: {event.discount ? 'Tak' : 'Nie'}</p>
-      
+      <p>Uczestnicy: {event.signedUsers}</p>
+      <p>Zła pogoda: {hasDiscount() ? 'Tak' : 'Nie'}</p>
+      <p>Możliwa zniżka: {hasDiscount() ? 'Tak' : 'Nie'}</p>
+{/*Temperatura z API to temperatura z dnia obecnego, pójdzie do usunięcia, ale na razie zostawiam dla testów*/}
+      {weather && (
+        <div className="weather-forecast-content">
+          <p>Temperatura z API: {weather.main && Math.round(weather.main.temp - 273.15)}°C</p>
+        </div>
+      )}
+
       <button className='Odwolaj'
        style = {{    
         backgroundColor: '#8faeca',
@@ -118,12 +171,7 @@ const EventItem = ({ event }) => {
       >
         Zapisz
       </button>
-
-
-      </div>
-
-
-      
+    </div>
   );
 };
 

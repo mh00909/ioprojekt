@@ -7,7 +7,7 @@ const PrognozaPogody = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = '2a22ea7242da86deb44ea46357b5236d';
+        const apiKey = '3ec5212d17e196806948efcdb3ee059e';
         const city = 'Krakow';
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
