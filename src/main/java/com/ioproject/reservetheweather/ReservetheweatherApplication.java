@@ -5,13 +5,14 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
 @EntityScan("com.ioproject.reservetheweather.model")
-
+@ComponentScan(basePackages = "com.ioproject.reservetheweather")
 @SpringBootApplication
 public class ReservetheweatherApplication //implements CommandLineRunner
 {

@@ -2,12 +2,11 @@ package com.ioproject.reservetheweather.service;
 
 import com.ioproject.reservetheweather.auth.*;
 import com.ioproject.reservetheweather.model.User;
-import com.ioproject.reservetheweather.model.WeatherData;
+
 import com.ioproject.reservetheweather.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,12 +35,16 @@ public class AuthenticationService {
 
     public JwtAuthenticationResponse signin(SignInRequest signInRequest){
         System.out.println("W AuthenticationService.signin ...............");
-        try {
+    /*   try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getName(), signInRequest.getPassword()));
         }catch (AuthenticationException e){
-            e.printStackTrace();
+         //   e.printStackTrace();
+           System.out.println("Niepoprawny login lub hasło 1 ");
         }
-        System.out.println("Po authenticationManagar ...............");
+
+     */
+
+      //  System.out.println("Po authenticationManagar ...............");
         var user = userRepository.findUserByName(signInRequest.getName()).orElseThrow(
                 ()->new IllegalArgumentException("Nieprawidłowy login lub hasło."));
         var jwt = jwtService.generateToken(user);
@@ -49,6 +52,7 @@ public class AuthenticationService {
         JwtAuthenticationResponse jwtAuthenticationResponse = new JwtAuthenticationResponse();
         jwtAuthenticationResponse.setToken(jwt);
         jwtAuthenticationResponse.setRefreshToken(refreshToken);
+        System.out.println(user.getName());
         return jwtAuthenticationResponse;
     }
 

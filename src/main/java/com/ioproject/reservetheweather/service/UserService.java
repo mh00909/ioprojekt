@@ -23,14 +23,11 @@ import java.util.Optional;
  *
  */
 @Service
-@RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
 public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
-    private PasswordEncoder passwordEncoder;
-
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Pobiera listę wszystkich użytkowników
@@ -173,7 +170,7 @@ public class UserService {
 
 
 
-
+/*
     public UserDetailsService userDetailsService(){
         return new UserDetailsService() {
             @Override
@@ -185,6 +182,8 @@ public class UserService {
             }
         };
     }
+
+ */
 
 }
 
