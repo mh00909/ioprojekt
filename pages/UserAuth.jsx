@@ -13,7 +13,7 @@ const UserAuth = () => {
   const [registerPhoneNumber, setRegisterPhoneNumber] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
-  const loginEndpoint = `${apiBaseUrl}/login`;
+  const loginEndpoint = `${apiBaseUrl}/api/auth/signin`;
 
   const [error, setError] = useState(""); 
 
@@ -27,7 +27,10 @@ const UserAuth = () => {
     console.log("Dane logowania:", formData.toString());
 
     try {
-      const response = await api.post('/login', formData);
+      const response = await api.post('/api/auth/signin', formData);
+    /*  if(response.status == 200){
+        window.location.href = '/Account';
+      }
       if(response.data == "Strona user"){
         console.log('Udało się zalogować user', response.data);
         window.location.href = '/Account';
@@ -47,7 +50,24 @@ const UserAuth = () => {
       console.error("Błąd podczas wysyłania danych:", error);      
       setError("Błąd logowania. Spróbuj ponownie.");
       
+    } */
+    if (response.status === 200) {
+      const data = response.data;
+      const role = data.role; 
+      console.log(data.toString())
+      if (role === ("ADMIN")) {
+        window.location.href = '/AdminPanel';
+      } else {
+        window.location.href = '/Account';
+      }
+    } else {
+      setError("Nie udało się zalogować.");
     }
+  } catch (error) {
+    console.error("Error during sign in:", error);
+    setError("Login error. Please try again.");
+
+  }
   };
 
   const handleRegisterSubmit = async (e) => {
@@ -61,13 +81,7 @@ const UserAuth = () => {
     console.log("Dane rejestracji:", formData.toString());
     
     try {
-      const response = await api.post("/Rejestracja", formData);
-
-       if(response.data == "Udało się"){
-          window.location.href = '/Account';
-       }
-       else {
-         // zajęty mail lub login
+      const response = await api.post("/api/auth/signup", formData);
 
          if(response.data == "Błąd: podany E-mail już zajęty"){
           alert("Błąd: podany E-mail jest już zajęty");
@@ -77,9 +91,9 @@ const UserAuth = () => {
           alert("Błąd: podany login jest już zajęty");
          }
          else{
-          alert("Zły format danych.");
+          window.location.href = '/Account';
        }
-      }
+      
       // Przełącz formularz na tryb logowania
       setIsRegistering(false);
 
