@@ -45,8 +45,8 @@ const AdminPanel = () => {
     console.log("Dane zajęć:", formData.toString());
 
     try {
-      const response = await api.post('/addEvent', formData);
-      if (response.data === "Strona domowa") {
+      const response = await api.post('/api/admin/addEvent', formData);
+      if (response.data === "Dodano zajęcia") {
         console.log('Udało się dodać zajęcia', response.data)
         window.location.href = '/AdminPanel';
       } else {
