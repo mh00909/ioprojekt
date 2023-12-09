@@ -11,13 +11,13 @@ const ReservationData = () => {
         <div className="overlap">
           <div className="overlap-group">
             <img className="background" alt="Background" src="https://c.animaapp.com/RraaDVLa/img/tlo.png" />
-            <div className="discount">
+            {/*<button className="discount">
               <div className="overlap-group-2">
                 <div className="rectangle" />
                 <div className="discount-white" />
                 <div className="text-wrapper-2">Zniżka</div>
               </div>
-            </div>
+  </button>*/}
             <img className="cancel" alt="Cancel" src="https://c.animaapp.com/RraaDVLa/img/odwolaj@2x.png" />
             <div className="group">
               <div className="card">

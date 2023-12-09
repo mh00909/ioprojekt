@@ -27,6 +27,16 @@ const EventItem = ({ event }) => {
     return false;
   };
   
+  const discountedPrice = hasDiscount() ? (event.price * 0.8).toFixed(2) : null;
+
+  const displayPrice = hasDiscount() ? (
+    <span>
+      <del>{event.price} PLN</del> {discountedPrice} PLN
+    </span>
+  ) : (
+    `${event.price} PLN`
+  );
+
   const handleSignUpEvent = async () => {
     try {
       setIsSigningUp(true);
@@ -133,7 +143,7 @@ const EventItem = ({ event }) => {
       <p>Limit uczestników: {event.maxUsers}</p>
       <p>Min temperatura: {event.minTemperature} °C</p>
       <p>Max temperatura: {event.maxTemperature} °C</p>
-      <p>Cena: {event.price} PLN</p>
+      <p>Cena: {displayPrice}</p>
       <p>Uczestnicy: {event.signedUsers}</p>
       <p>Zła pogoda: {hasDiscount() ? 'Tak' : 'Nie'}</p>
       <p>Możliwa zniżka: {hasDiscount() ? 'Tak' : 'Nie'}</p>
