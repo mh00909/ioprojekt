@@ -1,6 +1,3 @@
-
-
-
 package com.ioproject.reservetheweather.api;
 import com.ioproject.reservetheweather.model.Event;
 import com.ioproject.reservetheweather.repository.EventRepository;
@@ -43,7 +40,7 @@ public class AdminController {
         return ResponseEntity.ok("Dodano wydarzenie");
     }
 
-    @RequestMapping(value = "/api/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<Object> removeEvent(@RequestParam Event event){
         boolean removed = eventService.removeEvent(event.getId());
         if(removed){
@@ -53,23 +50,6 @@ public class AdminController {
     }
 
 
-    /*
-
-    @GetMapping("/api/kontakt")
-    public ResponseEntity<Object> kontakt(){
-        String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
-        return ResponseEntity.ok(daneKontaktowe);
-    }
-/*
-    public UserDetails getLoggedIn() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            return (UserDetails) authentication.getPrincipal();
-        }
-        return null;
-    }
-
- */
 
 
 }

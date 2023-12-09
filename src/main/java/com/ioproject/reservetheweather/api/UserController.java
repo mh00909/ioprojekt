@@ -1,4 +1,5 @@
 package com.ioproject.reservetheweather.api;
+import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.EventService;
@@ -7,7 +8,11 @@ import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")
@@ -27,11 +32,7 @@ public class UserController {
         this.eventService = eventService;
     }
 
-    @GetMapping("/Glowna")
-    public String hello() {
 
-        return "Strona";
-    }
 /*
     @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<?> saveUser(@ModelAttribute User user) {
@@ -55,62 +56,69 @@ public class UserController {
  */
 
 
-    @GetMapping("/api/events/myevents")
+    @GetMapping("/Account")
+    public ResponseEntity<Object> getMyDetails() {
+        return ResponseEntity.ok(userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
+    }
+    @GetMapping("/myevents")
     public ResponseEntity<Object> showMyEvents(){
-
-
-     /*   Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
+        Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
         if(user.isPresent()) {
             return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
         }
-
-      */
         return null;
     }
 
 
-
-    @GetMapping("/api/users/all")
-    //@PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Object> getAllUsers() {
-        return ResponseEntity.ok(userRepository.findAll());
-    }
-/*
-    @GetMapping("/Konto")
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<Object> getMyDetails() {
-        return ResponseEntity.ok(userRepository.findUserByMail(getLoggedIn().getUsername()));
+    @PostMapping("/events/signup/{eventid}")
+    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid){
+        Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+        if(user.isPresent()) {
+            eventService.addPerson(eventid, user.get());
+            userService.joinEvent(eventid, user.get());
+            return ResponseEntity.ok("Zapisano poprawnie.");
+        }
+        return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
-    @GetMapping("/api/user/update/name")
+    @PostMapping("/myevents/cancell/{id}")
+    public ResponseEntity<Object> resignEvent(@RequestParam Long id){
+        eventService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
+        userService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
+        return ResponseEntity.ok("Zrezygnowano z zajęć.");
+    }
+    @PostMapping("/myevents/discount")
+    public ResponseEntity<Object> discountEvent(@RequestParam Long id){
+        if( eventService.discount(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()))){
+            return ResponseEntity.ok("Przyznano zniżkę.");
+        }
+        return ResponseEntity.ok("Nie przyznano zniżki. Spróbuj ponownie.");
+    }
+
+
+
+
+
+    @GetMapping("/updateName")
     public ResponseEntity<Object> updateName(@RequestParam String newName){
-        if(userService.updateUserName(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newName))
+        if(userService.updateUserName(userRepository.findUserByMail(getCurrentUserDetails().getUsername()).get().getId(), newName))
             return ResponseEntity.ok("Poprawnie zmieniono nazwę użytkownika.");
         return ResponseEntity.status(404).body("Nie udało się zmienić nazwy użytkownika.");
     }
-    @GetMapping("/api/user/update/email")
+    @GetMapping("/updateEmail")
     public ResponseEntity<Object> updateMail(@RequestParam String newMail){
-        if(userService.updateUserMail(userRepository.findUserByMail(getLoggedIn().getUsername()).get().getId(), newMail))
+        if(userService.updateUserMail(userRepository.findUserByMail(getCurrentUserDetails().getUsername()).get().getId(), newMail))
             return ResponseEntity.ok("Udało się zmienić e-mail.");
         return ResponseEntity.status(404).body("Nie udało się zmienić adresu e-mail.");
     }
 
 
- */
 
-    @GetMapping("/api/kontakt")
-    public ResponseEntity<Object> kontakt(){
-        String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
-        return ResponseEntity.ok(daneKontaktowe);
-    }
-/*
-    public UserDetails getLoggedIn() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            return (UserDetails) authentication.getPrincipal();
+    public UserDetails getCurrentUserDetails() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal);
         }
         return null;
     }
-
- */
 }

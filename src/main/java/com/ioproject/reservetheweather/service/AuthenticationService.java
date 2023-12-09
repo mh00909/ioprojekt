@@ -35,17 +35,7 @@ public class AuthenticationService {
     }
 
     public JwtAuthenticationResponse signin(SignInRequest signInRequest){
-        System.out.println("W AuthenticationService.signin ...............");
-    /*   try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getName(), signInRequest.getPassword()));
-        }catch (AuthenticationException e){
-         //   e.printStackTrace();
-           System.out.println("Niepoprawny login lub hasło 1 ");
-        }
 
-     */
-
-      //  System.out.println("Po authenticationManagar ...............");
         var user = userRepository.findUserByName(signInRequest.getName()).orElseThrow(
                 ()->new IllegalArgumentException("Nieprawidłowy login lub hasło."));
         var jwt = jwtService.generateToken(user);

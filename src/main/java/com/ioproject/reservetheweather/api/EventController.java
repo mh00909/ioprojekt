@@ -30,6 +30,15 @@ public class EventController {
         this.weatherService = weatherService;
     }
 
+    @GetMapping("/Main")
+    public String hello() {
+        return "Strona";
+    }
+    @GetMapping("/api/kontakt")
+    public ResponseEntity<Object> kontakt(){
+        String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
+        return ResponseEntity.ok(daneKontaktowe);
+    }
     @GetMapping("/api/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
@@ -44,32 +53,8 @@ public class EventController {
         return ResponseEntity.status(404).body("Nie znaleziono strony.");
     }
 
-    @PostMapping("/api/events/signup/{eventid}")
-    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid){
-     /*  Optional<User> user = userRepository.findUserByMail(getLoggedIn().getUsername());
-        if(user.isPresent()) {
-            eventService.addPerson(eventid, user.get());
-            userService.joinEvent(eventid, user.get());
-            return ResponseEntity.ok("Zapisano poprawnie.");
-        } */
-        return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
-    }
 
 
-    @RequestMapping(value = "/addEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<Object> addEvent(@ModelAttribute Event event){
-        eventService.addEvent(event);
-        return ResponseEntity.ok("Dodano wydarzenie");
-    }
-
-    @RequestMapping(value = "/api/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<Object> removeEvent(@RequestParam Event event){
-        boolean removed = eventService.removeEvent(event.getId());
-        if(removed){
-            return ResponseEntity.ok("Zrezygnowano z zajęć.");
-        }
-        return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
-    }
 
 
 
@@ -82,20 +67,9 @@ public class EventController {
 
 
 
-    @PostMapping("/api/user/myevents/cancell/{id}")
-    public ResponseEntity<Object> resignEvent(@RequestParam Long id){
-       /* eventService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername()));
-        userService.resign(id, userRepository.findUserByMail(getLoggedIn().getUsername())); */
-        return ResponseEntity.ok("Zrezygnowano z zajęć.");
-    }
 
-    @PostMapping("/api/user/myevents/discount")
-    public ResponseEntity<Object> discountEvent(@RequestParam Long id){
-     /*   if( eventService.discount(id, userRepository.findUserByMail(getLoggedIn().getUsername()))){
-            return ResponseEntity.ok("Przyznano zniżkę.");
-        } */
-        return ResponseEntity.ok("Nie przyznano zniżki. Spróbuj ponownie.");
-    }
+
+
 
     @PostMapping("/api/user/myevents/reschedule")
     public ResponseEntity<Object> rescheduleEvent(@RequestParam Long eventId, @RequestParam String date1) {
