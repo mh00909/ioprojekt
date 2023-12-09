@@ -3,10 +3,14 @@ package com.ioproject.reservetheweather.service;
 import com.ioproject.reservetheweather.auth.*;
 import com.ioproject.reservetheweather.model.User;
 
+import com.ioproject.reservetheweather.model.UserDto;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -65,4 +69,36 @@ public class AuthenticationService {
         return null;
     }
 
+
+    public UserDto getCurrentUserDetails() {
+       /* Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal);
+        }
+        return null;
+
+        */
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            User user = userRepository.findUserByName(userDetails.getUsername()).orElse(null);
+            if (user != null) {
+                String role = user.getRoles();
+                return convertToDTO(user, role);
+            }
+        }
+        return null;
+    }
+
+    public UserDto convertToDTO(User user, String role) {
+        UserDto dto = new UserDto();
+        dto.setName(user.getName());
+        dto.setMail(user.getMail());
+        dto.setRole(role);
+        return dto;
+    }
+
+    public void logout(String token) {
+    }
 }

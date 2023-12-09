@@ -81,8 +81,8 @@ public class SecurityConfig {
         http
                 .cors().configurationSource(corsConfigurationSource()).and()
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/signup",
-                                "/Main", "/AdminPanel", "/api/events/all",
+                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/checkLogged", "/api/auth/signup",
+                                "/Main", "/AdminPanel", "/api/events/all", "/Account",
                                 "/api/admin/addEvent",
                                 "/api/admin/removeEvent")
                         .permitAll()

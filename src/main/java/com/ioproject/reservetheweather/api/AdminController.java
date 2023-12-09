@@ -55,9 +55,6 @@ public class AdminController {
         return ResponseEntity.ok("Dodano zajęcia");
     }
 
-
-
-
     @RequestMapping(value = "/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<Object> removeEvent(@RequestParam Event event){
         boolean removed = eventService.removeEvent(event.getId());
@@ -66,10 +63,5 @@ public class AdminController {
         }
         return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
     }
-
-
-
-
-
 
 }

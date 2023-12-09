@@ -1,9 +1,11 @@
 package com.ioproject.reservetheweather.auth;
 
 import com.ioproject.reservetheweather.model.User;
+import com.ioproject.reservetheweather.model.UserDto;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import com.ioproject.reservetheweather.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,8 +76,14 @@ public class AuthenticationController {
     }
 
 
-
-
+    @GetMapping("/checkLogged")
+    public ResponseEntity<Object> checkIfLoggedIn(){
+        UserDto userDTO = authenticationService.getCurrentUserDetails();
+        if (userDTO != null) {
+            return ResponseEntity.ok(userDTO);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+    }
 }
 
 
