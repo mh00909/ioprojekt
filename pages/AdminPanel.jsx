@@ -75,12 +75,29 @@ const AdminPanel = () => {
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
+
+
+  const handleRemoveEvent = async (eventId) => {
+    try {
+        const response = await api.post('/api/admin/removeEvent', { id: eventId });
+        if (response.data === "Zrezygnowano z zajęć") {
+            console.log('Zrezygnowano z zajęć', response.data);
+            // Tu dodam logikę do odświeżania listy zajęć po usunięciu
+        } else {
+            console.error('Nie udało się zrezygnować z zajęć');
+            setError("Nie udało się zrezygnować z zajęć. Spróbuj ponownie.");
+        }
+    } catch (error) {
+        console.error("Błąd podczas wysyłania danych:", error);
+        setError("Błąd podczas zrezygnowania z zajęć. Spróbuj ponownie.");
+    }
+};
     return (
       <div className="admin-panel">
         <div className="div">
         <div className="all-events-container">
-        <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
-      </div>
+          <AllEvents allEvents={allEvents} selectedDate={selectedDate} handleRemoveEvent={handleRemoveEvent}/>
+        </div>
           <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
           <div className="overlap">
             <div className="overlap-group">

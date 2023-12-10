@@ -1,6 +1,7 @@
-{/**/}import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Account.css";
 import api from "../api";
+import DateSelector from './components/DateSelector';
 
 
 const Account = ({user}) => {
@@ -9,11 +10,9 @@ const Account = ({user}) => {
 
   const userLoginEndpoint = `${apiBaseUrl}/Konto`;
   const [userData, setUserData] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const [error, setError] = useState(""); 
-
-
-
 
   useEffect(() => {
     // Funkcja do pobrania danych zalogowanego użytkownika z backendu
@@ -30,9 +29,31 @@ const Account = ({user}) => {
     fetchUserData();
   }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
 
+
+
+
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      try {
+        const response = await api.get('/api/events/all');
+        setAllEvents(response.data);
+      } catch (error) {
+        console.error('Błąd podczas pobierania danych:', error);
+      }
+    };
+
+    fetchAllEvents();
+  }, [selectedDate]);
+
+  const handleDateSelection = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
     <div className="account">
     <div className="div">
+    <div className="selector-style"><DateSelector onSelectDate={handleDateSelection} /></div>
+
       <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
       <div className="overlap">
         <div className="overlap-group">
@@ -58,37 +79,6 @@ const Account = ({user}) => {
             alt="Dodaj nagwek"
             src="https://c.animaapp.com/DjotD7lA/img/dodaj-nag--wek--12--1.png"
           />
-          <div className="card">
-            <div className="overlap-3">
-              <div className="group">
-                <div className="div-wrapper">
-                  <div className="overlap-group-3">
-                    <div className="overlap-4">
-                      <div className="overlap-5">
-                        <img
-                          className="status-guzik"
-                          alt="Status guzik"
-                          src="https://c.animaapp.com/DjotD7lA/img/status-guzik@2x.png"
-                        />
-                        <div className="overlap-6">
-                          <div className="text-wrapper-5">Rodzaj zajęć</div>
-                        </div>
-                      </div>
-                      <div className="text-wrapper-6">miejsca</div>
-                      <div className="text-wrapper-7">lokalizacja</div>
-                    </div>
-                    <div className="overlap-7">
-                      <div className="text-wrapper-8">Dzień</div>
-                      <div className="text-wrapper-9">Godzina</div>
-                    </div>
-                    <div className="text-wrapper-10">Czas trwania</div>
-                  </div>
-                </div>
-              </div>
-              <img className="map" alt="Map" src="https://c.animaapp.com/DjotD7lA/img/map@2x.png" />
-              <img className="users" alt="Users" src="https://c.animaapp.com/DjotD7lA/img/users@2x.png" />
-            </div>
-          </div>
           <div className="overlap-wrapper">
             <div className="overlap-8">
               <div className="user-profile" />
@@ -131,4 +121,3 @@ const Account = ({user}) => {
 };
 
 export default Account;
-{/**/}

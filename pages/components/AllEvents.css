@@ -9,7 +9,7 @@
 }
 
 .event-item {
-  flex: 0 0 calc(48% - 20px); /* Ustaw szerokość na 48% z uwzględnieniem marginesu między elementami */
+  flex: 0 0 calc(25% - 20px); /* Ustaw szerokość na 25% z uwzględnieniem marginesu między elementami */
   margin-bottom: 20px;
   margin-right: 20px;
   padding: 20px;

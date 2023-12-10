@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './EventItem.css';
 
+
 const EventItem = ({ event }) => {
   const [isCancelling, setIsCancelling] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -36,6 +37,23 @@ const EventItem = ({ event }) => {
   ) : (
     `${event.price} PLN`
   );
+
+
+  const handleRemoveEvent = async (eventId) => {
+    try {
+        const response = await api.post('/removeEvent', { id: eventId });
+        if (response.data === "Zrezygnowano z zajęć") {
+            console.log('Zrezygnowano z zajęć', response.data);
+            // Tu dodam logikę do odświeżania listy zajęć po usunięciu
+        } else {
+            console.error('Nie udało się zrezygnować z zajęć');
+            setError("Nie udało się zrezygnować z zajęć. Spróbuj ponownie.");
+        }
+    } catch (error) {
+        console.error("Błąd podczas wysyłania danych:", error);
+     //   setError("Błąd podczas zrezygnowania z zajęć. Spróbuj ponownie.");
+    }
+};
 
   const handleSignUpEvent = async () => {
     try {
@@ -162,7 +180,8 @@ const EventItem = ({ event }) => {
         border: '#8faeca',  
         marginLeft: '0px',
         fontFamily: 'Source Serif Pro, serif'}}
-      onClick={handleCancelEvent}
+    
+      onClick={() => handleRemoveEvent(event.id)}
       disabled={isCancelling} 
       >
       Odwołaj
