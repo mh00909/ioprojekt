@@ -1,8 +1,6 @@
 package com.ioproject.reservetheweather.service;
-
 import com.ioproject.reservetheweather.auth.*;
 import com.ioproject.reservetheweather.model.User;
-
 import com.ioproject.reservetheweather.model.UserDto;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -100,5 +98,6 @@ public class AuthenticationService {
     }
 
     public void logout(String token) {
+
     }
 }

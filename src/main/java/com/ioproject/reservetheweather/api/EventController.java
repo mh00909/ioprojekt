@@ -30,6 +30,7 @@ public class EventController {
         this.weatherService = weatherService;
     }
 
+    // dostępne bez autoryzacji
     @GetMapping("/Main")
     public String hello() {
         return "Strona";
@@ -45,7 +46,7 @@ public class EventController {
         return ResponseEntity.ok(eventRepository.findAll());
     }
 
-    @GetMapping("/api/events/description/{eventid}")
+    @GetMapping("/api/events/description/")
     public ResponseEntity<Object> showEventDescription(@RequestParam Long eventid){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
@@ -54,48 +55,6 @@ public class EventController {
         return ResponseEntity.status(404).body("Nie znaleziono strony.");
     }
 
-
-
-
-
-
-
-
-
-
-    ///////////////////////////////////////////////////////// do sprawdzenia
-
-
-
-
-
-
-
-
-    @PostMapping("/api/user/myevents/reschedule")
-    public ResponseEntity<Object> rescheduleEvent(@RequestParam Long eventId, @RequestParam String date1) {
-
-     /*   if(eventService.reschedule(eventId, userRepository.findUserByMail(getLoggedIn().getUsername()), date1)){
-            return ResponseEntity.ok("Zapisano na zajęcia w innym terminie.");
-        }
-    */
-        return ResponseEntity.ok("Nie zmieniono terminu zajęć. Spróbuj ponownie.");
-
-
-    }
-
-
-/*
-
-    public UserDetails getLoggedIn() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            return (UserDetails) authentication.getPrincipal();
-        }
-        return null;
-    }
-
- */
 
 
 

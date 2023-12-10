@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -55,13 +56,30 @@ public class AdminController {
         return ResponseEntity.ok("Dodano zajęcia");
     }
 
-    @RequestMapping(value = "/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<Object> removeEvent(@RequestParam Event event){
-        boolean removed = eventService.removeEvent(event.getId());
+
+    @PostMapping("/rescheduleEvent")
+    public ResponseEntity<Object> rescheduleEvent(@RequestParam("eventID") Long eventID,
+                                                  @RequestParam("newTime") LocalTime eventTime,
+                                                  @RequestParam("newDate") LocalDate eventDate){
+        boolean zmieniono = eventService.rescheduleEvent(eventID, eventDate, eventTime);
+        if(!zmieniono){
+            return ResponseEntity.badRequest().body("Brak podanych zajęć.");
+        }
+        return ResponseEntity.ok("Zmieniono termin zajęć");
+    }
+
+
+    //@RequestMapping(value = "/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+
+    @PostMapping("/removeEvent")
+    public ResponseEntity<Object> removeEvent(@RequestParam Long eventID){
+        boolean removed = eventService.removeEvent(eventID);
         if(removed){
             return ResponseEntity.ok("Zrezygnowano z zajęć.");
         }
         return ResponseEntity.badRequest().body("Brak zajęć o podanym ID.");
     }
+
+
 
 }
