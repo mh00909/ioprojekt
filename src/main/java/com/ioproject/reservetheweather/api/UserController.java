@@ -1,4 +1,5 @@
 package com.ioproject.reservetheweather.api;
+import com.ioproject.reservetheweather.model.Event;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
@@ -6,12 +7,16 @@ import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -70,7 +75,43 @@ public class UserController {
     }
 
 
-    @PostMapping("/events/signup/{eventid}")
+    @GetMapping("/myEventsOnDay") // jeszcze nie działa
+    public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date){
+        Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+        if(!userOpt.isPresent()){
+            return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
+        }
+        User user = userOpt.get();
+        List<Event> events = user.getMyEvents();
+        List<Event> eventsOnDate = new ArrayList<>();
+        for(Event e: events){
+            if(e.getDate().isEqual(date)){
+                eventsOnDate.add(e);
+            }
+        }
+        return ResponseEntity.ok(eventsOnDate);
+    }
+    @GetMapping("/allEventsOnDay")
+    public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
+       /* Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+        if(!userOpt.isPresent()){
+            return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
+        }
+
+        */
+        List<Event> events = eventService.getEvents();
+        List<Event> eventsOnDate = new ArrayList<>();
+        for(Event e: events){
+            if(e.getDate().isEqual(date)){
+                eventsOnDate.add(e);
+            }
+        }
+        return ResponseEntity.ok(eventsOnDate);
+    }
+
+
+
+    @PostMapping("/events/signup")
     public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid){
         Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
         if(user.isPresent()) {
@@ -81,7 +122,7 @@ public class UserController {
         return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
-    @PostMapping("/myevents/cancell/{id}")
+    @PostMapping("/myevents/cancell")
     public ResponseEntity<Object> resignEvent(@RequestParam Long id){
         eventService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
         userService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));

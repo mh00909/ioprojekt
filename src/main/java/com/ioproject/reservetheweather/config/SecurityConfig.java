@@ -58,6 +58,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/signin", "/api/auth/checkLogged", "/api/auth/signup",
                                 "/Main", "/AdminPanel", "/api/events/all", "/Account",
+                                "/api/user/myEventsOnDay", "/api/user/allEventsOnDay", "/api/user/allEventsOnDay?date=", "/api/user/myEventsOnDay?date=",
+                                "/Reservations",
                                 "/api/admin/addEvent",
                                 "/api/admin/removeEvent")
                         .permitAll()
