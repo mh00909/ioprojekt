@@ -100,6 +100,25 @@ const Account = ({user}) => {
             </div>
           </div>
         </div>
+        <button className='LogOut'
+          style = {{    
+            backgroundColor: '#8faeca',
+            color: '#ffffff', 
+            boxShadow: '0px 4px 4px #00000040',
+            border: '#8faeca',  
+            marginLeft: '1080px',
+            marginTop: '470px',
+            height: '60px',
+            width: '325px',
+            fontSize: '27px',
+            position: 'relative',
+            zIndex: '999',
+            fontFamily: 'Source Serif Pro, serif'}}
+          /* onClick={handleLogOutEvent}*/
+        >
+        Wyloguj
+        </button>
+
         <a href="/Contact">
         <div className="button-contact">
           <div className="overlap-10">
