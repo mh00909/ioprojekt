@@ -25,7 +25,7 @@ const Main = () => {
               pogodowe. Pogoda nie sprzyja? To nie problem, u nas przełożysz zajęcia lub otrzymasz zniżkę!            </p>
             <div className="button-next">
               <div className="overlap-group-2">
-                <a href="/Login">
+                <a href="/UserAuth">
                   <div className="button-next-2" />
                   <div className="text-wrapper-2">Dalej</div>
                 </a>
@@ -39,7 +39,7 @@ const Main = () => {
           </div>
           <div className="button-account">
             <div className="overlap-2">
-              <a href="/Without_registration">
+              <a href="/WithoutRegistration">
                 <img
                   className="house"
                   alt="House"

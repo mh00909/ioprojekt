@@ -8,7 +8,7 @@ const Account = ({user}) => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   console.log('Właściwość user w komponencie Konto:', user);
 
-  const userLoginEndpoint = `${apiBaseUrl}/Konto`;
+  const userLoginEndpoint = `${apiBaseUrl}/Account`;
   const [userData, setUserData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -18,8 +18,24 @@ const Account = ({user}) => {
     // Funkcja do pobrania danych zalogowanego użytkownika z backendu
     const fetchUserData = async () => {
       try {
-        const response = await api.get('/Konto');
+
+        const token = localStorage.getItem('token');
+        const response = await api.get('/api/auth/checkLogged', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log("Dane użytkownika: ", response.data); 
+      if(response.status == 200){
         setUserData(response.data);
+        console.log("Dane użytkownika: ", response.data); 
+        localStorage.setItem('token', data.token);
+
+      }
+      else{
+        console.error("Nie udało się pobrać danych")
+      }
+       
       } catch (error) {
         console.error("Błąd pobierania danych użytkownika:", error);
       }
@@ -28,7 +44,6 @@ const Account = ({user}) => {
     // Wywołaj funkcję pobierania danych przy pierwszym renderowaniu komponentu
     fetchUserData();
   }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
-
 
 
 
@@ -86,7 +101,7 @@ const Account = ({user}) => {
             </div>
           </div>
           <div className="text-wrapper-12">
-            Login: {user ? user.name : "Niezalogowany"}
+          Login: {userData ? userData.name : "Niezalogowany"}
           </div>
         </div>
         <div className="button-account">

@@ -5,6 +5,7 @@ import DateSelector from './components/DateSelector';
 import api from "../api";
 import AllEvents from './components/AllEvents';
 
+
 const Reservations = () => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;

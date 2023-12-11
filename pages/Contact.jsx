@@ -35,7 +35,7 @@ const Contact = () => {
           </div>
           <div className="account-button">
             <div className="overlap-2">
-              <a href="/without_registration">
+              <a href="/WithoutRegistration">
                 <img className="home" alt="Home" src="https://c.animaapp.com/OsgJfIi2/img/domek.png" />
                 <div className="overlap-group-wrapper">
                   <div className="overlap-group-2">
@@ -51,7 +51,7 @@ const Contact = () => {
               <span className="text-wrapper-7">Kontakt</span>
             </div>
           </div>
-          <a href="/information">
+          <a href="/Information">
             <div className="information-button">
               <div className="div-wrapper">
                 <div className="text-wrapper-8">Informacje</div>

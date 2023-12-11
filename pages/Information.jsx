@@ -9,16 +9,15 @@ const Information = () => {
           <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
           <img className="clouds" alt="Clouds" src="https://c.animaapp.com/Z6LFCeVJ/img/chmury.png" />
           <p className="not-allowed">
-          Nie dopuszcza się odwoływania zajęć na mniej niż 24 godziny od planowanej daty.
-            <br /> Użytkownik ma możliwość uzyskania zniżki jeśli pogoda sprawdzona 25 godzin przed datą zajęć wskazuje,
-            że temperatura spadnie poniżej zera.
+          Prognozę pogody możesz na bieżąco sprawdzać w danych rezerwacji.
+            <br /> Użytkownik ma możliwość uzyskania zniżki jeśli temperatura powietrza sprawdzona w dzień zajęć nie mieści się w zakresie podanym w opisie.
             <br /> Rezerwacje można sprawdzić po zalogowaniu w zakładce Moje Konto.
-            <br /> Możliwe do rezerwacji terminy pojawiają się w zakładce Kalendarz.
+            <br /> Możliwe do rezerwacji terminy pojawiają po wybraniu daty.
             <br /> Brak dodanych terminów oznacza brak zajęć.
             <br /> Kontakt do zarządu można sprawdzić w zakładce kontakt.
           </p>
           <img className="group" alt="Group" src="https://c.animaapp.com/Z6LFCeVJ/img/group-17.png" />
-          <div className="text-wrapper-2">Zasady rezerwacji:</div>
+          <div className="text-wrapper-2">Słowem wstępu:</div>
         </div>
         <div className="overlap-group">
           <div className="overlap-2">

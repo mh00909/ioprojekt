@@ -71,4 +71,7 @@ readline.question('Enter the operation (delete/update): ', async (operation) => 
         client.end(); // Zamknięcie połączenia w przypadku nieprawidłowej operacji
         readline.close();
     }
+
+
+    
 });

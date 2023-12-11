@@ -28,33 +28,11 @@ const UserAuth = () => {
 
     try {
       const response = await api.post('/api/auth/signin', formData);
-    /*  if(response.status == 200){
-        window.location.href = '/Account';
-      }
-      if(response.data == "Strona user"){
-        console.log('Udało się zalogować user', response.data);
-        window.location.href = '/Account';
-      }
-      else if(response.data == "Strona admina"){
-        console.log('Udało się zalogować admin', response.data);
-        window.location.href = '/AdminPanel';
-      }
-      else{
-        // niepoprawne dane logowania
-        window.location.href = '/Main';
-        setError("Niepoprawne logowania. Spróbuj ponownie.");
-      }
-
-    
-    } catch (error) {
-      console.error("Błąd podczas wysyłania danych:", error);      
-      setError("Błąd logowania. Spróbuj ponownie.");
-      
-    } */
     if (response.status === 200) {
       const data = response.data;
       const role = data.role; 
-      console.log(data.toString())
+      localStorage.setItem('token', data.token);
+
       if (role === ("ADMIN")) {
         window.location.href = '/AdminPanel';
       } else {
@@ -70,6 +48,12 @@ const UserAuth = () => {
   }
   };
 
+
+
+
+
+
+  
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 

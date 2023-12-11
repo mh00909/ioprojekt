@@ -44,7 +44,7 @@ const WithoutRegistration = () => {
         <div className="overlap-3">
           <div className="group">
             <div className="overlap-group-3">
-              <a href="/Login">
+              <a href="/UserAuth">
                 <div className="rectangle-2" />
                 <div className="text-wrapper-4">Dalej</div>
               </a>

@@ -17,7 +17,8 @@ const ReservationData = () => {
                 <div className="discount-white" />
                 <div className="text-wrapper-2">Zniżka</div>
               </div>
-  </button>*/}
+  </button>
+  https://c.animaapp.com/xy7qn80J/img/dodaj-nag--wek--16--1.png ewentualne tlo*/}
             <img className="cancel" alt="Cancel" src="https://c.animaapp.com/RraaDVLa/img/odwolaj@2x.png" />
             <div className="group">
               <div className="card">
