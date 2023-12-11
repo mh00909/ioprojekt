@@ -1,6 +1,7 @@
 // components/EventItem.jsx
 import React, { useState, useEffect } from 'react';
 import './EventItem.css';
+import api from '../../api';
 
 const EventItem = ({ event }) => {
   const [isCancelling, setIsCancelling] = useState(false);
@@ -36,7 +37,7 @@ const EventItem = ({ event }) => {
   ) : (
     `${event.price} PLN`
   );
-
+{/*To była pierwsz wersja
   const handleSignUpEvent = async () => {
     try {
       setIsSigningUp(true);
@@ -67,6 +68,46 @@ const EventItem = ({ event }) => {
       console.log('Sign-up process completed');
     }
   };
+*/}
+
+
+const handleSignUpEvent = async () => {
+  try {
+    setIsSigningUp(true);
+    console.log('Signing up for event with ID:', event.id);
+
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);
+
+    const response = await api.post(`/events/signup/${event.id}`, null, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    
+
+
+  
+    console.log('Response:', response);
+
+    if (response.status === 200) {
+      console.log('User signed up successfully');
+      //tu ewentualnie dorobie odświeżanie strony
+    } else {
+      console.error('Failed to sign up for event');
+      console.log('Error details:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Error signing up for event:', error);
+    console.log('Error details:', error);
+  } finally {
+    setIsSigningUp(false);
+    console.log('Sign-up process completed');
+  }
+};
+
+
 
   const handleCancelEvent = async () => {
     try {

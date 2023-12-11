@@ -45,7 +45,7 @@ const Account = ({user}) => {
     fetchUserData();
   }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
 
-
+{/*}
 
   useEffect(() => {
     const fetchAllEvents = async () => {
@@ -59,10 +59,13 @@ const Account = ({user}) => {
 
     fetchAllEvents();
   }, [selectedDate]);
-
+*/}
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
+
+
+
 
   return (
     <div className="account">
