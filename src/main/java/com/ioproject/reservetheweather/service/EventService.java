@@ -95,10 +95,11 @@ public class EventService {
     }
 
     public boolean addPerson(Long eventid, User user) {
-        Optional<Event> event = eventRepository.findById(eventid);
-        if(event.isPresent()){
-            event.get().getUsers().add(user);
-            event.get().setSignedUsers(event.get().getSignedUsers() + 1);
+        Optional<Event> eventOpt = eventRepository.findById(eventid);
+        if(eventOpt.isPresent()){
+            Event event = eventOpt.get();
+            event.users.add(user);
+            event.signedUsers += 1;
             return true;
 
         }

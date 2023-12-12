@@ -47,9 +47,9 @@ public class Event {
     @Column
     private int maxUsers;
     @Column
-    private int signedUsers;
+    public int signedUsers;
     @ManyToMany
-    List<User> users;
+    public List<User> users;
     @Column
     double minTemperature;
     @Column
