@@ -10,7 +10,8 @@ const Account = ({user}) => {
 
   const userLoginEndpoint = `${apiBaseUrl}/Account`;
   const [userData, setUserData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("2023-12-12");
+  const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
 
   const [error, setError] = useState(""); 
 
@@ -29,10 +30,10 @@ const Account = ({user}) => {
 
         setUserData(response.data);
         console.log("Dane użytkownika: ", response.data); 
-        localStorage.setItem('token', response.data.token);
         localStorage.setItem('login', response.data.name);
         console.log('login zapisany: ', localStorage.getItem('login'));
         console.log('token zapisany: ', localStorage.getItem('token'));
+        setIsUserDataLoaded(true);
 
       }
       else{
@@ -48,23 +49,26 @@ const Account = ({user}) => {
     fetchUserData();
   }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
 
-{/*}
+{
 
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
 
-        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}`);
-
+        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
+        console.log('Otrzymano zajęcia użytkownika o loginie ', localStorage.getItem('login', " : ", response.data[0]));
 
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
       }
     };
 
-    fetchAllEvents();
-  }, [selectedDate]);
-*/}
+    if (isUserDataLoaded) {
+      fetchAllEvents();
+    }
+    
+  }, [selectedDate, isUserDataLoaded]);
+}
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
