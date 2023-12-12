@@ -2,9 +2,11 @@ package com.ioproject.reservetheweather.service;
 
 import com.ioproject.reservetheweather.model.Event;
 //import com.ioproject.reservetheweather.repository.EventRepository;
+import com.ioproject.reservetheweather.model.EventDto;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -165,5 +167,30 @@ public class EventService {
             return true;
         }
         return false;
+    }
+
+
+
+
+
+
+
+    public EventDto convertToDto(Event event) {
+        EventDto dto = new EventDto();
+        dto.setId(event.getId());
+        dto.setName(event.getName());
+        dto.setDescription(event.getDescription());
+        dto.setLocation(event.getLocation());
+        dto.setDiscount(event.isDiscount());
+        dto.setPrice(event.getPrice());
+        dto.setTime(event.getTime());
+        dto.setDate(event.getDate());
+        dto.setDuration(event.getDuration());
+        dto.setUsers(event.getUsers());
+        dto.setSignedUsers(event.getSignedUsers());
+        dto.setMaxUsers(event.getMaxUsers());
+        dto.setMinTemperature(event.getMinTemperature());
+        dto.setMaxTemperature(event.getMaxTemperature());
+        return dto;
     }
 }

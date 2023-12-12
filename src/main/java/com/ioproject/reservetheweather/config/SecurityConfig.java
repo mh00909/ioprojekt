@@ -60,7 +60,7 @@ public class SecurityConfig {
                                 "/Main", "/AdminPanel", "/api/events/all", "/Account", "/api/**",
                                 "/api/user/myEventsOnDay", "/api/user/allEventsOnDay", "/api/user/allEventsOnDay?date=&name=?", "/api/user/allEventsOnDay**",
                                 "/api/user/myEventsOnDay?date=", "/api/user/events/signup?eventid=&name=", "/api/user/events/signup?eventid=1&name=123",
-                                "/Reservations",
+                                "/Reservations","/AdminPanel**",
                                 "/api/admin/addEvent",
                                 "/api/admin/removeEvent")
                         .permitAll()

@@ -1,5 +1,6 @@
 package com.ioproject.reservetheweather.api;
 import com.ioproject.reservetheweather.model.Event;
+import com.ioproject.reservetheweather.model.EventDto;
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
@@ -82,14 +83,20 @@ public class UserController {
         return ResponseEntity.ok(events);
     }
 
-    @GetMapping("/myEventsOnDay") // jeszcze nie działa
+
+
+
+
+
+
+    @GetMapping("/myEventsOnDay")
     public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
         Optional<User> userOpt = userRepository.findUserByName(name);
         if(!userOpt.isPresent()){
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         User user = userOpt.get();
-        List<Event> eventsOnDate = new ArrayList<>();
+        List<EventDto> eventsOnDate = new ArrayList<>();
         List<Event> events = eventRepository.findAll();
 
         for(Event e: events){
@@ -97,7 +104,8 @@ public class UserController {
                 List<User> usersInE = e.users;
                 for(User u : usersInE){
                     if(u.getName().equals(user.getName())){
-                        eventsOnDate.add(e);
+                        EventDto eventDto = eventService.convertToDto(e);
+                        eventsOnDate.add(eventDto);
                     }
                 }
             }
@@ -113,10 +121,11 @@ public class UserController {
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         List<Event> events = eventService.getEvents();
-        List<Event> eventsOnDate = new ArrayList<>();
+        List<EventDto> eventsOnDate = new ArrayList<>();
         for(Event e: events){
             if(e.getDate().isEqual(date)){
-                eventsOnDate.add(e);
+                EventDto eventDto = eventService.convertToDto(e);
+                eventsOnDate.add(eventDto);
             }
         }
         return ResponseEntity.ok(eventsOnDate);
