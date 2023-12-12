@@ -29,7 +29,7 @@ const Account = ({user}) => {
       if(response.status == 200){
         setUserData(response.data);
         console.log("Dane użytkownika: ", response.data); 
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', response.data.token);
 
       }
       else{
@@ -65,7 +65,12 @@ const Account = ({user}) => {
   };
 
 
+  const handleLogOut = () => {
 
+    localStorage.removeItem('token');
+  
+    window.location.href = '/UserAuth';
+  };
 
   return (
     <div className="account">
@@ -132,7 +137,7 @@ const Account = ({user}) => {
             position: 'relative',
             zIndex: '999',
             fontFamily: 'Source Serif Pro, serif'}}
-          /* onClick={handleLogOutEvent}*/
+            onClick={handleLogOut}
         >
         Wyloguj
         </button>

@@ -85,10 +85,7 @@ const handleSignUpEvent = async () => {
         'Content-Type': 'application/json',
       },
     });
-    
 
-
-  
     console.log('Response:', response);
 
     if (response.status === 200) {
@@ -101,6 +98,7 @@ const handleSignUpEvent = async () => {
   } catch (error) {
     console.error('Error signing up for event:', error);
     console.log('Error details:', error);
+    console.log('Error details:', error.response.data);
   } finally {
     setIsSigningUp(false);
     console.log('Sign-up process completed');
