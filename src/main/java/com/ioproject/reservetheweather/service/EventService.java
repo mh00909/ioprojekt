@@ -98,8 +98,11 @@ public class EventService {
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
             event.get().getUsers().add(user);
+            event.get().setSignedUsers(event.get().getSignedUsers() + 1);
             return true;
+
         }
+
         return false;
     }
 

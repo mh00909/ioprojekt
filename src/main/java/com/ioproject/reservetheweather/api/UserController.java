@@ -76,8 +76,8 @@ public class UserController {
 
 
     @GetMapping("/myEventsOnDay") // jeszcze nie działa
-    public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date){
-        Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+    public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
+        Optional<User> userOpt = userRepository.findUserByName(name);
         if(!userOpt.isPresent()){
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
@@ -92,13 +92,11 @@ public class UserController {
         return ResponseEntity.ok(eventsOnDate);
     }
     @GetMapping("/allEventsOnDay")
-    public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
-       /* Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+    public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam String name){
+        Optional<User> userOpt = userRepository.findUserByMail(name);
         if(!userOpt.isPresent()){
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
-
-        */
         List<Event> events = eventService.getEvents();
         List<Event> eventsOnDate = new ArrayList<>();
         for(Event e: events){
@@ -112,8 +110,8 @@ public class UserController {
 
 
     @PostMapping("/events/signup")
-    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid){
-        Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name){
+        Optional<User> user = userRepository.findUserByMail(name);
         if(user.isPresent()) {
             eventService.addPerson(eventid, user.get());
             userService.joinEvent(eventid, user.get());
