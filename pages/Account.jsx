@@ -50,8 +50,10 @@ const Account = ({user}) => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        const response = await api.get('/api/events/all');
-        setAllEvents(response.data);
+
+        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}`);
+
+
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
       }

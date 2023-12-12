@@ -28,6 +28,34 @@ const Reservations = () => {
     fetchAllEvents();
   }, [selectedDate]);
 
+
+{/*
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+ 
+      const fetchAllEvents = async () => {
+        try {
+          const response = await api.get(`/api/events/all?date=${selectedDate}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setAllEvents(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+
+      fetchAllEvents();
+    } else {
+      // jeśli niezalogowany o przekierowuje do logowania
+      window.location.href = '/login'; 
+    }
+  }, [selectedDate]);
+
+*/}
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
