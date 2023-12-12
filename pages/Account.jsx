@@ -29,8 +29,9 @@ const Account = ({user}) => {
       if(response.status == 200){
         setUserData(response.data);
         console.log("Dane użytkownika: ", response.data); 
-        localStorage.setItem('token', data.token);
-
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('login', response.data.name);
+        console.log('login zapisany: ', localStorage.getItem('login'));
       }
       else{
         console.error("Nie udało się pobrać danych")
@@ -50,8 +51,10 @@ const Account = ({user}) => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        const response = await api.get('/api/events/all');
-        setAllEvents(response.data);
+
+        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}`);
+
+
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
       }

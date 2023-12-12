@@ -11,14 +11,16 @@ const Reservations = () => {
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
 
   const [allEvents, setAllEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState('2023-12-12');
 
   const [error, setError] = useState(""); 
 
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        const response = await api.get(`/api/events/all?date=${selectedDate}`);
+        console.log("wybrana data:" , selectedDate);
+        const response = await api.get(`/api/user/allEventsOnDay?date=${selectedDate}`);
+        console.log("Pobrano: ", response.data)
         setAllEvents(response.data);
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
