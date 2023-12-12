@@ -69,11 +69,18 @@ public class UserController {
     public ResponseEntity<Object> showMyEvents(){
         Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
         if(user.isPresent()) {
-            return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
+            List<Event> events = userRepository.findEventsByUserId(user.get().getId());
+            return ResponseEntity.ok(events);
+           // return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
         }
         return null;
     }
 
+    @GetMapping("/{userId}/events")
+    public ResponseEntity<List<Event>> getUserEvents(@PathVariable Long userId) {
+        List<Event> events = userRepository.findEventsByUserId(userId);
+        return ResponseEntity.ok(events);
+    }
 
     @GetMapping("/myEventsOnDay") // jeszcze nie działa
     public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
@@ -82,13 +89,21 @@ public class UserController {
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         User user = userOpt.get();
-        List<Event> events = user.getMyEvents();
         List<Event> eventsOnDate = new ArrayList<>();
+        List<Event> events = eventRepository.findAll();
+
         for(Event e: events){
             if(e.getDate().isEqual(date)){
-                eventsOnDate.add(e);
+                List<User> usersInE = e.users;
+                for(User u : usersInE){
+                    if(u.getName().equals(user.getName())){
+                        eventsOnDate.add(e);
+                    }
+                }
             }
+
         }
+
         return ResponseEntity.ok(eventsOnDate);
     }
     @GetMapping("/allEventsOnDay")
@@ -108,11 +123,10 @@ public class UserController {
     }
 
 
-
     @PostMapping("/events/signup")
-    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name){
+    public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name) {
         Optional<User> user = userRepository.findUserByMail(name);
-        if(user.isPresent()) {
+        if (user.isPresent()) {
             eventService.addPerson(eventid, user.get());
             userService.joinEvent(eventid, user.get());
             return ResponseEntity.ok("Zapisano poprawnie.");
@@ -121,14 +135,15 @@ public class UserController {
     }
 
     @PostMapping("/myevents/cancell")
-    public ResponseEntity<Object> resignEvent(@RequestParam Long id){
+    public ResponseEntity<Object> resignEvent(@RequestParam Long id) {
         eventService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
         userService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
         return ResponseEntity.ok("Zrezygnowano z zajęć.");
     }
+
     @PostMapping("/myevents/discount")
-    public ResponseEntity<Object> discountEvent(@RequestParam Long id){
-        if( eventService.discount(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()))){
+    public ResponseEntity<Object> discountEvent(@RequestParam Long id) {
+        if (eventService.discount(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()))) {
             return ResponseEntity.ok("Przyznano zniżkę.");
         }
         return ResponseEntity.ok("Nie przyznano zniżki. Spróbuj ponownie.");

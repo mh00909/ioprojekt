@@ -1,5 +1,6 @@
 package com.ioproject.reservetheweather.model;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -101,6 +102,8 @@ public class User implements UserDetails {
      * @param event
      * @return false, gdy jest już zapisany na dane zajęcia, true - w przeciwnym przypadku
      */
+
+    @Transactional
     public boolean joinEvent(Event event){
         if(myEvents.contains(event)){
             return false;

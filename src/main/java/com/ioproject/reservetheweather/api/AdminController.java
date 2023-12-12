@@ -6,6 +6,7 @@ import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
@@ -39,7 +40,7 @@ public class AdminController {
 
 
     @PostMapping("/addEvent")
-    public ResponseEntity<Object> addEvent(@RequestParam("date") LocalDate date,
+    public ResponseEntity<Object> addEvent(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
                                            @RequestParam("time")LocalTime eventTime,
                                            @RequestParam("duration") int duration,
                                            @RequestParam("description") String description,

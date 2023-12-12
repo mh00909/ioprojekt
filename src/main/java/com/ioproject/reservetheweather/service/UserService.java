@@ -139,6 +139,8 @@ public class UserService {
      * @param user Użytkownik dołączający do wydarzenia
      * @return true, jeśli dołączenie się powiedzie
      */
+
+    @Transactional
     public boolean joinEvent(Long eventid, User user){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){

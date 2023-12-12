@@ -94,7 +94,11 @@ public class Event {
     }
 
 
-
+    public boolean addNewUser(User user){
+        users.add(user);
+        signedUsers+=1;
+        return true;
+    }
 
     public void removeUser(User user){
         users.remove(user);
