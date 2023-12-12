@@ -18,7 +18,6 @@ const Account = ({user}) => {
     // Funkcja do pobrania danych zalogowanego użytkownika z backendu
     const fetchUserData = async () => {
       try {
-
         const token = localStorage.getItem('token');
         const response = await api.get('/api/auth/checkLogged', {
         headers: {
@@ -27,11 +26,14 @@ const Account = ({user}) => {
       });
       console.log("Dane użytkownika: ", response.data); 
       if(response.status == 200){
+
         setUserData(response.data);
         console.log("Dane użytkownika: ", response.data); 
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('login', response.data.name);
         console.log('login zapisany: ', localStorage.getItem('login'));
+        console.log('token zapisany: ', localStorage.getItem('token'));
+
       }
       else{
         console.error("Nie udało się pobrać danych")

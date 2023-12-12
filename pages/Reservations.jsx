@@ -18,8 +18,13 @@ const Reservations = () => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
+
+        
+        const login = localStorage.getItem('login');
+        console.log('Login przy Reservations:', login);
+
         console.log("wybrana data:" , selectedDate);
-        const response = await api.get(`/api/user/allEventsOnDay?date=${selectedDate}`);
+        const response = await api.get(`/api/user/allEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
         console.log("Pobrano: ", response.data)
         setAllEvents(response.data);
       } catch (error) {

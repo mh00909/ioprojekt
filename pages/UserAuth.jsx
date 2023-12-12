@@ -32,7 +32,11 @@ const UserAuth = () => {
       const data = response.data;
       const role = data.role; 
       localStorage.setItem('token', data.token);
-
+      localStorage.setItem('login', data.name);
+      localStorage.setItem('test' , 'test12345');
+      console.log('token:  ', localStorage.getItem('token'));
+      console.log('login:  ', localStorage.getItem('login'));
+      console.log('test:  ', localStorage.getItem('test'));
       if (role === ("ADMIN")) {
         window.location.href = '/AdminPanel';
       } else {

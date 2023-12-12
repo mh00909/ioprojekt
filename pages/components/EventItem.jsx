@@ -74,19 +74,20 @@ const EventItem = ({ event }) => {
 const handleSignUpEvent = async () => {
   try {
     setIsSigningUp(true);
-    console.log('Signing up for event with ID:', event.id);
-
-    const token = localStorage.getItem('token');
-    console.log('Token:', token);
-
-    const response = await api.post(`/events/signup/${event.id}`, null, {
+   /* console.log('Signing up for event with ID:', event.id);
+    const response1 = await api.get('/api/auth/checkLogged', {
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
+        'Authorization': `Bearer ${token}`
+      }
     });
-    
+   // localStorage.setItem('token', response1.data.token)
+    console.log("Dane użytkownika: ", response1.data); 
+    //const token = localStorage.getItem('token');
+    //console.log('Token:', token); */
+    console.log('login przy rezerwowaniu: ', localStorage.getItem('login'));
 
+    const response = await api.post(`/api/user/events/signup?eventid=${event.id}&name=${localStorage.getItem('login')}`);
+    
 
   
     console.log('Response:', response);
