@@ -2,7 +2,7 @@ package com.ioproject.reservetheweather.service;
 
 import com.ioproject.reservetheweather.model.Event;
 //import com.ioproject.reservetheweather.repository.EventRepository;
-import com.ioproject.reservetheweather.model.EventDto;
+
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
@@ -172,7 +172,7 @@ public class EventService {
 
 
 
-
+/*
 
 
     public EventDto convertToDto(Event event) {
@@ -193,4 +193,6 @@ public class EventService {
         dto.setMaxTemperature(event.getMaxTemperature());
         return dto;
     }
+
+ */
 }

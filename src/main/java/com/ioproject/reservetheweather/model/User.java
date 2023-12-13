@@ -1,4 +1,5 @@
 package com.ioproject.reservetheweather.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.*;
@@ -21,6 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
@@ -38,7 +40,9 @@ public class User implements UserDetails {
     private String roles;
 
 
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
     private List<Event> myEvents;
 
 

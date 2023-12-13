@@ -1,6 +1,6 @@
 package com.ioproject.reservetheweather.api;
 import com.ioproject.reservetheweather.model.Event;
-import com.ioproject.reservetheweather.model.EventDto;
+
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
@@ -96,18 +96,17 @@ public class UserController {
             return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         User user = userOpt.get();
-        List<EventDto> eventsOnDate = new ArrayList<>();
-        List<Event> events = eventRepository.findAll();
+        List<Event> eventsOnDate = new ArrayList<>();
+        List<Event> events = user.getMyEvents();
+
+
 
         for(Event e: events){
             if(e.getDate().isEqual(date)){
-                List<User> usersInE = e.users;
-                for(User u : usersInE){
-                    if(u.getName().equals(user.getName())){
-                        EventDto eventDto = eventService.convertToDto(e);
-                        eventsOnDate.add(eventDto);
-                    }
-                }
+
+                        eventsOnDate.add(e);
+
+
             }
 
         }
@@ -118,14 +117,14 @@ public class UserController {
     public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam String name){
         Optional<User> userOpt = userRepository.findUserByMail(name);
         if(!userOpt.isPresent()){
-            return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
+       //     return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         List<Event> events = eventService.getEvents();
-        List<EventDto> eventsOnDate = new ArrayList<>();
+        List<Event> eventsOnDate = new ArrayList<>();
         for(Event e: events){
             if(e.getDate().isEqual(date)){
-                EventDto eventDto = eventService.convertToDto(e);
-                eventsOnDate.add(eventDto);
+               // EventDto eventDto = eventService.convertToDto(e);
+                eventsOnDate.add(e);
             }
         }
         return ResponseEntity.ok(eventsOnDate);
@@ -157,9 +156,6 @@ public class UserController {
         }
         return ResponseEntity.ok("Nie przyznano zniżki. Spróbuj ponownie.");
     }
-
-
-
 
 
     @GetMapping("/updateName")

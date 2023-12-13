@@ -69,9 +69,6 @@ public class AdminController {
         return ResponseEntity.ok("Zmieniono termin zajęć");
     }
 
-
-    //@RequestMapping(value = "/removeEvent", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-
     @PostMapping("/removeEvent")
     public ResponseEntity<Object> removeEvent(@RequestParam Long eventID){
         boolean removed = eventService.removeEvent(eventID);

@@ -9,12 +9,10 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherApiConfig {
     @Value("${openweathermap.api.key}")
     private String openWeatherMapApiKey;
-
     @Bean
     public String openWeatherMapApiKey() {
         return openWeatherMapApiKey;
     }
-
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

@@ -6,7 +6,6 @@ import com.ioproject.reservetheweather.service.EventService;
 import com.ioproject.reservetheweather.service.UserService;
 import com.ioproject.reservetheweather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
@@ -35,18 +34,13 @@ public class EventController {
     public String hello() {
         return "Strona";
     }
-    @GetMapping("/api/kontakt")
-    public ResponseEntity<Object> kontakt(){
-        String daneKontaktowe = "W przypadku problemów skontaktuj się z nami:\n e-mail: reservetheweather@gmail.com";
-        return ResponseEntity.ok(daneKontaktowe);
-    }
 
     @GetMapping("/api/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
     }
 
-    @GetMapping("/api/events/description/")
+    @GetMapping("/api/events/description")
     public ResponseEntity<Object> showEventDescription(@RequestParam Long eventid){
         Optional<Event> event = eventRepository.findById(eventid);
         if(event.isPresent()){
