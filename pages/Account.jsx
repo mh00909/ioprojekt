@@ -81,6 +81,12 @@ const Account = ({user}) => {
     setSelectedDate(date);
   };
 
+  const handleLogOut = () => {
+
+    localStorage.removeItem('token');
+
+    window.location.href = '/UserAuth';
+  };
 
 
 
@@ -149,7 +155,7 @@ const Account = ({user}) => {
             position: 'relative',
             zIndex: '999',
             fontFamily: 'Source Serif Pro, serif'}}
-          /* onClick={handleLogOutEvent}*/
+            onClick={handleLogOut}
         >
         Wyloguj
         </button>
