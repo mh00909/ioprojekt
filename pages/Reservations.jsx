@@ -11,7 +11,7 @@ const Reservations = () => {
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
 
   const [allEvents, setAllEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('2023-12-12');
+  const [selectedDate, setSelectedDate] = useState('2023-12-30');
 
   const [error, setError] = useState(""); 
 
@@ -25,7 +25,7 @@ const Reservations = () => {
 
         console.log("wybrana data:" , selectedDate);
         const response = await api.get(`/api/user/allEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
-        console.log("Pobrano: ", response.data)
+        console.log("Pobrano: ", response.data);
         setAllEvents(response.data);
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);

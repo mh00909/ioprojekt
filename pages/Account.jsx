@@ -10,7 +10,7 @@ const Account = ({user}) => {
 
   const userLoginEndpoint = `${apiBaseUrl}/Account`;
   const [userData, setUserData] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("2023-12-12");
+  const [selectedDate, setSelectedDate] = useState("2023-12-30");
   const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
 
   const [error, setError] = useState(""); 
