@@ -13,6 +13,8 @@ const Account = ({user}) => {
   const [selectedDate, setSelectedDate] = useState("2023-12-30");
   const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
 
+
+  //const [allEvents, setAllEvents] = useState([]);
   const [error, setError] = useState(""); 
 
   useEffect(() => {
@@ -55,9 +57,15 @@ const Account = ({user}) => {
     const fetchAllEvents = async () => {
       try {
 
-        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
-        console.log('Otrzymano zajęcia użytkownika o loginie ', localStorage.getItem('login', " : ", response.data[0]));
+        const login = localStorage.getItem('login');
+        console.log('Login przy wypisywaniu zajęć użytkownika:', login);
+        console.log("wybrana data:" , selectedDate);
 
+        const response = await api.get(`/api/user/myEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
+       // console.log('Otrzymano zajęcia użytkownika o loginie ', localStorage.getItem('login', " : ", response.data[0]));
+
+        console.log("Pobrano: ", response.data);
+        //setAllEvents(response.data);
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
       }

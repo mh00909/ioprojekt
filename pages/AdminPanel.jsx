@@ -16,7 +16,7 @@ const AdminPanel = () => {
   const [eventPrice, setEventPrice] = useState("");
   const [eventMinTemperature, setMinTemperature] = useState("");
   const [eventMaxTemperature, setMaxTemperature] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("2023-12-30");
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const addEventEndpoint = `${apiBaseUrl}/addEvent`;
@@ -58,8 +58,31 @@ const AdminPanel = () => {
       setError("Błąd podczas dodania zajęć. Spróbuj ponownie.");
     }
   };
-
   useEffect(() => {
+    const fetchAllEvents = async () => {
+      try {
+
+        
+        const login = localStorage.getItem('login');
+        console.log('Login przy Reservations:', login);
+
+        console.log("wybrana data:" , selectedDate);
+        const response = await api.get(`/api/user/allEventsOnDay?date=${selectedDate}&name=${localStorage.getItem('login')}`);
+        console.log("Pobrano: ", response.data);
+        setAllEvents(response.data);
+      } catch (error) {
+        console.error('Błąd podczas pobierania danych:', error);
+      }
+    };
+
+    fetchAllEvents();
+  }, [selectedDate]);
+
+  const handleDateSelection = (date) => {
+    setSelectedDate(date);
+  };
+
+ /* useEffect(() => {
     const fetchAllEvents = async () => {
       try {
         const response = await api.get('/api/events/all');
@@ -74,7 +97,7 @@ const AdminPanel = () => {
 
   const handleDateSelection = (date) => {
     setSelectedDate(date);
-  };
+  }; */
     return (
       <div className="admin-panel">
         <div className="div">
