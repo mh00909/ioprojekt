@@ -27,10 +27,17 @@ const ReservationData = () => {
               Kraków, Pl
             </p>
          
-            <p className="qa">
+           <p className="qa">
               W razie pytań nie wachaj się z nami skontaktować. U nas to klient jest na pierwszym miejscu
             </p>
 
+            <p className="important1">
+              Ważne!
+            </p>
+
+            <p className="notification">
+              Przypominajka!
+            </p>
             {/*<button className="discount">
               <div className="overlap-group-2">
                 <div className="rectangle" />

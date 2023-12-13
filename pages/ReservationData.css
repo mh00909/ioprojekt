@@ -39,6 +39,35 @@
     width: 271px;
   }
 
+  .reservation-data .important1 {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    left: 375px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    z-index: 999;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 300px;
+    width: 271px;
+  }
+
+  .reservation-data .notification {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    left: 34px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    z-index: 999;
+    text-align: center;
+    text-shadow: 0px 4px 4px #00000040;
+    top: 270px;
+    width: 271px;
+  }
 
   .reservation-data .Place1 {
     color: #ffffff;

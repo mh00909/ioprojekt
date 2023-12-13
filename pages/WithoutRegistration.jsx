@@ -11,7 +11,7 @@ const WithoutRegistration = () => {
             <img
               className="add-header"
               alt="Add header"
-              src="https://c.animaapp.com/S851EPP9/img/dodaj-nag--wek--12--1.png"
+              src="https://c.animaapp.com/jPTIGuWf/img/dodaj-nag--wek--12--1.png"
             />
           </div>
           <div className="account-button">
