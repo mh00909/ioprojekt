@@ -93,7 +93,7 @@ public class UserController {
     public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
         Optional<User> userOpt = userRepository.findUserByName(name);
         if(!userOpt.isPresent()){
-            return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
+           /* return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");*/
         }
         User user = userOpt.get();
         List<Event> eventsOnDate = new ArrayList<>();
@@ -133,7 +133,7 @@ public class UserController {
 
     @PostMapping("/events/signup")
     public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name) {
-        Optional<User> user = userRepository.findUserByMail(name);
+        Optional<User> user = userRepository.findUserByName(name);
         if (user.isPresent()) {
             eventService.addPerson(eventid, user.get());
             userService.joinEvent(eventid, user.get());
