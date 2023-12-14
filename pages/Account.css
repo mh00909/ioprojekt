@@ -534,3 +534,16 @@
     text-shadow: 0px 4px 4px #00000040;
 
   }
+
+
+  
+
+  .admin-panel .all-events-container {
+    position: relative;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-top: 360px;
+  }

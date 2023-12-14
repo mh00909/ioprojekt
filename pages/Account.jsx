@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Account.css";
 import api from "../api";
 import DateSelector from './components/DateSelector';
+import AllEvents from './components/AllEvents';
 
 
 const Account = ({user}) => {
@@ -12,6 +13,7 @@ const Account = ({user}) => {
   const [userData, setUserData] = useState([]);
   const [selectedDate, setSelectedDate] = useState("2023-12-30");
   const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
+  const [allEvents, setAllEvents] = useState([]);
 
 
   //const [allEvents, setAllEvents] = useState([]);
@@ -70,10 +72,12 @@ const Account = ({user}) => {
         console.error('Błąd podczas pobierania danych:', error);
       }
     };
-
+/*
     if (isUserDataLoaded) {
       fetchAllEvents();
-    }
+    }*/
+    fetchAllEvents();
+
     
   }, [selectedDate, isUserDataLoaded]);
 }
@@ -94,7 +98,9 @@ const Account = ({user}) => {
     <div className="account">
     <div className="div">
     <div className="selector-style"><DateSelector onSelectDate={handleDateSelection} /></div>
-
+    <div className="all-events-container">
+        <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
+      </div>
       <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
       <div className="overlap">
         <div className="overlap-group">

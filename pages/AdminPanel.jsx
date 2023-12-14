@@ -16,7 +16,7 @@ const AdminPanel = () => {
   const [eventPrice, setEventPrice] = useState("");
   const [eventMinTemperature, setMinTemperature] = useState("");
   const [eventMaxTemperature, setMaxTemperature] = useState("");
-  const [selectedDate, setSelectedDate] = useState("2023-12-30");
+  const [selectedDate, setSelectedDate] = useState("2003-12-30");
 
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const addEventEndpoint = `${apiBaseUrl}/addEvent`;

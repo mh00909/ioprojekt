@@ -105,6 +105,7 @@ const handleSignUpEvent = async () => {
   } finally {
     setIsSigningUp(false);
     console.log('Sign-up process completed');
+    
   }
 };
 

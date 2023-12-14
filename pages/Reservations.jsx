@@ -11,7 +11,7 @@ const Reservations = () => {
   const allEventsEndpoint = `${apiBaseUrl}/api/events/all`;
 
   const [allEvents, setAllEvents] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('2023-12-30');
+  const [selectedDate, setSelectedDate] = useState('2003-12-30'); //Tutaj zmieniam na datę z przeszłości, bo nie może być pusty nawias, wybór faktycznej daty dokonuje się później
 
   const [error, setError] = useState(""); 
 
