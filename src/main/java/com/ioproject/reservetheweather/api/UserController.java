@@ -39,28 +39,6 @@ public class UserController {
     }
 
 
-/*
-    @RequestMapping(value = "/Rejestracja", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<?> saveUser(@ModelAttribute User user) {
-        if(userService.addNewUser(user) == 2){
-            return ResponseEntity.ok().body("Udało się");
-        } else {
-            if(userService.addNewUser(user) == 0){
-                return ResponseEntity.ok()
-                        .body("Błąd: podany E-mail już zajęty");
-            }
-
-            else if(userService.addNewUser(user) == 1){
-                return ResponseEntity.ok()
-                        .body("Błąd: podany login już zajęty");
-            }
-        }
-        return ResponseEntity.ok().body("Inny błąd");
-    }
-
-
- */
-
 
     @GetMapping("/Account")
     public ResponseEntity<Object> getMyDetails() {
@@ -93,29 +71,23 @@ public class UserController {
     public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
         Optional<User> userOpt = userRepository.findUserByName(name);
         if(!userOpt.isPresent()){
-           /* return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");*/
+            return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
         User user = userOpt.get();
         List<Event> eventsOnDate = new ArrayList<>();
         List<Event> events = user.getMyEvents();
 
-
-
         for(Event e: events){
             if(e.getDate().isEqual(date)){
-
-                        eventsOnDate.add(e);
-
-
+                eventsOnDate.add(e);
             }
-
         }
 
         return ResponseEntity.ok(eventsOnDate);
     }
     @GetMapping("/allEventsOnDay")
     public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam String name){
-        Optional<User> userOpt = userRepository.findUserByMail(name);
+        Optional<User> userOpt = userRepository.findUserByName(name);
         if(!userOpt.isPresent()){
        //     return ResponseEntity.badRequest().body("Użytkownik niezalogowany.");
         }
@@ -135,9 +107,23 @@ public class UserController {
     public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name) {
         Optional<User> user = userRepository.findUserByName(name);
         if (user.isPresent()) {
-            eventService.addPerson(eventid, user.get());
-            userService.joinEvent(eventid, user.get());
-            return ResponseEntity.ok("Zapisano poprawnie.");
+            int result = userService.joinEvent(eventid, user.get());
+            if(result == 0){
+                return ResponseEntity.ok("Nie odnaleziono wybranych zajęć.");
+            }
+            else if(result == 1){
+                return ResponseEntity.ok("Użytkownik jest już zapisany na te zajęcia.");
+            }
+            else if(result == 2){
+                return ResponseEntity.ok("Użytkownik ma inne zajęcia w tym czasie.");
+            }
+            else {
+                eventService.addPerson(eventid, user.get());
+                userRepository.save(user.get());
+                eventRepository.save(eventRepository.findById(eventid).get());
+                return ResponseEntity.ok("Zapisano poprawnie.");
+            }
+
         }
         return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }

@@ -109,9 +109,6 @@ public class User implements UserDetails {
 
     @Transactional
     public boolean joinEvent(Event event){
-        if(myEvents.contains(event)){
-            return false;
-        }
         myEvents.add(event);
         return true;
     }

@@ -5,13 +5,10 @@ import com.ioproject.reservetheweather.repository.EventRepository;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -117,10 +114,10 @@ public class UserService {
 
 
     /**
-     * Wyświetla wydarzenia, w których uczestniczy dany użytkownik.
+     * Wyświetla zajęcia, w których uczestniczy dany użytkownik.
      *
      * @param userID ID użytkownika
-     * @return Lista wydarzeń użytkownika
+     * @return Lista zajęć użytkownika
      * @throws IllegalStateException jeśli użytkownik nie istnieje
      */
 
@@ -133,29 +130,45 @@ public class UserService {
 
 
     /**
-     * Pozwala użytkownikowi dołączyć do wydarzenia.
-     *
-     * @param eventid ID wydarzenia
-     * @param user Użytkownik dołączający do wydarzenia
-     * @return true, jeśli dołączenie się powiedzie
+     * Pozwala użytkownikowi zapisać się na zajęcia.
+     * @param eventid ID zajęć
+     * @param user Użytkownik zapisujący się na zajęcia
+     * @return 3 - jeśli dołączenie się powiedzie,
+     * 1 - jeśli użytkownik jest już zapisany na te zajęcia,
+     * 2 - jeśli użytkownik ma inne zajęcia w tym czasie
+     * 3 - jeśli nie znaleziono podanych zajęć
      */
 
     @Transactional
-    public boolean joinEvent(Long eventid, User user){
-        Optional<Event> event = eventRepository.findById(eventid);
-        if(event.isPresent()){
-            user.joinEvent(event.get());
-            return true;
+    public int joinEvent(Long eventid, User user){
+        Optional<Event> eventOpt = eventRepository.findById(eventid);
+        if(eventOpt.isPresent()){
+            Event newEvent = eventOpt.get();
+            if(user.getMyEvents().contains(newEvent)){
+                return 1; // użytkownik jest już zapisany na te zajęcia
+            }
+            LocalTime newEventEndTime = newEvent.getTime().plusHours(newEvent.getDuration());
+            for(Event e : user.getMyEvents()){
+                if(e.getDate().isEqual(newEvent.getDate())){ // zajęcia w tym samym dniu
+                    LocalTime joinedEndTime = e.getTime().plusHours(e.getDuration());
+
+                    if(!e.getTime().isAfter(newEventEndTime) && !newEvent.getTime().isAfter(joinedEndTime)){
+                        return 2; // użytkownik ma inne zajęcia w tym czasie
+                    }
+                }
+            }
+            user.joinEvent(newEvent);
+            return 3; // udało się zapisać
         }
-        return false;
+        return 0;
     }
 
 
     /**
-     * Pozwala użytkownikowi zrezygnować z udziału w wydarzeniu.
+     * Pozwala użytkownikowi zrezygnować z udziału w zajęciach.
      *
-     * @param eventID ID wydarzenia
-     * @param user Użytkownik rezygnujący z wydarzenia
+     * @param eventID ID zajęć
+     * @param user Użytkownik rezygnujący z zajęć
      * @return true, jeśli rezygnacja się powiedzie
      */
     public boolean resign(Long eventID, Optional<User> user){
