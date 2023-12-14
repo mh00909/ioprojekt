@@ -548,3 +548,53 @@
     margin-top: 310px;
     margin-left: -590px;
   }
+
+  .account .overlap-group-weather {
+    height: 87px;
+    position: relative;
+    z-index: 1;
+    width: 184px;
+    left: 1300px;
+    top: 50px;
+
+  }
+  
+  .account .image {
+    height: 87px;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    width: 87px;
+    left: -10px;
+  }
+  
+  .account .profil-uytkownika-2 {
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 34px;
+    left: -60px;
+    opacity: 0.5;
+    position: relative;
+    z-index: 1;
+    top: -50px;
+    width: 184px;
+  }
+  
+  .account .text-wrapper-weather {
+    color: #000000;
+    font-family: "Source Serif Pro", Helvetica;
+    font-size: 23px;
+    font-weight: 400;
+    left: -10px;
+    letter-spacing: 0;
+    line-height: normal;
+    opacity: 0.8;
+    position: relative;
+    z-index: 300;
+    top: -80px;
+    white-space: nowrap;
+    width: 110px;
+  }
+  

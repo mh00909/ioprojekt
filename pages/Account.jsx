@@ -4,7 +4,6 @@ import api from "../api";
 import DateSelector from './components/DateSelector';
 import AllEvents from './components/AllEvents';
 
-
 const Account = ({user}) => {
   const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   console.log('Właściwość user w komponencie Konto:', user);
@@ -94,6 +93,16 @@ const Account = ({user}) => {
     <div className="account">
     <div className="div">
     <div className="selector-style"><DateSelector onSelectDate={handleDateSelection} /></div>
+    <div className="overlap-group-weather">
+    <a href="/ReservationData">
+
+                  <img className="image" alt="Image" src="https://c.animaapp.com/a635FrDH/img/image-7@2x.png" />
+                  </a>
+
+                  <div className="profil-uytkownika-2" />
+                  <div className="text-wrapper-weather">Prognoza</div>
+
+    </div>
     <div className="all-events-container">
         <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
         
