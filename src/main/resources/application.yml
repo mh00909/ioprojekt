@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/reservetheweather
-    username: projekt
-    password: weather
+    url: jdbc:postgresql://localhost:5432/iodata
+    username: postgres
+    password: 123Ania123
   jpa:
     hibernate:
       ddl-auto: update
