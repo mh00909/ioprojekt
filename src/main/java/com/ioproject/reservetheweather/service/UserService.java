@@ -16,7 +16,7 @@ import java.util.Optional;
 /**
  * Klasa służąca do zarządzania użytkownikami.
  * Oferuje funkcjonalności związane z tworzeniem, usuwaniem i aktualizacją danych.
- * Umożliwia również przeglądanie wydarzeń powiązanych z użytkownikiem.
+ * Umożliwia również operacje na wydarzeniach powiązanych z użytkownikiem.
  *
  */
 @Service
@@ -56,16 +56,17 @@ public class UserService {
 
     /**
      * Usuwa użytkownika na podstawie jego ID
-     * @param userID ID użytkownika do usunięcia
+     * @param login użytkownika do usunięcia
      * @return true, jeśli operacja się powiedzie
      * @throws IllegalStateException, jeśli użytkownik nie istnieje
      */
-    public boolean deleteUser(Long userID) {
-        boolean exists = userRepository.existsById(userID);
-        if(!exists){
+    public boolean deleteUser(String login) {
+        userRepository.findUserByName(login);
+        Optional<User> userOpt = userRepository.findUserByName(login);
+        if(!userOpt.isPresent()){
             throw new IllegalStateException("Użytkownik nie istnieje!");
         }
-        userRepository.deleteById(userID);
+        userRepository.delete(userOpt.get());
         return true;
     }
 
@@ -100,11 +101,16 @@ public class UserService {
      * @param userID ID użytkownika
      * @param name Nowa nazwa użytkownika
      * @return true, jeśli aktualizacja się powiedzie
+     * @throws IllegalStateException jeśli użytkownik nie istnieje lub e-mail jest zajęty
      */
     public boolean updateUserName(Long userID, String name){
         User user = userRepository.findById(userID)
                 .orElseThrow( ()->new IllegalStateException("Użytkownik z podanym ID nie istnieje.") );
-        if(name!=null && name.length()>0 ){
+        if(name!=null && name.length()>0){
+            Optional<User> userOptional = userRepository.findUserByName(name);
+            if(userOptional.isPresent()){
+                throw new IllegalStateException("Podany login jest zajęty.");
+            }
             user.setName(name);
             return true;
         }
@@ -160,7 +166,7 @@ public class UserService {
             user.joinEvent(newEvent);
             return 3; // udało się zapisać
         }
-        return 0;
+        return 0; // nie znaleziono zajęć
     }
 
 
@@ -180,22 +186,6 @@ public class UserService {
         return false;
     }
 
-
-
-/*
-    public UserDetailsService userDetailsService(){
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                Optional<User> user = userRepository.findUserByName(username);
-
-                return userRepository.findUserByName(username)
-                        .orElseThrow(()->new UsernameNotFoundException("Nie znaleziono użytkownika"));
-            }
-        };
-    }
-
- */
 
 }
 

@@ -1,14 +1,10 @@
 package com.ioproject.reservetheweather.service;
 
 import com.ioproject.reservetheweather.model.Event;
-//import com.ioproject.reservetheweather.repository.EventRepository;
-
 import com.ioproject.reservetheweather.model.User;
 import com.ioproject.reservetheweather.model.WeatherData;
 import com.ioproject.reservetheweather.repository.EventRepository;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -16,20 +12,43 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Klasa zarządzająca logiką biznesową związaną z zajęciami.
+ * Oferuje funkcjonalności takie jak dodawanie, rezygnacja, przekładanie zajęć.
+ */
 @Service
 public class EventService {
     private final EventRepository eventRepository;
-
     private final WeatherService weatherService;
+
+    /**
+     * Konstruktor klasy EventService.
+     *
+     * @param eventRepository
+     * @param weatherService
+     */
     public EventService(EventRepository eventRepository, WeatherService weatherService) {
         this.eventRepository = eventRepository;
         this.weatherService = weatherService;
     }
 
+    /**
+     * Pobiera listę wszystkich zajęć.
+     *
+     * @return lista zajęć
+     */
     public List<Event> getEvents() {
         return eventRepository.findAll();
     }
 
+    /**
+     * Sprawdza prognozę pogody dla zajęć o podanym ID i ustawia status pogody na niekorzystną,
+     * jeśli temperatura wykracza poza ustalone wartości.
+     *
+     * @param eventID ID wydarzenia.
+     * @return  true - jeśli operacja się powiedzie
+                false - w przypadku nieznalezienia wydarzenia.
+     */
     public boolean checkWeather(Long eventID){
 
         Optional<Event> event = eventRepository.findById(eventID);
@@ -42,13 +61,24 @@ public class EventService {
         }
         return true;
     }
-
+    /**
+     * Dodaje nowe zajęcia do bazy danych.
+     *
+     * @param event obiekt zajęcia do dodania
+     * @return true, jeśli dodanie się powiedzie
+     */
     public boolean addEvent(Event event) {
         eventRepository.save(event);
         return true;
     }
 
-
+    /**
+     * Umożliwia rezygnację z udziału w wydarzeniu
+     *
+     * @param eventID ID wydarzenia
+     * @param user iżytkownik rezygnujący z wydarzenia
+     * @return true - jeśli rezygnacja się powiedzie
+     */
     public boolean resign(Long eventID, Optional<User> user) {
     // usuwa użytkownika z uczestników tego wydarzenia
         if(user.isPresent()){
@@ -68,6 +98,16 @@ public class EventService {
 
         return false;
     }
+
+    /**
+     * Aplikuje zniżkę na wydarzenie, jeśli do jego rozpoczęcia pozostało mniej niż 24 godziny.
+     * Zniżka wynosi 30% i może być przyznana tylko raz.
+     *
+     * @param eventID ID wydarzenia
+     * @param user Obiekt użytkownika
+     * @return true - jeśli zniżka została przyznana,
+     * false - jeśli zniżka była już przyznana lub warunki nie zostały spełnione
+     */
 
     public boolean discount(Long eventID, Optional<User> user) {
         if(user.isPresent()){
@@ -126,6 +166,8 @@ public class EventService {
         return response;
     }
 
+    
+
     public boolean reschedule(Long eventID, Optional<User> user, String date1) {
         // takie samo wydarzenie na które był zapisany ale z inną datą
 
@@ -180,30 +222,4 @@ public class EventService {
         return false;
     }
 
-
-
-
-/*
-
-
-    public EventDto convertToDto(Event event) {
-        EventDto dto = new EventDto();
-        dto.setId(event.getId());
-        dto.setName(event.getName());
-        dto.setDescription(event.getDescription());
-        dto.setLocation(event.getLocation());
-        dto.setDiscount(event.isDiscount());
-        dto.setPrice(event.getPrice());
-        dto.setTime(event.getTime());
-        dto.setDate(event.getDate());
-        dto.setDuration(event.getDuration());
-        dto.setUsers(event.getUsers());
-        dto.setSignedUsers(event.getSignedUsers());
-        dto.setMaxUsers(event.getMaxUsers());
-        dto.setMinTemperature(event.getMinTemperature());
-        dto.setMaxTemperature(event.getMaxTemperature());
-        return dto;
-    }
-
- */
 }
