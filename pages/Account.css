@@ -538,12 +538,13 @@
 
   
 
-  .admin-panel .all-events-container {
+  .account .all-events-container {
     position: relative;
     font-size: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /*align-items: center;*/
     z-index: 2;
-    margin-top: 360px;
+    margin-top: 310px;
+    margin-left: -590px;
   }

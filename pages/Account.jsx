@@ -58,7 +58,6 @@ const Account = ({user}) => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-
         const login = localStorage.getItem('login');
         console.log('Login przy wypisywaniu zajęć użytkownika:', login);
         console.log("wybrana data:" , selectedDate);
@@ -67,17 +66,14 @@ const Account = ({user}) => {
        // console.log('Otrzymano zajęcia użytkownika o loginie ', localStorage.getItem('login', " : ", response.data[0]));
 
         console.log("Pobrano: ", response.data);
-        //setAllEvents(response.data);
+        setAllEvents(response.data);
       } catch (error) {
         console.error('Błąd podczas pobierania danych:', error);
       }
     };
-/*
     if (isUserDataLoaded) {
       fetchAllEvents();
-    }*/
-    fetchAllEvents();
-
+    }
     
   }, [selectedDate, isUserDataLoaded]);
 }
@@ -100,6 +96,7 @@ const Account = ({user}) => {
     <div className="selector-style"><DateSelector onSelectDate={handleDateSelection} /></div>
     <div className="all-events-container">
         <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
+        
       </div>
       <p className="text-wrapper">© 2024 ReserveTheWeather. All rights reserved.</p>
       <div className="overlap">

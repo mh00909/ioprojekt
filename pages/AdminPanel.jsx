@@ -61,8 +61,6 @@ const AdminPanel = () => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-
-        
         const login = localStorage.getItem('login');
         console.log('Login przy Reservations:', login);
 
