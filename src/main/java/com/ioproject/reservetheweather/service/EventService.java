@@ -96,15 +96,26 @@ public class EventService {
         return false;
     }
 
-    public boolean addPerson(Long eventid, User user) {
+    /**
+     * Dodaje użytkownika do listy uczestników danych zajęć
+     * @param eventid
+     * @param user
+     * @return 1 jeśli udało się dodać,
+     * 2 - jeśli nie znaleziono podanych zajęć
+     * 3 - jeśli na dane zajęcia zapisała się już maksymalna liczba osób
+     */
+    public int addPerson(Long eventid, User user) {
         Optional<Event> eventOpt = eventRepository.findById(eventid);
         if(eventOpt.isPresent()){
             Event event = eventOpt.get();
-            event.addNewUser(user);
-            return true;
+            if(event.getUsers().size() < event.getMaxUsers()){
+                event.addNewUser(user);
+                return 1;
+            }
+            return 3;
         }
 
-        return false;
+        return 2;
     }
 
     public String showDescription(Event event){

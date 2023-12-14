@@ -103,6 +103,7 @@ public class UserController {
     }
 
 
+
     @PostMapping("/events/signup")
     public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name) {
         Optional<User> user = userRepository.findUserByName(name);
@@ -118,7 +119,10 @@ public class UserController {
                 return ResponseEntity.ok("Użytkownik ma inne zajęcia w tym czasie.");
             }
             else {
-                eventService.addPerson(eventid, user.get());
+                int eventResponse = eventService.addPerson(eventid, user.get());
+                if(eventResponse==3){
+                    return ResponseEntity.ok("Na podane zajęcia zapisała się już maksymalna liczba uczestników.");
+                }
                 userRepository.save(user.get());
                 eventRepository.save(eventRepository.findById(eventid).get());
                 return ResponseEntity.ok("Zapisano poprawnie.");
