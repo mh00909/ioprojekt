@@ -78,7 +78,7 @@ const ReservationData = () => {
             </div>*/}
             <div className="overlap-wrapper">
               <div className="container-wrapper">
-                <div className="text-wrapper-9">Dane rezerwacji:</div>
+                <div className="text-wrapper-9">Dodatkowe informacje:</div>
               </div>
             </div>
             <img className="line" alt="Line" src="https://c.animaapp.com/RraaDVLa/img/line2.svg" />

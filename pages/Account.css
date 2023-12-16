@@ -598,3 +598,12 @@
     width: 110px;
   }
   
+  .account .about-booked {
+    color: #000000;
+    font-family: "Source Serif Pro", Helvetica;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 20px;
+    position: relative;
+    z-index: 30;
+  }

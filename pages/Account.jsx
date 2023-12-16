@@ -103,6 +103,8 @@ const Account = ({user}) => {
                   <div className="text-wrapper-weather">Prognoza</div>
 
     </div>
+    <div className="about-booked">Poniżej sprawdzisz dane swoich zarezerwowaych zajęć.</div>
+
     <div className="all-events-container">
         <AllEvents allEvents={allEvents} selectedDate={selectedDate} />
         
