@@ -87,8 +87,18 @@ const handleSignUpEvent = async () => {
     console.log('login przy rezerwowaniu: ', localStorage.getItem('login'));
 
     const response = await api.post(`/api/user/events/signup?eventid=${event.id}&name=${localStorage.getItem('login')}`);
-    
+    if(response.data=='Użytkownik jest już zapisany na te zajęcia.'){
+      alert('Użytkownik jest już zapisany na te zajęcia.');
+    }
 
+    if(response.data=="Użytkownik ma inne zajęcia w tym czasie."){
+      alert("Użytkownik ma inne zajęcia w tym czasie.");
+    }
+    
+    if(response.data=="Na podane zajęcia zapisała się już maksymalna liczba uczestników."){
+      alert("Na podane zajęcia zapisała się już maksymalna liczba uczestników.");
+    }
+    
   
     console.log('Response:', response);
 
