@@ -30,7 +30,7 @@ const PrognozaPogody = () => {
           <h2>{weather.name}</h2>
           <p>Temperatura: {Math.round(weather.main.temp - 273.15)}°C</p>
           <p>Temperatura odczywalna: {Math.round(weather.main.feels_like - 273.15)}°C</p>
-          <p>Warunki atmosferyczne (opis): {weather.weather[0].description}</p>
+          <p>Opis: {weather.weather[0].description}</p>
           <p>Ciśnienie: {weather.main.pressure} hPa</p>
           <p>Wilgotność: {weather.main.humidity}%</p>
           <p>Wschód słońca: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}</p>
