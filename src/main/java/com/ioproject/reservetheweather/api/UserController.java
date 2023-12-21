@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Kontroler REST API dla użytkowników.
+ * Umożliwia zarządzanie własnymi danymi oraz udziałem w wydarzeniach.
+ */
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -31,6 +35,12 @@ public class UserController {
     private final EventService eventService;
     private final WeatherService weatherService;
 
+    /**
+     * Konstruktor dodaje zależne serwisy.
+     * @param userService
+     * @param eventService
+     * @param weatherService
+     */
     @Autowired
     public UserController(UserService userService, EventService eventService, WeatherService weatherService) {
         this.userService = userService;
@@ -39,33 +49,36 @@ public class UserController {
     }
 
 
-
+    /**
+     * Pobiera szczegóły zalogowanego użytkownika.
+     * @return ResponseEntity z danymi użytkownika.
+     */
     @GetMapping("/Account")
     public ResponseEntity<Object> getMyDetails() {
         return ResponseEntity.ok(userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
     }
+    /**
+     * Wyświetla zajęcia, na które jest zapisany dany użytkownik.
+     * @return ResponseEntity z listą zajęć.
+     */
     @GetMapping("/myevents")
     public ResponseEntity<Object> showMyEvents(){
         Optional<User> user = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
         if(user.isPresent()) {
             List<Event> events = userRepository.findEventsByUserId(user.get().getId());
             return ResponseEntity.ok(events);
-           // return ResponseEntity.ok().body(userService.showMyEvents(user.get().getId()));
+
         }
         return null;
     }
 
-    @GetMapping("/{userId}/events")
-    public ResponseEntity<List<Event>> getUserEvents(@PathVariable Long userId) {
-        List<Event> events = userRepository.findEventsByUserId(userId);
-        return ResponseEntity.ok(events);
-    }
 
-
-
-
-
-
+    /**
+     * Wyświetla zajęcia, na które jest zapisany dany użytkownik, które mają się odbyć we wskazanym dniu.
+     * @param date Data wydarzeń do wyświetlenia.
+     * @param name Login użytkownika.
+     * @return ResponseEntity z listą zajęć na dany dzień.
+     */
 
     @GetMapping("/myEventsOnDay")
     public ResponseEntity<Object> myEventsOnDay(@RequestParam LocalDate date, @RequestParam String name){
@@ -85,6 +98,14 @@ public class UserController {
 
         return ResponseEntity.ok(eventsOnDate);
     }
+
+
+    /**
+     * Wyświetla wszystkie zajęcia, które mają się odbyć we wskazanym dniu.
+     * @param date Data zajęć do wyświetlenia.
+     * @param name Login zalogowanego użytkownika.
+     * @return ResponseEntity z listą wszystkich zajęć na dany dzień.
+     */
     @GetMapping("/allEventsOnDay")
     public ResponseEntity<Object> allEventsOnDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestParam String name){
         Optional<User> userOpt = userRepository.findUserByName(name);
@@ -102,8 +123,12 @@ public class UserController {
         return ResponseEntity.ok(eventsOnDate);
     }
 
-
-
+    /**
+     * Zapisuje użytkownika na zajęcia.
+     * @param eventid Identyfikator zajęć.
+     * @param name login użytkownika.
+     * @return ResponseEntity z informacją o zapisaniu na zajęcia.
+     */
     @PostMapping("/events/signup")
     public ResponseEntity<Object> signUpForEvent(@RequestParam Long eventid, @RequestParam String name) {
         Optional<User> user = userRepository.findUserByName(name);
@@ -132,6 +157,12 @@ public class UserController {
         return ResponseEntity.status(404).body("Nie udało się zapisać. Spróbuj ponownie");
     }
 
+
+    /**
+     * Pozwala użytkownikowi zrezygnować z udziału w zajęciach.
+     * @param id Identyfikator zajęć.
+     * @return ResponseEntity z informacją o rezygnacji z zajęć.
+     */
     @PostMapping("/myevents/cancell")
     public ResponseEntity<Object> resignEvent(@RequestParam Long id) {
         eventService.resign(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()));
@@ -139,6 +170,12 @@ public class UserController {
         return ResponseEntity.ok("Zrezygnowano z zajęć.");
     }
 
+
+    /**
+     * Przyznaje zniżkę dla danych zajęć.
+     * @param id Identyfikator zajęć.
+     * @return ResponseEntity z informacją o przyznanej zniżce.
+     */
     @PostMapping("/myevents/discount")
     public ResponseEntity<Object> discountEvent(@RequestParam Long id) {
         if (eventService.discount(id, userRepository.findUserByMail(getCurrentUserDetails().getUsername()))) {
@@ -148,20 +185,49 @@ public class UserController {
     }
 
 
+    /**
+     * Zmienia login użytkownika.
+     * @param newName nowy login
+     * @return ResponseEntity z informacją o zmianie loginu użytkownika.
+     */
     @GetMapping("/updateName")
-    public ResponseEntity<Object> updateName(@RequestParam String newName){
-        if(userService.updateUserName(userRepository.findUserByMail(getCurrentUserDetails().getUsername()).get().getId(), newName))
-            return ResponseEntity.ok("Poprawnie zmieniono nazwę użytkownika.");
-        return ResponseEntity.status(404).body("Nie udało się zmienić nazwy użytkownika.");
+    public ResponseEntity<Object> updateName(@RequestParam String newName) {
+        Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+        if (userOpt.isPresent()) {
+            if (userService.updateUserName(userOpt.get().getId(), newName)) {
+                return ResponseEntity.ok("Poprawnie zmieniono nazwę użytkownika.");
+            } else {
+                return ResponseEntity.status(404).body("Nie udało się zmienić nazwy użytkownika.");
+            }
+        } else {
+            return ResponseEntity.status(404).body("Nie znaleziono użytkownika.");
+        }
     }
+
+    /**
+     * Zmienia adres e-mail użytkownika.
+     * @param newMail Nowy adres e-mail.
+     * @return ResponseEntity z informacją o zmianie adresu e-mail.
+     */
     @GetMapping("/updateEmail")
-    public ResponseEntity<Object> updateMail(@RequestParam String newMail){
-        if(userService.updateUserMail(userRepository.findUserByMail(getCurrentUserDetails().getUsername()).get().getId(), newMail))
-            return ResponseEntity.ok("Udało się zmienić e-mail.");
-        return ResponseEntity.status(404).body("Nie udało się zmienić adresu e-mail.");
+    public ResponseEntity<Object> updateMail(@RequestParam String newMail) {
+        Optional<User> userOpt = userRepository.findUserByMail(getCurrentUserDetails().getUsername());
+        if (userOpt.isPresent()) {
+            if (userService.updateUserMail(userOpt.get().getId(), newMail)) {
+                return ResponseEntity.ok("Udało się zmienić e-mail.");
+            } else {
+                return ResponseEntity.status(404).body("Nie udało się zmienić adresu e-mail.");
+            }
+        } else {
+            return ResponseEntity.status(404).body("Nie znaleziono użytkownika.");
+        }
     }
 
 
+    /**
+     * Pobiera dane bieżącego użytkownika.
+     * @return Szczegóły bieżącego użytkownika.
+     */
 
     public UserDetails getCurrentUserDetails() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -68,6 +69,7 @@ public class User implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.roles = roles;
+        myEvents = new ArrayList<>();
     }
 
     /**
@@ -83,6 +85,7 @@ public class User implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.roles = "USER";
+        myEvents = new ArrayList<>();
     }
 
 
@@ -127,6 +130,11 @@ public class User implements UserDetails {
         return false;
     }
 
+
+    /**
+     * Zwraca dane zalogowanego użytkownika
+     * @return dane użytkownika
+     */
 
     public UserDetails getCurrentUserDetails() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

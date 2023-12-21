@@ -153,10 +153,30 @@ public class UserService {
             if(user.getMyEvents().contains(newEvent)){
                 return 1; // użytkownik jest już zapisany na te zajęcia
             }
-            LocalTime newEventEndTime = newEvent.getTime().plusHours(newEvent.getDuration());
+            double newEventDuration = newEvent.getDuration();
+            int newEventHours, newEventMinutes;
+            if(newEventDuration % 1 == 0){ // nie ma części dziesiętnej - cała godzina
+                newEventHours = (int)newEventDuration;
+                newEventMinutes = 0;
+            }
+            else{
+                newEventHours = (int)newEventDuration;
+                newEventMinutes = (int) ((newEventDuration - (int)newEventDuration) * 60);
+            }
+
+            LocalTime newEventEndTime = newEvent.getTime().plusHours(newEventHours).plusMinutes(newEventMinutes);
+
             for(Event e : user.getMyEvents()){
                 if(e.getDate().isEqual(newEvent.getDate())){ // zajęcia w tym samym dniu
-                    LocalTime joinedEndTime = e.getTime().plusHours(e.getDuration());
+                    int hours, minutes;
+                    hours = (int)e.getDuration();
+                    if(e.getDuration() %1 == 0){
+                        minutes=0;
+                    }
+                    else{
+                        minutes = (int)((e.getDuration() - hours)*60);
+                    }
+                    LocalTime joinedEndTime = e.getTime().plusHours(hours).plusMinutes(minutes);
 
                     if(!e.getTime().isAfter(newEventEndTime) && !newEvent.getTime().isAfter(joinedEndTime)){
                         return 2; // użytkownik ma inne zajęcia w tym czasie

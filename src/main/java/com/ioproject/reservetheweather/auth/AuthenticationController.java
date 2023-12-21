@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+
+/**
+ * Kontroler REST API obsługujący autentykację użytkowników.
+ * Umożliwia rejestrację, logowanie oraz odświeżanie tokenów JWT.
+ */
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -19,6 +24,15 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
     private final UserRepository userRepository;
 
+
+    /**
+     * Obsługuje rejestrację nowego użytkownika.
+     * @param name Login użytkownika.
+     * @param mail Adres e-mail.
+     * @param password Hasło.
+     * @param phoneNumber Numer telefonu.
+     * @return ResponseEntity z informacjem, czy rejestracja się powiodła.
+     */
     @PostMapping("/signup")
     public ResponseEntity<Object> signup(
             @RequestParam("name") String name,
@@ -47,6 +61,14 @@ public class AuthenticationController {
 
 
     }
+
+
+    /**
+     * Obsługuje logowanie użytkownika.
+     * @param name Login użytkownika.
+     * @param password Hasło.
+     * @return ResponseEntity z odpowiedzią JWT po pomyślnym logowaniu.
+     */
   @PostMapping("/signin")
   public ResponseEntity<JwtAuthenticationResponse> signin(
           @RequestParam("username") String name,
@@ -59,12 +81,23 @@ public class AuthenticationController {
       return ResponseEntity.ok(authenticationService.signin(signInRequest));
   }
 
+
+    /**
+     * Odświeża token JWT.
+     * @param refreshTokenRequest Żądanie z obecnym tokenem JWT.
+     * @return ResponseEntity z nowym tokenem JWT.
+     */
     @PostMapping("/refresh")
     public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest){
         return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
     }
 
 
+
+    /**
+     * Sprawdza, czy użytkownik jest zalogowany.
+     * @return ResponseEntity z danymi użytkownika lub informacją o braku autoryzacji.
+     */
     @GetMapping("/checkLogged")
     public ResponseEntity<Object> checkIfLoggedIn(){
         UserDto userDTO = authenticationService.getCurrentUserDetails();

@@ -1,29 +1,8 @@
 package com.ioproject.reservetheweather;
-/*
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-@TestConfiguration
-public class TestConfig {
-
-    @Bean
-    public MockMvc mockMvc(){
-        return MockMvcBuilders.standaloneSetup().build();
-    }
-
-}
-
-
-
- */
-
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,7 +16,7 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-@EnableWebSecurity
+@Profile("test")
 public class TestConfig{
 
 
@@ -53,7 +32,14 @@ public class TestConfig{
     }
     protected DefaultSecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api", "/api/register", "/api/events/all").permitAll()
+                        .requestMatchers("/api", "/api/register", "/api/events/all",
+                                "/api/auth/signin", "/api/auth/checkLogged", "/api/auth/signup",
+                                "/Main", "/AdminPanel", "/api/events/all", "/Account", "/api/**",
+                                "/api/user/myEventsOnDay", "/api/user/allEventsOnDay", "/api/user/allEventsOnDay?date=&name=?", "/api/user/allEventsOnDay**",
+                                "/api/user/myEventsOnDay?date=", "/api/user/events/signup?eventid=&name=", "/api/user/events/signup?eventid=1&name=123",
+                                "/Reservations","/AdminPanel**",
+                                "/api/admin/addEvent",
+                                "/api/admin/removeEvent").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .formLogin(withDefaults())

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * Kontroler REST API do zarządzania zajęciami.
+ * Zawieraa metody do pobierania informacji o zajęciach.
+ */
 @RestController
 @RequestMapping
 public class EventController {
@@ -23,23 +27,32 @@ public class EventController {
     private final EventService eventService;
     private final WeatherService weatherService;
 
+    /**
+     * Konstruktor inicjalizujący zależne serwisy.
+     * @param userService
+     * @param eventService
+     * @param weatherService
+     */
     public EventController(UserService userService, EventService eventService, WeatherService weatherService) {
         this.userService = userService;
         this.eventService = eventService;
         this.weatherService = weatherService;
     }
 
-    // dostępne bez autoryzacji
-    @GetMapping("/Main")
-    public String hello() {
-        return "Strona";
-    }
-
+    /**
+     * Pobiera wszystkie zajęcia.
+     * @return ResponseEntity z listą wszystkich zajęć.
+     */
     @GetMapping("/api/events/all")
     public ResponseEntity<Object> getAllEvents() {
         return ResponseEntity.ok(eventRepository.findAll());
     }
 
+    /**
+     * Wyświetla opis wybranych zajęć.
+     * @param eventid Identyfikator zajęć.
+     * @return ResponseEntity z opisem zajęć lub informacją o błędzie, jeśli nie znaleziono zajeć.
+     */
     @GetMapping("/api/events/description")
     public ResponseEntity<Object> showEventDescription(@RequestParam Long eventid){
         Optional<Event> event = eventRepository.findById(eventid);

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 
 @Getter
+@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherData {
 
@@ -24,6 +25,8 @@ public class WeatherData {
     private int id;
     private String name;
     private int cod;
+
+ 
 
     @Getter
     @Setter

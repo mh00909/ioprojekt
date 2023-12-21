@@ -5,7 +5,6 @@ import com.ioproject.reservetheweather.model.UserDto;
 import com.ioproject.reservetheweather.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,8 +12,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.Optional;
 
+
+/**
+ * Serwis do autentykacji użytkowników.
+ * Odpowiada za zarządzanie procesem rejestracji, logowania oraz odświeżania tokenów JWT.
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -23,7 +26,11 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
-
+    /**
+     * Rejestruje nowego użytkownika w systemie.
+     * @param signUpRequest Żądanie rejestracji zawierające dane użytkownika.
+     * @return Zapisany obiekt użytkownika.
+     */
     public User signup(SignUpRequest signUpRequest){
         User user = new User();
         user.setMail(signUpRequest.getMail());
@@ -36,6 +43,12 @@ public class AuthenticationService {
         return userRepository.save(user);
     }
 
+
+    /**
+     * Loguje użytkownika i generuje token JWT.
+     * @param signInRequest Żądanie logowania zawierające dane uwierzytelniające.
+     * @return Odpowiedź zawierająca token JWT i odświeżony token.
+     */
     public JwtAuthenticationResponse signin(SignInRequest signInRequest){
 
         var user = userRepository.findUserByName(signInRequest.getName()).orElseThrow(
@@ -53,6 +66,12 @@ public class AuthenticationService {
         return jwtAuthenticationResponse;
     }
 
+
+    /**
+     * Odświeża token JWT.
+     * @param request Żądanie z aktualnym tokenem JWT.
+     * @return Odpowiedź zawierająca nowy token JWT.
+     */
     public JwtAuthenticationResponse refreshToken(RefreshTokenRequest request){
         String userName = jwtService.extractUserName(request.getToken());
         User user = userRepository.findUserByName(userName).orElseThrow();
@@ -68,15 +87,12 @@ public class AuthenticationService {
     }
 
 
+
+    /**
+     * Pobiera informacje o zalogowanym użytkowniku.
+     * @return Informacje o użytkowniku przekonwertowane do klasy UserDto.
+     */
     public UserDto getCurrentUserDetails() {
-       /* Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            return ((UserDetails) principal);
-        }
-        return null;
-
-        */
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -89,6 +105,12 @@ public class AuthenticationService {
         return null;
     }
 
+    /**
+     * Konwertuje obiekt użytkownika User na obiekt klasy UserDto.
+     * @param user Obiekt użytkownika User.
+     * @param role Rola użytkownika.
+     * @return obiekt UserDto.
+     */
     public UserDto convertToDTO(User user, String role) {
         UserDto dto = new UserDto();
         dto.setName(user.getName());
@@ -97,7 +119,5 @@ public class AuthenticationService {
         return dto;
     }
 
-    public void logout(String token) {
 
-    }
 }

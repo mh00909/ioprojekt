@@ -4,6 +4,8 @@ server:
     include-binding-errors: always
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:postgresql://localhost:5432/reservetheweather
     username: projekt

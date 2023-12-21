@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,7 @@ class UserRepositoryTest {
         userRepository.save(user2);
         List<User> userList = userRepository.findAll();
         assertThat(userList).isNotNull();
-        assertThat(userList.size()).isEqualTo(2);
+        assertThat(userList.size()).isEqualTo(3); // + admin
 
     }
 

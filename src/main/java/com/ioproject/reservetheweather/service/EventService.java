@@ -115,8 +115,8 @@ public class EventService {
             if(event.isPresent()){
                 LocalDate now = LocalDate.now();
                 LocalDate eventDate = event.get().getDate();
-                long hours = ChronoUnit.HOURS.between(now, eventDate);
-                if(hours < 24){
+                long days = ChronoUnit.DAYS.between(now, eventDate);
+                if(days >= 1){
 
                     if(!event.get().discount){
                         // zniżka o 30%
@@ -168,31 +168,7 @@ public class EventService {
 
     
 
-    public boolean reschedule(Long eventID, Optional<User> user, String date1) {
-        // takie samo wydarzenie na które był zapisany ale z inną datą
 
-        if(user.isPresent()){
-            Optional<Event> event = eventRepository.findById(eventID);
-            if(event.isPresent()){
-                LocalDateTime now = LocalDateTime.now();
-                LocalDate eventDate = event.get().getDate();
-                long hours = ChronoUnit.HOURS.between(now, eventDate);
-                if(hours < 24){
-
-                    Event newEvent = new Event();
-                    newEvent.setDate(LocalDate.parse(date1));
-
-                    user.get().resign(event.get());
-                    user.get().joinEvent(newEvent);
-
-                    return true;
-                }
-            }
-        }
-
-        return false;
-
-    }
 
     public String badWeatherInfrom(User user, Event event){
         String message = "Na datę "+ event.getTime() + " przewidywana jest zła pogoda.\n" +
@@ -211,6 +187,7 @@ public class EventService {
         return false;
     }
 
+    // zmiana terminu wydarzenia w ogóle
     public boolean rescheduleEvent(Long id, LocalDate newDate, LocalTime newTime){
         Optional<Event> eventOpt = eventRepository.findById(id);
         if(eventOpt.isPresent()){
@@ -220,6 +197,33 @@ public class EventService {
             return true;
         }
         return false;
+    }
+
+    // zmiana terminu wydarzenia dla danego użytkownika (utworzenie nowego)
+    public boolean rescheduleUser(Long eventID, Optional<User> user, String date1) {
+        // takie samo wydarzenie na które był zapisany ale z inną datą
+
+        if(user.isPresent()){
+            Optional<Event> event = eventRepository.findById(eventID);
+            if(event.isPresent()){
+                LocalDate now = LocalDate.now();
+                LocalDate eventDate = event.get().getDate();
+                long days = ChronoUnit.DAYS.between(now, eventDate);
+                if(days >= 1){
+
+                    Event newEvent = new Event();
+                    newEvent.setDate(LocalDate.parse(date1));
+
+                    user.get().resign(event.get());
+                    user.get().joinEvent(newEvent);
+
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
 }

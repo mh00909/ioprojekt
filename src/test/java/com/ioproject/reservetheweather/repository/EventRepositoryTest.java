@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,15 +26,13 @@ public class EventRepositoryTest {
     }
 
     @Test
-    public void EventRepositorySaveWithDate(){
-    /*    LocalDateTime d = LocalDateTime.parse("2023-12-12 12:12", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        Event event = Event.builder().time(d).build();
+    public void EventRepositorySaveTest(){
+        LocalDate date = LocalDate.parse("2025-12-09");
+        LocalTime time = LocalTime.parse("19:00");
+        Event event = Event.builder().date(date).time(time).build();
         eventRepository.save(event);
-
         assertThat(event).isNotNull();
-        assertTrue(event.getTime().isEqual(d));
-
-     */
-
+        assertTrue(event.getDate().isEqual(date));
+        assertTrue(event.getTime().equals(time));
     }
 }

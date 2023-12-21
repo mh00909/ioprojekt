@@ -16,6 +16,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Optional;
 
+/**
+ * Kontroler REST API dla administratora serwisu.
+ * Umożliwia zarządzanie użytkownikami, zajęciami, rezerwacjami.
+ */
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -27,22 +31,36 @@ public class AdminController {
     private final EventService eventService;
     private final WeatherService weatherService;
 
+    /**
+     * Konstruktor dodający zależne klasy serwisowe.
+     * @param userService
+     * @param eventService
+     * @param weatherService
+     */
     @Autowired
     public AdminController(UserService userService, EventService eventService, WeatherService weatherService) {
         this.userService = userService;
         this.weatherService = weatherService;
         this.eventService = eventService;
     }
+    /**
+     * Pobiera wszystkich użytkowników.
+     * @return ResponseEntity z listą użytkowników.
+     */
     @GetMapping("/allusers")
-    public ResponseEntity<Object> getAllUsers() {
+    public ResponseEntity<Object> getAllUsers()
+    {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-
+    /**
+     * Dodaje nowe zajęcia.
+     * @return ResponseEntity z informacją o dodaniu zajęć.
+     */
     @PostMapping("/addEvent")
     public ResponseEntity<Object> addEvent(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
                                            @RequestParam("time")LocalTime eventTime,
-                                           @RequestParam("duration") int duration,
+                                           @RequestParam("duration") double duration,
                                            @RequestParam("description") String description,
                                            @RequestParam("name") String name,
                                            @RequestParam("maxUsers") int maxUsers,
@@ -58,6 +76,10 @@ public class AdminController {
     }
 
 
+    /**
+     * Zmienia termin zajęć.
+     * @return ResponseEntity z informacją o zmianie terminu.
+     */
     @PostMapping("/rescheduleEvent")
     public ResponseEntity<Object> rescheduleEvent(@RequestParam("eventID") Long eventID,
                                                   @RequestParam("newTime") LocalTime eventTime,
@@ -69,6 +91,10 @@ public class AdminController {
         return ResponseEntity.ok("Zmieniono termin zajęć");
     }
 
+    /**
+     * Usuwa zajęcia.
+     * @return ResponseEntity z informacją o usunięciu.
+     */
     @PostMapping("/removeEvent")
     public ResponseEntity<Object> removeEvent(@RequestParam Long eventID){
         boolean removed = eventService.removeEvent(eventID);
