@@ -16,7 +16,11 @@ const WithoutRegistration = () => {
           </div>
           <div className="account-button">
             <div className="overlap-2">
-              <img className="house" alt="House" src="https://c.animaapp.com/S851EPP9/img/domek.png" />
+              <img
+                className="house"
+                alt="House"
+                src="https://c.animaapp.com/S851EPP9/img/domek.png"
+              />
               <div className="overlap-group-wrapper">
                 <div className="overlap-group-2">
                   <span className="text-wrapper">Moje konto</span>
@@ -51,7 +55,8 @@ const WithoutRegistration = () => {
             </div>
           </div>
           <p className="text-wrapper-5">
-            Wygląda na to, że nie masz założonego konta. Kliknij dalej, a zostaniesz przekierowany do rejestracji.
+            Wygląda na to, że nie masz założonego konta. Kliknij dalej, a
+            zostaniesz przekierowany do rejestracji.
           </p>
         </div>
       </div>

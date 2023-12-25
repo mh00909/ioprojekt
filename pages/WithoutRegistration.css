@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+@import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro");
 
 .without-registration {
   background-color: #ffffff;
@@ -244,6 +244,6 @@
   .without-registration .text-wrapper-3,
   .without-registration .text-wrapper-4,
   .without-registration .text-wrapper-5 {
-    font-size: 18px; 
+    font-size: 18px;
   }
 }

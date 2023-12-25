@@ -1,20 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
-
+@import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro");
 
 @font-face {
-  font-family: 'Source Serif Pro';
-  src: url('/fonts/SourceSerifPro-Regular.ttf') format('truetype');
+  font-family: "Source Serif Pro";
+  src: url("/fonts/SourceSerifPro-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'Source Serif Pro', serif;
+  font-family: "Source Serif Pro", serif;
 }
-
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -31,7 +29,7 @@ body {
 }
 
 body {
-  font-family: 'Source Serif Pro', serif;
+  font-family: "Source Serif Pro", serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

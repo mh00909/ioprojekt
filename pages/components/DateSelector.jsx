@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './DateSelector.css';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns';
+import React, { useState } from "react";
+import "./DateSelector.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
 
 const DateSelector = ({ onSelectDate }) => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -11,10 +11,10 @@ const DateSelector = ({ onSelectDate }) => {
     setSelectedDate(date);
 
     try {
-      const formattedDate = format(date, 'yyyy-MM-dd');
+      const formattedDate = format(date, "yyyy-MM-dd");
       onSelectDate(formattedDate);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -24,14 +24,10 @@ const DateSelector = ({ onSelectDate }) => {
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
-        dateFormat="yyyy-MM-dd" 
+        dateFormat="yyyy-MM-dd"
       />
     </div>
   );
 };
 
 export default DateSelector;
-
-
-
-

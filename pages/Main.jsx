@@ -1,6 +1,6 @@
 import React from "react";
 import "./Main.css";
-import "../app/globals.css"
+import "../app/globals.css";
 
 const Main = () => {
   return (
@@ -21,8 +21,10 @@ const Main = () => {
               <span className="span">Pomożemy Ci w tym!</span>
             </p>
             <p className="p">
-              ReserveTheWeather to aplikacja webowa umożliwiająca rezerwację miejsc na zajęciach w oparciu o dane
-              pogodowe. Pogoda nie sprzyja? To nie problem, u nas przełożysz zajęcia lub otrzymasz zniżkę!            </p>
+              ReserveTheWeather to aplikacja webowa umożliwiająca rezerwację
+              miejsc na zajęciach w oparciu o dane pogodowe. Pogoda nie sprzyja?
+              To nie problem, u nas przełożysz zajęcia lub otrzymasz zniżkę!{" "}
+            </p>
             <div className="button-next">
               <div className="overlap-group-2">
                 <a href="/UserAuth">

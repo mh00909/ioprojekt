@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Serif+Pro');
+@import url("https://fonts.googleapis.com/css?family=Source+Serif+Pro");
 
 .weather-forecast {
-    width: 50%; 
-    float: right; 
-    top: 500px;
-  }
+  width: 50%;
+  float: right;
+  top: 500px;
+}
