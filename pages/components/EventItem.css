@@ -8,6 +8,7 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
     background-color: #f9f9f9;
+    font-size: large;
   }
   
   .event-item h3 {
