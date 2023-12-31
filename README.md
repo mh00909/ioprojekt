@@ -65,6 +65,7 @@ Etap 15.11.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea5
 Etap 10.12.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/10.12%20-%20In%C5%BCynieria%20Oprogramowania.pdf)
 
 ## Dokumentacja użytkownika (Samouczek nawigacji po stronach):
-[Przejście do logowaniarejestracji (2).pdf](https://github.com/mh00909/ioprojekt/files/13801710/Przejscie.do.logowaniarejestracji.2.pdf)
+Prześledź nawigację po stronach po pobraniu poniższego pliku:
+[Pobierz Samouczek.pdf](https://github.com/mh00909/ioprojekt/files/13801718/Pobierz.Samouczek.pdf)
 
 ![image](https://github.com/mh00909/ioprojekt/assets/115782747/88420336-ce16-437f-aa03-74fafa65d352)
