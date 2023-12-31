@@ -46,7 +46,7 @@ Frontend zostanie uruchomiony na `http://localhost:3000`.
 
 ## Konfiguracja Bazy Danych:
 
-W pliku `backend/src/main/resources/application.yml` znajdziesz sekcję dotyczącą konfiguracji bazy danych PostgreSQL. Ustaw odpowiednie dane dostępowe do swojej lokalnej bazy danych.
+W pliku `src/main/resources/application.yml` znajdziesz sekcję dotyczącą konfiguracji bazy danych PostgreSQL. Ustaw odpowiednie dane dostępowe do swojej lokalnej bazy danych.
 
 ```yaml
 spring:
