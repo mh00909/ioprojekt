@@ -44,7 +44,7 @@ Jeśli kroki zostaną wykonane prawidłowo backend zostanie uruchomiony na `http
 
 Frontend zostanie uruchomiony na `http://localhost:3000`.
 
-## Konfiguracja Bazy Danych
+## Konfiguracja Bazy Danych:
 
 W pliku `backend/src/main/resources/application.yml` znajdziesz sekcję dotyczącą konfiguracji bazy danych PostgreSQL. Ustaw odpowiednie dane dostępowe do swojej lokalnej bazy danych.
 
@@ -54,3 +54,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/twoja_baza
     username: twoj_uzytkownik
     password: twoje_haslo
+```
+
+## Poszczególne etapy projektu:
+ 
+Prezentacja Etap 25.10.2023:  (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/Prezentacja%20Etap%2025.10.2023.pdf)
+
+Etap 15.11.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/Etap%2015.11.2023.pdf)
+
+Etap 10.12.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/10.12%20-%20In%C5%BCynieria%20Oprogramowania.pdf)
