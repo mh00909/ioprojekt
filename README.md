@@ -63,3 +63,7 @@ Prezentacja Etap 25.10.2023:  (https://github.com/mh00909/ioprojekt/blob/1eb8261
 Etap 15.11.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/Etap%2015.11.2023.pdf)
 
 Etap 10.12.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea559602b2635c548fd3f9e/10.12%20-%20In%C5%BCynieria%20Oprogramowania.pdf)
+
+## Dokumentacja użytkownika (Samouczek nawigacji po stronach):
+[Przejście do logowaniarejestracji (2).pdf](https://github.com/mh00909/ioprojekt/files/13801710/Przejscie.do.logowaniarejestracji.2.pdf)
+
