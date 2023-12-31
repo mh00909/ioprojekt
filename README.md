@@ -67,3 +67,4 @@ Etap 10.12.2023: (https://github.com/mh00909/ioprojekt/blob/1eb8261e076a1925cea5
 ## Dokumentacja użytkownika (Samouczek nawigacji po stronach):
 [Przejście do logowaniarejestracji (2).pdf](https://github.com/mh00909/ioprojekt/files/13801710/Przejscie.do.logowaniarejestracji.2.pdf)
 
+![image](https://github.com/mh00909/ioprojekt/assets/115782747/e3046048-bd83-44a2-b6e5-296690fe6065)
