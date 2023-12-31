@@ -31,7 +31,7 @@ const AllEvents = ({ allEvents, selectedDate }) => {
 
   // Filtrowanie wydarzeń na podstawie wybranej daty
   const filteredEvents = allEvents.filter(
-    (event) => event.date === selectedDate,
+    (event) => event.date === selectedDate
   );
 
   const handlePrevClick = () => {
@@ -40,7 +40,7 @@ const AllEvents = ({ allEvents, selectedDate }) => {
 
   const handleNextClick = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex < filteredEvents.length - 1 ? prevIndex + 1 : prevIndex,
+      prevIndex < filteredEvents.length - 1 ? prevIndex + 1 : prevIndex
     );
   };
 

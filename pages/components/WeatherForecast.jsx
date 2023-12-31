@@ -18,7 +18,7 @@ const PrognozaPogody = () => {
       } catch (error) {
         console.error(
           "Błąd podczas pobierania danych z OpenWeather API",
-          error,
+          error
         );
       }
     };

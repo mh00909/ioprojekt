@@ -94,7 +94,7 @@ const EventItem = ({ event }) => {
       const response = await api.post(
         `/api/user/events/signup?eventid=${
           event.id
-        }&name=${localStorage.getItem("login")}`,
+        }&name=${localStorage.getItem("login")}`
       );
       if (response.data == "Użytkownik jest już zapisany na te zajęcia.") {
         alert("Użytkownik jest już zapisany na te zajęcia.");
@@ -109,7 +109,7 @@ const EventItem = ({ event }) => {
         "Na podane zajęcia zapisała się już maksymalna liczba uczestników."
       ) {
         alert(
-          "Na podane zajęcia zapisała się już maksymalna liczba uczestników.",
+          "Na podane zajęcia zapisała się już maksymalna liczba uczestników."
         );
       }
 
@@ -142,7 +142,7 @@ const EventItem = ({ event }) => {
           headers: {
             "Content-Type": "application/json",
           },
-        },
+        }
       );
 
       console.log("Response:", response);

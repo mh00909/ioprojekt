@@ -58,8 +58,8 @@ const Account = ({ user }) => {
 
           const response = await api.get(
             `/api/user/myEventsOnDay?date=${selectedDate}&name=${localStorage.getItem(
-              "login",
-            )}`,
+              "login"
+            )}`
           );
           // console.log('Otrzymano zajęcia użytkownika o loginie ', localStorage.getItem('login', " : ", response.data[0]));
 
