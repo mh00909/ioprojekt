@@ -4,6 +4,11 @@ import "./AdminPanel.css";
 import api from "../api";
 import AllEvents from "./components/AllEvents";
 
+/**
+ * Komponent `AdminPanel` reprezentuje widok administratora, umożliwiający dodawanie nowych wydarzeń do systemu.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący widok administratora.
+ */
 const AdminPanel = () => {
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
@@ -26,6 +31,12 @@ const AdminPanel = () => {
 
   const [error, setError] = useState("");
 
+  /**
+   * Metoda obsługująca submit formularza dodawania wydarzenia. Wysyła dane na serwer za pomocą API i aktualizuje stan aplikacji.
+   * @function
+   * @param {Event} e - Obiekt reprezentujący zdarzenie formularza.
+   * @returns {void}
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,6 +67,12 @@ const AdminPanel = () => {
       setError("Błąd podczas dodania zajęć. Spróbuj ponownie.");
     }
   };
+
+  /**
+   * Efekt pobierający wszystkie wydarzenia na wybranej dacie po załadowaniu komponentu.
+   * @function
+   * @returns {void}
+   */
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
@@ -78,26 +95,16 @@ const AdminPanel = () => {
     fetchAllEvents();
   }, [selectedDate]);
 
+  /**
+   * Metoda obsługująca wybór daty. Aktualizuje stan `selectedDate` na wybraną datę.
+   * @function
+   * @param {string} date - Wybrana data.
+   * @returns {void}
+   */
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
 
-  /* useEffect(() => {
-    const fetchAllEvents = async () => {
-      try {
-        const response = await api.get('/api/events/all');
-        setAllEvents(response.data);
-      } catch (error) {
-        console.error('Błąd podczas pobierania danych:', error);
-      }
-    };
-
-    fetchAllEvents();
-  }, [selectedDate]);
-
-  const handleDateSelection = (date) => {
-    setSelectedDate(date);
-  }; */
   return (
     <div className="admin-panel">
       <div className="div">
