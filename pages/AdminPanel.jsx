@@ -65,8 +65,8 @@ const AdminPanel = () => {
         console.log("wybrana data:", selectedDate);
         const response = await api.get(
           `/api/user/allEventsOnDay?date=${selectedDate}&name=${localStorage.getItem(
-            "login",
-          )}`,
+            "login"
+          )}`
         );
         console.log("Pobrano: ", response.data);
         setAllEvents(response.data);
