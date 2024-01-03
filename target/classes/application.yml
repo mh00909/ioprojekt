@@ -1,0 +1,35 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iodata
+    username: postgres
+    password: 123Ania123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+web:
+  cors:
+
+
+
+openweathermap:
+  api:
+    key: 79629070da576f068ac6d9c43c9b46b1
+
+logging:
+  level:
+    org:
+      springframework:
+        security=DEBUG:

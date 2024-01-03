@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./WeatherForecast.css";
 
-const PrognozaPogody = () => {
+/**
+ * Komponent reprezentujący prognozę pogody.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący prognozę pogody.
+ */
+const WeatherForecast = () => {
   const [weather, setWeather] = useState(null);
 
+  /**
+   * Funkcja do pobierania danych pogodowych z OpenWeather API.
+   * @function
+   * @async
+   * @returns {Promise<void>} - Obietnica, która reprezentuje zakończenie funkcji.
+   */
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,7 +58,7 @@ const PrognozaPogody = () => {
             Zachód słońca:{" "}
             {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
           </p>
-          <p>Prędkość wiatru: {weather.wind.speed * 3.6}km/h</p>
+          <p>Prędkość wiatru: {(weather.wind.speed * 3.6).toFixed(2)} km/h</p>
           <p>Zachmurzenie: {weather.clouds.all}%</p>
           <p>Widoczność: {weather.visibility}m</p>
 
@@ -63,4 +74,4 @@ const PrognozaPogody = () => {
   );
 };
 
-export default PrognozaPogody;
+export default WeatherForecast;
