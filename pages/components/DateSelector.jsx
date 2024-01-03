@@ -4,9 +4,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 
+
+
+/**
+ * Komponent `DateSelector` umożliwia użytkownikowi wybieranie daty w celu sprawdzenia harmonogramu.
+ * @component
+ * @param {Object} props - Właściwości komponentu.
+ * @param {Function} props.onSelectDate - Funkcja wywoływana po wybraniu daty.
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący sekcję wyboru daty.
+ */
 const DateSelector = ({ onSelectDate }) => {
   const [selectedDate, setSelectedDate] = useState(null);
-
+  /**
+   * Obsługuje zmianę wybranej daty i wywołuje funkcję `onSelectDate` z sformatowaną datą.
+   * @param {Date} date - Obiekt reprezentujący nowo wybraną datę.
+   */
   const handleDateChange = (date) => {
     setSelectedDate(date);
 

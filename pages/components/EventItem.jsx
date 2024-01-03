@@ -1,8 +1,15 @@
-// components/EventItem.jsx
 import React, { useState, useEffect } from "react";
 import "./EventItem.css";
 import api from "../../api";
 
+
+/**
+ * Komponent `EventItem` reprezentuje pojedyncze wydarzenie w harmonogramie.
+ * @component
+ * @param {Object} props - Właściwości komponentu.
+ * @param {Object} props.event - Informacje o wydarzeniu.
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący pojedyncze wydarzenie.
+ */
 const EventItem = ({ event }) => {
   const [isCancelling, setIsCancelling] = useState(false);
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -11,6 +18,12 @@ const EventItem = ({ event }) => {
   const apiBaseUrl =
     process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
+
+    /**
+     * Funkcja sprawdzająca, czy wydarzenie odbywa się dzisiaj.
+     * @param {string} date - Data wydarzenia w formacie "YYYY-MM-DD".
+     * @returns {boolean} - `true`, jeśli wydarzenie jest dzisiaj, w przeciwnym razie `false`.
+     */
   const isToday = (date) => {
     const today = new Date();
     const eventDate = new Date(date);
@@ -21,6 +34,11 @@ const EventItem = ({ event }) => {
     );
   };
 
+
+    /**
+     * Funkcja sprawdzająca, czy na wydarzenie przysługuje zniżka.
+     * @returns {boolean} - `true`, jeśli na wydarzenie przysługuje zniżka, w przeciwnym razie `false`.
+     */
   const hasDiscount = () => {
     if (weather && isToday(event.date)) {
       const temperature =
@@ -32,8 +50,10 @@ const EventItem = ({ event }) => {
     return false;
   };
 
+  // Obliczanie zniżonej ceny, jeśli przysługuje zniżka
   const discountedPrice = hasDiscount() ? (event.price * 0.8).toFixed(2) : null;
 
+  // Wyświetlanie ceny z uwzględnieniem zniżki lub bez
   const displayPrice = hasDiscount() ? (
     <span>
       <del>{event.price} PLN</del> {discountedPrice} PLN
@@ -41,54 +61,16 @@ const EventItem = ({ event }) => {
   ) : (
     `${event.price} PLN`
   );
-  {
-    /*To była pierwsz wersja
+
+    /**
+     * Funkcja obsługująca zapis na wydarzenie.
+     * @async
+     * @function
+     */
   const handleSignUpEvent = async () => {
     try {
       setIsSigningUp(true);
 
-      console.log('Signing up for event with ID:', event.id);
-
-      const response = await fetch(`${apiBaseUrl}/api/events/signup/${event.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      console.log('Response:', response);
-
-      if (response.ok) {
-        console.log('User signed up successfully');
-        // Tutaj dodam kod do odświeżania informacji o wydarzeniu lub listy wydarzeń
-      } else {
-        console.error('Failed to sign up for event');
-        console.log('Error details:', response.status, response.statusText);
-      }
-    } catch (error) {
-      console.error('Error signing up for event:', error);
-      console.log('Error details:', error);
-    } finally {
-      setIsSigningUp(false);
-      console.log('Sign-up process completed');
-    }
-  };
-*/
-  }
-
-  const handleSignUpEvent = async () => {
-    try {
-      setIsSigningUp(true);
-      /* console.log('Signing up for event with ID:', event.id);
-    const response1 = await api.get('/api/auth/checkLogged', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-   // localStorage.setItem('token', response1.data.token)
-    console.log("Dane użytkownika: ", response1.data); 
-    //const token = localStorage.getItem('token');
-    //console.log('Token:', token); */
       console.log("login przy rezerwowaniu: ", localStorage.getItem("login"));
 
       const response = await api.post(
@@ -131,6 +113,12 @@ const EventItem = ({ event }) => {
     }
   };
 
+
+    /**
+     * Funkcja obsługująca odwołanie zapisu na wydarzenie.
+     * @async
+     * @function
+     */
   const handleCancelEvent = async () => {
     try {
       console.log("Cancelling event with ID:", event.id);
@@ -162,7 +150,9 @@ const EventItem = ({ event }) => {
       console.log("Cancellation process completed");
     }
   };
-
+    /**
+     * Efekt pobierający dane pogodowe z zewnętrznego API podczas renderowania komponentu.
+     */
   useEffect(() => {
     const fetchData = async () => {
       const maxRetries = 3;
