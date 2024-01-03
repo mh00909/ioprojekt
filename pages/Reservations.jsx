@@ -5,6 +5,12 @@ import DateSelector from "./components/DateSelector";
 import api from "../api";
 import AllEvents from "./components/AllEvents";
 
+
+/**
+ * Komponent `Reservations` reprezentuje widok rezerwacji użytkownika.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący widok rezerwacji.
+ */
 const Reservations = () => {
   const apiBaseUrl =
     process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
@@ -15,6 +21,12 @@ const Reservations = () => {
 
   const [error, setError] = useState("");
 
+
+  /**
+   * Efekt pobierający wszystkie wydarzenia na wybranej dacie po załadowaniu komponentu.
+   * @function
+   * @returns {void}
+   */
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
@@ -37,6 +49,13 @@ const Reservations = () => {
     fetchAllEvents();
   }, [selectedDate]);
 
+
+  /**
+   * Obsługuje zdarzenie wyboru daty.
+   * @function
+   * @param {string} date - Wybrana data.
+   * @returns {void}
+   */
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
