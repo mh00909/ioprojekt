@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./UserAuth.css";
 import api from "../api";
 
-//obsłuży logowanie i rejestracje
-const UserAuth = () => {
+/**
+ * Komponent `UserAuth` obsługuje logowanie i rejestrację użytkownika.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący formularz logowania i rejestracji.
+ */const UserAuth = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
@@ -17,6 +20,12 @@ const UserAuth = () => {
 
   const [error, setError] = useState("");
 
+  /**
+   * Obsługuje zdarzenie zatwierdzenia formularza logowania.
+   * @function
+   * @param {Event} e - Zdarzenie kliknięcia przycisku logowania.
+   * @returns {void}
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,6 +59,13 @@ const UserAuth = () => {
     }
   };
 
+
+  /**
+   * Obsługuje zdarzenie zatwierdzenia formularza rejestracji.
+   * @function
+   * @param {Event} e - Zdarzenie kliknięcia przycisku rejestracji.
+   * @returns {void}
+   */
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
