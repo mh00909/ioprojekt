@@ -4,6 +4,14 @@ import api from "../api";
 import DateSelector from "./components/DateSelector";
 import AllEvents from "./components/AllEvents";
 
+
+/**
+ * Komponent reprezentujący konto użytkownika.
+ * @component
+ * @param {Object} props - Właściwości komponentu.
+ * @param {Object} props.user - Obiekt reprezentujący użytkownika.
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący konto użytkownika.
+ */
 const Account = ({ user }) => {
   const apiBaseUrl =
     process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
@@ -15,11 +23,15 @@ const Account = ({ user }) => {
   const [isUserDataLoaded, setIsUserDataLoaded] = useState(false);
   const [allEvents, setAllEvents] = useState([]);
 
-  //const [allEvents, setAllEvents] = useState([]);
   const [error, setError] = useState("");
 
+  /**
+   * Funkcja do pobierania danych zalogowanego użytkownika z backendu.
+   * @function
+   * @async
+   * @returns {Promise<void>} - Obietnica, która reprezentuje zakończenie funkcji.
+   */
   useEffect(() => {
-    // Funkcja do pobrania danych zalogowanego użytkownika z backendu
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
@@ -44,10 +56,15 @@ const Account = ({ user }) => {
       }
     };
 
-    // Wywołaj funkcję pobierania danych przy pierwszym renderowaniu komponentu
     fetchUserData();
-  }, []); // Pusta tablica oznacza, że useEffect zostanie uruchomiony tylko raz
+  }, []);
 
+  /**
+   * Funkcja do pobierania wszystkich wydarzeń użytkownika na wybranej dacie.
+   * @function
+   * @async
+   * @returns {Promise<void>} - Obietnica, która reprezentuje zakończenie funkcji.
+   */
   {
     useEffect(() => {
       const fetchAllEvents = async () => {
@@ -74,10 +91,23 @@ const Account = ({ user }) => {
       }
     }, [selectedDate, isUserDataLoaded]);
   }
+
+  /**
+   * Obsługuje zdarzenie wyboru daty.
+   * @function
+   * @param {string} date - Wybrana data.
+   * @returns {void}
+   */
   const handleDateSelection = (date) => {
     setSelectedDate(date);
   };
 
+
+  /**
+   * Obsługuje wylogowanie użytkownika.
+   * @function
+   * @returns {void}
+   */
   const handleLogOut = () => {
     localStorage.removeItem("token");
 
