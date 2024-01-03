@@ -1,6 +1,12 @@
 import React from "react";
 import "./Contact.css";
 
+
+/**
+ * Komponent `Contact` reprezentuje widok zawierający informacje kontaktowe.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący stronę z danymi kontaktowymi.
+ */
 const Contact = () => {
   return (
     <div className="contact">

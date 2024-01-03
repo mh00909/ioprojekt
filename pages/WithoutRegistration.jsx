@@ -1,13 +1,17 @@
 import React from "react";
 import "./WithoutRegistration.css";
 
+/**
+ * Komponent `WithoutRegistration` reprezentuje widok dla użytkowników, którzy nie posiadają założonego konta.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący interfejs bez zarejestrowanego konta.
+ */
 const WithoutRegistration = () => {
   return (
     <div className="without-registration">
       <div className="container">
         <div className="overlap">
           <div className="overlap-group">
-            {/*<img className="line" alt="Line" src="https://c.animaapp.com/S851EPP9/img/line-4.svg" />*/}
             <img
               className="add-header"
               alt="Add header"

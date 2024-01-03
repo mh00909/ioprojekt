@@ -1,6 +1,13 @@
 import React from "react";
 import "./Information.css";
 
+
+
+/**
+ * Komponent `Information` reprezentuje widok zawierający informacje ogólne o aplikacji.
+ * @component
+ * @returns {JSX.Element} - Zwraca element JSX reprezentujący stronę z informacjami.
+ */
 const Information = () => {
   return (
     <div className="information">
