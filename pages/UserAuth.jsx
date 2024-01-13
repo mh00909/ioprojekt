@@ -84,7 +84,8 @@ import api from "../api";
       } else if (response.data == "Błąd: podany login już zajęty") {
         alert("Błąd: podany login jest już zajęty");
       } else {
-        window.location.href = "/Account";
+        alert("Zarejestrowano pomyślnie. Możesz się teraz zalogować.");
+        window.location.href = "/UserAuth";
       }
 
       // Przełącz formularz na tryb logowania
