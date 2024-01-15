@@ -28,8 +28,7 @@ Jeśli kroki zostaną wykonane prawidłowo backend zostanie uruchomiony na `http
 
 ### Frontend (Next.js)
 
-1. **Pod linkiem https://github.com/mh00909/ioprojekt.git skopiuj ades url do schowka**
- W wybranym środowisku programistycznym utwórz nowy plik z wersji kontrolnych podając adres url. Frontend jest na gałęzi "proba".
+1. **W wybranym środowisku programistycznym utwórz nowy plik z wersji kontrolnych podając adres url. Frontend jest na gałęzi "proba".**
 
 
 2. **Instalacja zależności:**
