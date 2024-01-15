@@ -5,7 +5,7 @@
 ### Backend (Java Spring)
 
 **Upewnij się, że masz zainstalowaną Javę 21, a także Spring Boot.**
-1. **Pod linkiem https://github.com/mh00909/ioprojekt/tree/master999 skopiuj ades url do schowka:**
+1. **Pod linkiem https://github.com/mh00909/ioprojekt/tree/master999 skopiuj ades url do schowka (backend jest na gałęzi master999):**
  ![image](https://github.com/mh00909/ioprojekt/assets/115782747/cd0c80eb-4edb-444e-933e-cac4c8458063)
 
 -  W wybranym środowisku programistycznym utwórz nowy plik z wersji kontrolnych:
@@ -28,8 +28,8 @@ Jeśli kroki zostaną wykonane prawidłowo backend zostanie uruchomiony na `http
 
 ### Frontend (Next.js)
 
-1. **Pod linkiem https://github.com/mh00909/ioprojekt/tree/master999 skopiuj ades url do schowka**
- W wybranym środowisku programistycznym utwórz nowy plik z wersji kontrolnych podając adres url 
+1. **Pod linkiem https://github.com/mh00909/ioprojekt.git skopiuj ades url do schowka**
+ W wybranym środowisku programistycznym utwórz nowy plik z wersji kontrolnych podając adres url. Frontend jest na gałęzi "proba".
 
 
 2. **Instalacja zależności:**
