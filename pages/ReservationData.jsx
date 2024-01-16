@@ -32,7 +32,7 @@ const ReservationData = () => {
             <p className="place222">Kraków, Pl</p>
 
             <p className="qa">
-              W razie pytań nie wachaj się z nami skontaktować. U nas to klient
+              W razie pytań nie wahaj się z nami skontaktować. U nas to klient
               jest na pierwszym miejscu
             </p>
 
